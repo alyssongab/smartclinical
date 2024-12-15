@@ -1,4 +1,4 @@
-module com.smartclinical.smartclinical {
+module com.smartclinical.app {
     requires javafx.controls;
     requires javafx.fxml;
     requires javafx.web;
@@ -8,6 +8,8 @@ module com.smartclinical.smartclinical {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
 
-    opens com.smartclinical.smartclinical to javafx.fxml;
-    exports com.smartclinical.smartclinical;
+    opens com.smartclinical.app to javafx.fxml;
+    exports com.smartclinical.app;
+    exports com.smartclinical.controller;
+    opens com.smartclinical.controller to javafx.fxml;
 }

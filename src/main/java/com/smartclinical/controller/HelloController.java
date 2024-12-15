@@ -1,4 +1,4 @@
-package com.smartclinical.smartclinical;
+package com.smartclinical.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

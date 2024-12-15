@@ -102,7 +102,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.smartclinical.smartclinical/com.smartclinical.smartclinical.HelloApplication
+                                com.smartclinical.smartclinical/com.smartclinical.app.HelloApplication
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
