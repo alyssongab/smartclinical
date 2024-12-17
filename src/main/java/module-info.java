@@ -6,7 +6,6 @@ module com.smartclinical.app {
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
     requires org.kordamp.bootstrapfx.core;
-    requires eu.hansolo.tilesfx;
 
     opens com.smartclinical.app to javafx.fxml;
     exports com.smartclinical.app;
