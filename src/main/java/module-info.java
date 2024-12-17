@@ -7,6 +7,7 @@ module com.smartclinical.app {
     requires com.dlsc.formsfx;
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
+    requires mysql.connector.j;
 
     opens com.smartclinical.app to javafx.fxml;
     exports com.smartclinical.app;

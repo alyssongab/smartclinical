@@ -12,20 +12,36 @@ public class ConexaoBD {
     // static para não precisa instanciar
     public static Connection getConexao() {
         Properties props = new Properties();
-        try{
+        try(FileInputStream arquivo = new FileInputStream("db.properties")){
             // resgata informações do SEU banco de dados, através do arquivo db.properties
-            FileInputStream arquivo = new FileInputStream("db.properties");
             props.load(arquivo);
 
             String url = props.getProperty("db.url");
             String user = props.getProperty("db.user");
             String password = props.getProperty("db.password");
 
+            if (url == null || user == null || password == null) {
+                throw new IllegalArgumentException("Configurações de banco de dados inválidas no arquivo db.properties");
+            }
+
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
             return DriverManager.getConnection(url, user, password);
         }
-        catch(IOException | SQLException e){
-            System.out.println("Erro ao carregar arquivo ou conectar ao banco de dados: " + e.getMessage());
-            return null;
+        // Tratamentos com suas respectivas exceções
+        catch(IOException e){
+            System.out.println("Erro ao carregar o arquivo db.properties " + e.getMessage());
+            e.printStackTrace();
         }
+        catch(ClassNotFoundException e){
+            System.out.println("Erro ao carregar o driver JDBC: " + e.getMessage());
+            e.printStackTrace();
+        }
+        catch(SQLException e){
+            System.out.println("Erro ao conectar com o banco de dados: " + e.getMessage());
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }
