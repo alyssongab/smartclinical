@@ -3,19 +3,14 @@ package com.smartclinical.model;
 import com.smartclinical.util.TipoUser;
 
 public class Usuario {
-    protected int id;
+    protected int userId;
     protected String nome;
     protected String email;
     protected String senha;
     protected String telefone;
     protected TipoUser tipoUsuario;
 
-    public Usuario() {
-
-    }
-
-    public Usuario(int id, String nome, String email, String senha, String telefone, TipoUser tipoUsuario) {
-        this.id = id;
+    public Usuario(String nome, String email, String senha, String telefone, TipoUser tipoUsuario) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
@@ -23,12 +18,15 @@ public class Usuario {
         this.tipoUsuario = tipoUsuario;
     }
 
-    public int getId() {
-        return id;
+    public Usuario(int userId, String nome, String telefone, TipoUser tipoUsuario) {
+        this.userId = userId;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.tipoUsuario = tipoUsuario;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getId() {
+        return userId;
     }
 
     public String getNome() {

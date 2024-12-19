@@ -55,14 +55,16 @@ public class LoginController {
     // faz uma busca no banco utilizando prepared statement e retorna o valor(true) ou false
     private boolean autenticarUsuario(String email, String senha) {
         String busca = "SELECT * FROM usuario WHERE email = ? AND senha = ?";
-        try(Connection conn = ConexaoBD.getConexao();
-            PreparedStatement instrucao = conn.prepareStatement(busca)){
+        try(Connection conn = ConexaoBD.getConexao()) {
+            assert conn != null;
+            try(PreparedStatement instrucao = conn.prepareStatement(busca)){
 
-            instrucao.setString(1, email);
-            instrucao.setString(2, senha);
-            ResultSet resultado = instrucao.executeQuery();
+                instrucao.setString(1, email);
+                instrucao.setString(2, senha);
+                ResultSet resultado = instrucao.executeQuery();
 
-            return resultado.next();
+                return resultado.next();
+            }
         }
         catch(Exception e){
             System.out.println("Erro ao autenticar usuario: " + e.getMessage());

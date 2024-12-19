@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.smartclinical.controller.LoginController">
    <left>
       <AnchorPane prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #53c89b;" BorderPane.alignment="CENTER" />
@@ -32,10 +31,13 @@
                   <Image url="@../../../images/key.png" />
                </image>
             </ImageView>
-            <Button fx:id="submitLogin" layoutX="123.0" layoutY="377.0" styleClass="button" mnemonicParsing="false" prefHeight="51.0" prefWidth="154.0" style="-fx-background-color: #53c89b;" stylesheets="@../styles/style.css" text="Login" textFill="WHITE">
+            <Button fx:id="submitLogin" layoutX="123.0" layoutY="377.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="154.0" style="-fx-background-color: #53c89b;" styleClass="button" stylesheets="@../styles/style.css" text="Login" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
             </Button>
             <Hyperlink layoutX="113.0" layoutY="523.0" prefHeight="42.0" prefWidth="174.0" text="Esqueceu sua senha?" textFill="#53c89b">
                <font>
