@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.smartclinical.controller.LogoutController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.smartclinical.controller.LogoutController">
    <top>
       <GridPane alignment="CENTER" prefHeight="170.0" prefWidth="1280.0" style="-fx-background-color: #53c89b;" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -24,12 +24,12 @@
          <children>
             <Label text="Smart Clinical" textFill="WHITE">
                <font>
-                  <Font name="Montserrat Bold" size="38.0" />
+                  <Font name="SansSerif Bold" size="38.0" />
                </font>
             </Label>
-            <Button fx:id="botaoLogout" mnemonicParsing="false" prefHeight="50.0" prefWidth="122.0" style="-fx-background-color: #007FFF;" text="Logout" textFill="WHITE" GridPane.columnIndex="2">
+            <Button fx:id="botaoLogout" mnemonicParsing="false" prefHeight="50.0" prefWidth="122.0" style="-fx-background-color: #F62447;" text="Logout" textFill="WHITE" GridPane.columnIndex="2">
                <font>
-                  <Font name="Montserrat Bold" size="20.0" />
+                  <Font name="SansSerif Bold" size="20.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -42,68 +42,24 @@
       </GridPane>
    </top>
    <center>
-      <GridPane hgap="25.0" prefHeight="318.0" prefWidth="1216.0" vgap="15.0" BorderPane.alignment="CENTER">
+      <GridPane BorderPane.alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="634.5" minWidth="10.0" prefWidth="400.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="818.0" minWidth="10.0" prefWidth="400.0" />
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="818.0" minWidth="10.0" prefWidth="400.0" />
+          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints maxHeight="49.0" minHeight="150.0" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="24.0" minHeight="150.0" prefHeight="50.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" valignment="TOP" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" prefHeight="154.0" prefWidth="375.0" style="-fx-background-color: #53c89b;" text="Button" textFill="WHITE">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-               <font>
-                  <Font name="Montserrat Bold" size="24.0" />
-               </font></Button>
-            <Button layoutX="163.0" layoutY="19.0" mnemonicParsing="false" prefHeight="166.0" prefWidth="375.0" style="-fx-background-color: #53c89b;" text="Button" textFill="WHITE" GridPane.columnIndex="2">
-               <font>
-                  <Font name="Montserrat Bold" size="24.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
-            <Button layoutX="163.0" layoutY="19.0" mnemonicParsing="false" prefHeight="204.0" prefWidth="375.0" style="-fx-background-color: #53c89b;" text="Button" textFill="WHITE" GridPane.columnIndex="2" GridPane.rowIndex="1">
-               <font>
-                  <Font name="Montserrat Bold" size="24.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
-            <Button layoutX="163.0" layoutY="116.0" mnemonicParsing="false" prefHeight="159.0" prefWidth="375.0" style="-fx-background-color: #53c89b;" text="Button" textFill="WHITE" GridPane.rowIndex="1">
-               <font>
-                  <Font name="Montserrat Bold" size="24.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
-            <Button layoutX="927.0" layoutY="10.0" mnemonicParsing="false" prefHeight="166.0" prefWidth="375.0" style="-fx-background-color: #53c89b;" text="Button" textFill="WHITE" GridPane.columnIndex="1">
-               <font>
-                  <Font name="Montserrat Bold" size="24.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Button layoutX="73.0" layoutY="10.0" mnemonicParsing="false" prefHeight="152.0" prefWidth="375.0" style="-fx-background-color: #53c89b;" text="Button" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <font>
-                  <Font name="Montserrat Bold" size="24.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
+            <Button mnemonicParsing="false" prefHeight="215.0" prefWidth="280.0" text="Button" />
+            <Button layoutX="10.0" layoutY="90.0" mnemonicParsing="false" prefHeight="215.0" prefWidth="285.0" text="Button" GridPane.rowIndex="1" />
+            <Button layoutX="10.0" layoutY="135.0" mnemonicParsing="false" prefHeight="215.0" prefWidth="280.0" text="Button" GridPane.columnIndex="1" />
+            <Button layoutX="10.0" layoutY="135.0" mnemonicParsing="false" prefHeight="215.0" prefWidth="285.0" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button layoutX="10.0" layoutY="135.0" mnemonicParsing="false" prefHeight="215.0" prefWidth="285.0" text="Button" GridPane.columnIndex="2" />
+            <Button layoutX="10.0" layoutY="135.0" mnemonicParsing="false" prefHeight="215.0" prefWidth="285.0" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="1" />
          </children>
-         <BorderPane.margin>
-            <Insets top="55.0" />
-         </BorderPane.margin>
-         <padding>
-            <Insets left="60.0" right="60.0" />
-         </padding>
       </GridPane>
    </center>
 </BorderPane>

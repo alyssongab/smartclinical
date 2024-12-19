@@ -23,15 +23,19 @@ public class LoginController {
     @FXML
     private Button submitLogin;
 
-    private Main mainApp;
-
     // método que inicia o controller
     public void initialize() {
-        submitLogin.setOnAction(event -> fazerLogin());
+        submitLogin.setOnAction(event -> {
+            try {
+                fazerLogin();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     // método para autenticar usuário
-    private void fazerLogin() {
+    private void fazerLogin() throws IOException {
         String email = inputEmail.getText();
         String senha = inputSenha.getText();
 
@@ -40,8 +44,8 @@ public class LoginController {
         }
         else if(autenticarUsuario(email, senha)){
             // Se autenticação for bem-sucedida, navega para o painel principal
-            Stage stage = (Stage) submitLogin.getScene().getWindow();
-            carregarPainelPrincipal(stage);
+            Main m = new Main();
+            m.abrirPainel("painel.fxml");
         }
         else {
             mostrarAlerta("Erro no login", "Email ou senha incorretos");
@@ -67,21 +71,6 @@ public class LoginController {
         }
     }
 
-    private void carregarPainelPrincipal(Stage stage) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("painel.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            stage.setTitle("Painel principal");
-            stage.setResizable(true);
-            stage.setMaximized(true);
-            stage.setScene(scene);
-            stage.show();
-        }
-        catch(IOException e){
-            System.out.println("Erro ao carregar o painel principal: " + e.getMessage());
-        }
-    }
-
     // popup para caso de login inválido
     private void mostrarAlerta(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -91,8 +80,4 @@ public class LoginController {
         alert.showAndWait();
     }
 
-    // Método para definir a referência do Main, garantindo que a navegação aconteça corretamente
-    public void setMainApp(Main mainApp) {
-        this.mainApp = mainApp;
-    }
 }

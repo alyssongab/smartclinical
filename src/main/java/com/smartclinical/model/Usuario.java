@@ -10,6 +10,10 @@ public class Usuario {
     protected String telefone;
     protected TipoUser tipoUsuario;
 
+    public Usuario() {
+
+    }
+
     public Usuario(int id, String nome, String email, String senha, String telefone, TipoUser tipoUsuario) {
         this.id = id;
         this.nome = nome;
