@@ -2,9 +2,6 @@ package com.smartclinical.controller;
 
 import com.smartclinical.app.Main;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -38,6 +35,7 @@ public class LogoutController {
 
     private void confirmarLogout() {
         try {
+            // fecha a painel principal
             Stage stage = (Stage) botaoLogout.getScene().getWindow();
             stage.close();
             // vai para o start novamente (tela de login)

@@ -14,7 +14,7 @@ import java.util.List;
 public class UsuarioDAO {
 
     //Inserir usuário
-    public void inserirUsuario(Usuario usuario) throws SQLException {
+    public void inserirUsuario(Usuario usuario){
         String inserir = "INSERT INTO usuario (nome, email, senha, telefone, tipoUser) VALUES(?,?,?,?.?)";
 
         // try with resource para conectar com o banco
@@ -38,7 +38,7 @@ public class UsuarioDAO {
     }
 
     // listar usuários
-    public List<Usuario> listarUsuario() throws SQLException {
+    public List<Usuario> listarUsuario() {
         String listar = "SELECT id, nome, telefone, tipoUser FROM usuario";
         List<Usuario> usuarios = new ArrayList<>();
 
@@ -67,6 +67,34 @@ public class UsuarioDAO {
         }
 
         return usuarios;
+    }
+
+    // Remover usuário
+    public void removerUsuario(int id) throws SQLException {
+        String remover = "DELETE FROM usuario WHERE id = ?";
+        try(Connection con = ConexaoBD.getConexao()){
+            assert con != null;
+            PreparedStatement stmt = con.prepareStatement(remover);
+
+            stmt.setInt(1, id);
+            int linhasAfetadas = stmt.executeUpdate(); // executeUpdate retorna um inteiro
+            System.out.println("SQL: " + remover);
+
+            if (linhasAfetadas > 0) {
+                System.out.println("Operação realizada com sucesso.");
+            } else {
+                System.out.println("Nenhuma linha foi afetada.");
+            }
+
+        }
+        catch (SQLException e) {
+            System.out.println("Erro ao remover usuario: " + e.getMessage());
+        }
+    }
+
+    // Editar usuário
+    public void editarUsuario(Usuario usuario) {
+
     }
 
 }
