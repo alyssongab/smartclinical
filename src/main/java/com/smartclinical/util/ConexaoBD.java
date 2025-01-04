@@ -44,4 +44,8 @@ public class ConexaoBD {
 
         return null;
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> matheus_admin

@@ -1,5 +1,9 @@
 package com.smartclinical.testes;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> matheus_admin
 import com.smartclinical.dao.UsuarioDAO;
 import com.smartclinical.model.Usuario;
 
@@ -7,7 +11,11 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class TesteDAO {
+<<<<<<< HEAD
     public static void main(String[] args) {
+=======
+    public static void main(String[] args) throws SQLException {
+>>>>>>> matheus_admin
         UsuarioDAO usuarioDAO = new UsuarioDAO();
 
         List<Usuario> usuarios = usuarioDAO.listarUsuario();
@@ -19,3 +27,7 @@ public class TesteDAO {
         }
     }
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> matheus_admin

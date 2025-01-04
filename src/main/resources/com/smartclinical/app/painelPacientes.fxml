@@ -42,6 +42,7 @@
             </BorderPane.margin>
         </GridPane>
     </top>
+<<<<<<< HEAD
    <center>
       <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0" BorderPane.alignment="CENTER">
          <children>
@@ -80,4 +81,44 @@
          </children>
       </VBox>
    </center>
+=======
+    <center>
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button fx:id="acessoCadastroPaciente" mnemonicParsing="false" prefHeight="100.0" prefWidth="300.0" text="Cadastrar Paciente">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="300.0" text="Listar Paciente(s)">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="300.0" text="Editar Paciente">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+                <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="300.0" text="Remover Paciente">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+            </children>
+        </VBox>
+    </center>
+>>>>>>> matheus_admin
 </BorderPane>
