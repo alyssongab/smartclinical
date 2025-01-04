@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.smartclinical.controller.CadastroUsuarioController">
+   <children>
+      <BorderPane prefHeight="800.0" prefWidth="1280.0">
+         <top>
+            <GridPane alignment="CENTER" prefHeight="170.0" prefWidth="1280.0" style="-fx-background-color: #53c89b;" BorderPane.alignment="CENTER">
+               <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <Label text="Smart Clinical" textFill="WHITE">
+                     <font>
+                        <Font name="SansSerif Bold" size="38.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="botaoLogout" mnemonicParsing="false" prefHeight="50.0" prefWidth="122.0" style="-fx-background-color: #F62447;" text="Logout" textFill="WHITE" GridPane.columnIndex="2">
+                     <font>
+                        <Font name="SansSerif Bold" size="20.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </GridPane>
+         </top>
+         <center>
+            <AnchorPane maxHeight="450.0" maxWidth="550.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #c0c0c0;" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="223.0" layoutY="40.0" text="Cadastro" textFill="#feffff">
+                     <font>
+                        <Font name="SansSerif Bold" size="24.0" />
+                     </font>
+                  </Label>
+                  <GridPane layoutX="139.0" layoutY="137.0" maxHeight="300.0" maxWidth="300.0" prefHeight="212.0" prefWidth="274.0">
+                    <columnConstraints>
+                      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="132.0" minWidth="10.0" prefWidth="71.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="218.0" minWidth="10.0" prefWidth="203.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Label text="Nome:" />
+                        <Label text="Email:" GridPane.rowIndex="1" />
+                        <Label text="Senha" GridPane.rowIndex="2" />
+                        <Label text="Telefone" GridPane.rowIndex="3" />
+                        <Label text="Usuário" GridPane.rowIndex="4" />
+                        <TextField GridPane.columnIndex="1" />
+                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <ComboBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4" />
+                     </children>
+                  </GridPane>
+                  <Button layoutX="190.0" layoutY="387.0" mnemonicParsing="false" text="Cadastrar" />
+                  <Button layoutX="328.0" layoutY="387.0" mnemonicParsing="false" text="Limpar" />
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

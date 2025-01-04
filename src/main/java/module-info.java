@@ -1,12 +1,12 @@
-module com.example.smartclinical {
+module com.smartclinical.app {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
+    requires mysql.connector.j;
 
+    opens com.smartclinical.app to javafx.fxml;
+    exports com.smartclinical.app;
 
-    opens com.example.smartclinical to javafx.fxml;
-    exports com.example.smartclinical.app;
-    opens com.example.smartclinical.app to javafx.fxml;
-    exports com.example.smartclinical.controller;
-    opens com.example.smartclinical.controller to javafx.fxml;
+    exports com.smartclinical.controller;
+    opens com.smartclinical.controller to javafx.fxml;
 }
