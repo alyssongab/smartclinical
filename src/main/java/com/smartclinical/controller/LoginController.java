@@ -45,7 +45,7 @@ public class LoginController {
         else if(autenticarUsuario(email, senha)){
             // Se autenticação for bem-sucedida, navega para o painel principal
             Main m = new Main();
-            m.abrirPainel("painel.fxml");
+            m.abrirPainel("painelPrincipal.fxml", "Painel Principal");
         }
         else {
             mostrarAlerta("Erro no login", "Email ou senha incorretos");

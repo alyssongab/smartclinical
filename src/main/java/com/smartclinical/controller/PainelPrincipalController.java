@@ -7,24 +7,36 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.Optional;
 
-public class PainelController {
+public class PainelPrincipalController {
 
     @FXML
     private Button botaoLogout;
+
+    @FXML
+    private Button botaoPainelPacientes;
 
     private Main main;
 
     // inicia o controller
     public void initialize() {
         botaoLogout.setOnAction(event -> fazerLogout());
+
+        botaoPainelPacientes.setOnAction(event -> {
+            try {
+                abrirPainelPacientes();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     /**
      * ****** LOGOUT APENAS ***************
      */
-    private void fazerLogout() {
+    public void fazerLogout() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Logout");
         alert.setHeaderText("Sair do Sistema");
@@ -36,7 +48,7 @@ public class PainelController {
         }
     }
 
-    private void confirmarLogout() {
+    public void confirmarLogout() {
         try {
             // fecha a painel principal
             Stage stage = (Stage) botaoLogout.getScene().getWindow();
@@ -52,5 +64,10 @@ public class PainelController {
     }
     /*
     * ******** FIM DO LOGOUT ********
-    * */
+    */
+
+    public void abrirPainelPacientes() throws IOException {
+        Main m = new Main();
+        m.abrirPainel("painelPacientes.fxml", "Painel de Pacientes");
+    }
 }

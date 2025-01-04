@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.smartclinical.controller.PainelController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.smartclinical.controller.PainelPrincipalController">
    <top>
       <GridPane alignment="CENTER" prefHeight="170.0" prefWidth="1280.0" style="-fx-background-color: #53c89b;" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -73,7 +73,7 @@
                <font>
                   <Font size="18.0" />
                </font></Button>
-            <Button layoutX="10.0" layoutY="135.0" mnemonicParsing="false" prefHeight="215.0" prefWidth="285.0" text="Pacientes" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Button fx:id="botaoPainelPacientes" layoutX="10.0" layoutY="135.0" mnemonicParsing="false" prefHeight="215.0" prefWidth="285.0" text="Pacientes" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <font>
                   <Font size="18.0" />
                </font></Button>
