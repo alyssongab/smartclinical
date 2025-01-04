@@ -46,3 +46,5 @@ MODIFY id_paciente INT AUTO_INCREMENT;
 
 insert into pacientes(nome, cpf, data_nasc)
 values("Neymar", "123.987.543-11", "20/02/1992");
+
+select * from pacientes;	
