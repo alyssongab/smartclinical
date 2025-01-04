@@ -23,7 +23,7 @@ public class LoginController {
     @FXML
     private Button submitLogin;
 
-    // método que inicia o controller
+    // metodo que inicia o controller
     public void initialize() {
         submitLogin.setOnAction(event -> {
             try {
@@ -34,7 +34,7 @@ public class LoginController {
         });
     }
 
-    // método para autenticar usuário
+    // metodo para autenticar usuário
     private void fazerLogin() throws IOException {
         String email = inputEmail.getText();
         String senha = inputSenha.getText();
