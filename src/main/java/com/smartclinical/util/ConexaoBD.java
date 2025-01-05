@@ -1,4 +1,4 @@
-package com.example.smartclinical.util;
+package com.smartclinical.util;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -9,29 +9,40 @@ import java.util.Properties;
 
 public class ConexaoBD {
 
-    private static String url = "jdbc:mysql://localhost:3306/javapoofx";
-    private static String usuario = "root";
-    private static String senha = "root";
+    // static para não precisa instanciar
+    public static Connection getConexao() {
+        Properties props = new Properties();
+        try(FileInputStream arquivo = new FileInputStream("C:\\Users\\mathe\\Desktop\\POO-IFAM\\Smart clinical\\smartclinical\\src\\main\\java\\com\\smartclinical\\util\\db.properties")){
+            // resgata informações do SEU banco de dados, através do arquivo db.properties
+            props.load(arquivo);
 
+            String url = props.getProperty("db.url");
+            String user = props.getProperty("db.user");
+            String password = props.getProperty("db.password");
 
-    public ConexaoBD() {
+            if (url == null || user == null || password == null) {
+                throw new IllegalArgumentException("Configurações de banco de dados inválidas no arquivo db.properties");
+            }
 
-        this.url = "jdbc:mysql://localhost:3306/javapoofx";
-        this.usuario = "root";
-        this.senha = "root";
-
-    }
-
-    public static Connection getConexao() throws SQLException {
-
-        try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+
+            return DriverManager.getConnection(url, user, password);
+        }
+        // Tratamentos com suas respectivas exceções
+        catch(IOException e){
+            System.out.println("Erro ao carregar o arquivo db.properties " + e.getMessage());
+            e.printStackTrace();
+        }
+        catch(ClassNotFoundException e){
+            System.out.println("Erro ao carregar o driver JDBC: " + e.getMessage());
+            e.printStackTrace();
+        }
+        catch(SQLException e){
+            System.out.println("Erro ao conectar com o banco de dados: " + e.getMessage());
+            e.printStackTrace();
         }
 
-        return DriverManager.getConnection(url, usuario, senha);
-
+        return null;
     }
-}
 
+}

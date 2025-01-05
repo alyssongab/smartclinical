@@ -1,22 +1,39 @@
 package com.smartclinical.controller;
 
 import com.smartclinical.app.Main;
-import javafx.event.ActionEvent;
+import com.smartclinical.model.Paciente;
+import com.smartclinical.model.Recepcionista;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Optional;
 
-public class PainelPacientesController {
+public class CadastroPacienteController {
     @FXML
     private Button botaoLogout;
 
     @FXML
-    private Button botaoCadastrarPaciente;
+    private TextField pacienteInputNome;
+
+    @FXML
+    private TextField pacienteInputCpf;
+
+    @FXML
+    private TextField pacienteInputDataNascimento;
+
+    @FXML
+    private Button submitCadastroPaciente;
+
+    private Recepcionista recepcionista;
+
+    public CadastroPacienteController() {
+
+    }
 
     /**
      * ****** LOGOUT APENAS ***************
@@ -52,25 +69,24 @@ public class PainelPacientesController {
      */
 
 
-    // abre o cadastro de pacientes
-    public void abrirCadastro(){
-        try{
-            Main m = new Main();
-            m.abrirPainel("cadastroPaciente.fxml", "Cadastro de paciente");
-        }
-        catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    // botao que volta para o painel principal
-    public void voltarParaPainelPrincipal(ActionEvent actionEvent) {
+    // volta para o painel de pacientes
+    public void voltarParaPacientes(){
         try{
             Main main = new Main();
-            main.abrirPainel("painelPrincipal.fxml", "Painel Principal");
+            main.abrirPainel("painelPacientes.fxml", "Painel de pacientes");
         }
         catch(IOException e){
             throw new RuntimeException();
         }
+    }
+
+    // cadastra o paciente no banco de dados
+    public void cadastrarPaciente(){
+        String nome = pacienteInputNome.getText();
+        String cpf = pacienteInputCpf.getText();
+        String dataNascimento = pacienteInputDataNascimento.getText();
+
+        Paciente paciente = new Paciente(nome, cpf, dataNascimento);
+
     }
 }

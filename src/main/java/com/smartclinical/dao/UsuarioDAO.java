@@ -1,8 +1,8 @@
-package com.example.smartclinical.dao;
+package com.smartclinical.dao;
 
-import com.example.smartclinical.model.Usuario;
-import com.example.smartclinical.util.ConexaoBD;
-import com.example.smartclinical.util.TipoUser;
+import com.smartclinical.model.Usuario;
+import com.smartclinical.util.ConexaoBD;
+import com.smartclinical.util.TipoUser;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

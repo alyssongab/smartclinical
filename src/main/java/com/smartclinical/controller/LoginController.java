@@ -1,14 +1,23 @@
-package com.example.smartclinical.controller;
+package com.smartclinical.controller;
 
-import com.example.smartclinical.app.Main;
-import com.example.smartclinical.util.ConexaoBD;
+import com.smartclinical.app.Main;
+import com.smartclinical.util.ConexaoBD;
+import com.smartclinical.util.Sessao;
+import com.smartclinical.util.TipoUser;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
+import javafx.scene.control.*;
+
 
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
+import static com.smartclinical.util.Sessao.getTipoUser;
 
 public class LoginController {
     @FXML
@@ -20,7 +29,8 @@ public class LoginController {
     @FXML
     private Button submitLogin;
 
-    // método que inicia o controller
+
+    // metodo que inicia o controller
     public void initialize() {
         submitLogin.setOnAction(event -> {
             try {
@@ -31,7 +41,7 @@ public class LoginController {
         });
     }
 
-    // método para autenticar usuário
+    // metodo para autenticar usuário
     private void fazerLogin() throws IOException {
         String email = inputEmail.getText();
         String senha = inputSenha.getText();
@@ -39,19 +49,20 @@ public class LoginController {
         if (email.isEmpty() || senha.isEmpty()) {
             mostrarAlerta("Campos Vazios", "Preencha todos os campos!");
         }
-        else if(autenticarUsuario(email, senha)){
-            // Se autenticação for bem-sucedida, navega para o painel principal
-            Main m = new Main();
-            m.abrirPainel("painelPrincipal.fxml");
-        }
         else {
-            mostrarAlerta("Erro no login", "Email ou senha incorretos");
+            if (autenticarUsuario(email, senha) != null) {
+                // Se autenticação for bem-sucedida, navega para o painel principal
+                Main m = new Main();
+                m.abrirPainel("painelPrincipal.fxml", "Painel Principal");
+            } else {
+                mostrarAlerta("Erro no login", "Email ou senha incorretos");
+            }
         }
     }
 
-    // faz uma busca no banco utilizando prepared statement e retorna o valor(true) ou false
-    private boolean autenticarUsuario(String email, String senha) {
-        String busca = "SELECT * FROM usuario WHERE email = ? AND senha = ?";
+    // faz uma busca no banco utilizando prepared statement e retorna o tipo de usuario
+    private TipoUser autenticarUsuario(String email, String senha) {
+        String busca = "SELECT tipoUser FROM usuario WHERE email = ? AND senha = ?";
         try(Connection conn = ConexaoBD.getConexao()) {
             assert conn != null;
             try(PreparedStatement instrucao = conn.prepareStatement(busca)){
@@ -60,14 +71,24 @@ public class LoginController {
                 instrucao.setString(2, senha);
                 ResultSet resultado = instrucao.executeQuery();
 
-                return resultado.next();
+                // Verifica se o usuário foi encontrado
+                if(resultado.next()) {
+                    // Pega o tipo de usuario
+                    String tipoUser = resultado.getString("tipoUser");
+                    Sessao.setTipoUser(TipoUser.valueOf(tipoUser));
+                    // Retorna já convertendo para enum
+                    return TipoUser.valueOf(tipoUser);
+                }
+                else{
+                    return null;
+                }
             }
         }
         catch(Exception e){
             System.out.println("Erro ao autenticar usuario: " + e.getMessage());
             e.printStackTrace();
-            return false;
         }
+        return null;
     }
 
     // popup para caso de login inválido

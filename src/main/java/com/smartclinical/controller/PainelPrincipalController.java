@@ -1,6 +1,8 @@
-package com.example.smartclinical.controller;
+package com.smartclinical.controller;
 
-import com.example.smartclinical.app.Main;
+import com.smartclinical.app.Main;
+import com.smartclinical.util.Sessao;
+import com.smartclinical.util.TipoUser;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -21,25 +23,44 @@ public class PainelPrincipalController {
     @FXML
     private Button botaoPainelAdmin;
 
-    private Main main;
+    @FXML
+    private Button botaoPainelAgendaMedica;
+
+    @FXML
+    private Button botaoPainelAgendamento;
+
+    @FXML
+    private Button botaoPainelAvaliacoes;
+
+    @FXML
+    private Button botaoPainelProntuarios;
 
     // inicia o controller
     public void initialize() {
+        TipoUser tipoUser = Sessao.getTipoUser();
+        System.out.println("Voce logou como: " + tipoUser);
+
+        // desabilita botoes de acordo com o tipo de usuario
+        desabilitarBotoes(tipoUser);
+
+        // para fazer logout
         botaoLogout.setOnAction(event -> fazerLogout());
 
+        // ação do botão "Pacientes"
         botaoPainelPacientes.setOnAction(event -> {
             try {
                 Main m = new Main();
-                m.abrirPainel("painelPacientes.fxml");
+                m.abrirPainel("painelPacientes.fxml", "Painel de Pacientes");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         });
 
+        // ação do botão "Admin"
         botaoPainelAdmin.setOnAction(event -> {
             try {
                 Main m = new Main();
-                m.abrirPainel("admin.fxml");
+                m.abrirPainel("admin.fxml", "Painel de Admin");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -79,8 +100,31 @@ public class PainelPrincipalController {
      * ******** FIM DO LOGOUT ********
      */
 
-//    public void abrirPainelPacientes() throws IOException {
-//        Main m = new Main();
-//        m.abrirPainel("painelPacientes.fxml");
-//    }
+
+    // metodo que desabilita os botoes de acordo com o usuario logado
+    private void desabilitarBotoes(TipoUser tipoUser) {
+        switch (tipoUser) {
+            case ADMIN:
+                break;
+
+            case RECEPCIONISTA:
+                // nao pode acessar paineis de admin e de prontuarios
+                botaoPainelAdmin.setDisable(true);
+                botaoPainelAvaliacoes.setDisable(true);
+                botaoPainelProntuarios.setDisable(true);
+                break;
+
+            case MEDICO:
+                // nao pode acessar pacientes, agendamento e paineis do admin
+                botaoPainelAdmin.setDisable(true);
+                botaoPainelAvaliacoes.setDisable(true);
+                botaoPainelPacientes.setDisable(true);
+                botaoPainelAgendamento.setDisable(true);
+                break;
+
+            default:
+                System.out.println("Tipo de usuário desconhecido");
+                break;
+        }
+    }
 }

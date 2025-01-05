@@ -16,28 +16,54 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `admins`
+-- Table structure for table `medicos`
 --
 
-DROP TABLE IF EXISTS `admins`;
+DROP TABLE IF EXISTS `medicos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `admins` (
-                          `id` int NOT NULL,
-                          `crm` varchar(20) DEFAULT NULL,
-                          `especialidade` varchar(200) DEFAULT NULL,
-                          PRIMARY KEY (`id`),
-                          CONSTRAINT `admins_ibfk_1` FOREIGN KEY (`id`) REFERENCES `usuario` (`id`)
+CREATE TABLE `medicos` (
+  `id` int NOT NULL,
+  `crm` varchar(20) DEFAULT NULL,
+  `especialidade` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `medicos_ibfk_1` FOREIGN KEY (`id`) REFERENCES `usuario` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `admins`
+-- Dumping data for table `medicos`
 --
 
-LOCK TABLES `admins` WRITE;
-/*!40000 ALTER TABLE `admins` DISABLE KEYS */;
-/*!40000 ALTER TABLE `admins` ENABLE KEYS */;
+LOCK TABLES `medicos` WRITE;
+/*!40000 ALTER TABLE `medicos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `medicos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `pacientes`
+--
+
+DROP TABLE IF EXISTS `pacientes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `pacientes` (
+  `id_paciente` int NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) DEFAULT NULL,
+  `cpf` varchar(16) DEFAULT NULL,
+  `data_nasc` varchar(11) DEFAULT NULL,
+  PRIMARY KEY (`id_paciente`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `pacientes`
+--
+
+LOCK TABLES `pacientes` WRITE;
+/*!40000 ALTER TABLE `pacientes` DISABLE KEYS */;
+INSERT INTO `pacientes` VALUES (1,'Neymar','123.987.543-11','20/02/1992');
+/*!40000 ALTER TABLE `pacientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -48,10 +74,10 @@ DROP TABLE IF EXISTS `recepcionistas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `recepcionistas` (
-                                  `id` int NOT NULL,
-                                  `turno` varchar(20) DEFAULT NULL,
-                                  PRIMARY KEY (`id`),
-                                  CONSTRAINT `recepcionistas_ibfk_1` FOREIGN KEY (`id`) REFERENCES `usuario` (`id`)
+  `id` int NOT NULL,
+  `turno` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `recepcionistas_ibfk_1` FOREIGN KEY (`id`) REFERENCES `usuario` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -72,15 +98,15 @@ DROP TABLE IF EXISTS `usuario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `usuario` (
-                           `id` int NOT NULL AUTO_INCREMENT,
-                           `nome` varchar(255) DEFAULT NULL,
-                           `email` varchar(100) DEFAULT NULL,
-                           `senha` varchar(32) DEFAULT NULL,
-                           `telefone` varchar(15) DEFAULT NULL,
-                           `tipoUser` enum('ADMIN','MEDICO','RECEPCIONISTA') NOT NULL,
-                           PRIMARY KEY (`id`),
-                           UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `senha` varchar(32) DEFAULT NULL,
+  `telefone` varchar(15) DEFAULT NULL,
+  `tipoUser` enum('ADMIN','MEDICO','RECEPCIONISTA') NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -89,7 +115,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'Bob','bob@gmail.com','admin123','92998877','ADMIN');
+INSERT INTO `usuario` VALUES (1,'Bob','bob@gmail.com','admin123','92998877','ADMIN'),(2,'Messi','lm10@gmail.com','barca','22 151109','RECEPCIONISTA');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -102,4 +128,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-17 11:39:49
+-- Dump completed on 2025-01-05  0:49:35

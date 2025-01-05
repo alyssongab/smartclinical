@@ -1,6 +1,6 @@
-package com.example.smartclinical.testes;
+package com.smartclinical.testes;
 
-import com.example.smartclinical.util.ConexaoBD;
+import com.smartclinical.util.ConexaoBD;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

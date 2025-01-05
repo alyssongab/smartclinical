@@ -1,8 +1,8 @@
-package com.example.smartclinical.testes;
+package com.smartclinical.testes;
 
 
-import com.example.smartclinical.dao.UsuarioDAO;
-import com.example.smartclinical.model.Usuario;
+import com.smartclinical.dao.UsuarioDAO;
+import com.smartclinical.model.Usuario;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -20,4 +20,3 @@ public class TesteDAO {
         }
     }
 }
-

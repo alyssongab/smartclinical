@@ -1,4 +1,4 @@
-package com.example.smartclinical.util;
+package com.smartclinical.util;
 
 public enum TipoUser {
     ADMIN,

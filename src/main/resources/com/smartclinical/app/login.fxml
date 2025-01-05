@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.smartclinical.controller.LoginController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.smartclinical.controller.LoginController">
     <left>
         <AnchorPane prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #53c89b;" BorderPane.alignment="CENTER" />
     </left>
@@ -23,15 +23,15 @@
                 <PasswordField fx:id="inputSenha" layoutX="68.0" layoutY="306.0" prefHeight="35.0" prefWidth="300.0" promptText="Senha" style="-fx-background-color: transparent; -fx-border-color: #53c89b; -fx-border-width: 0px 0px 2px 0px;" />
                 <ImageView fitHeight="30.0" fitWidth="24.0" layoutX="32.0" layoutY="251.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-<!--                        <Image url="../../../../images/img.png" />-->
+                        <Image url="@../../../images/user.png" />
                     </image>
                 </ImageView>
                 <ImageView fitHeight="25.0" fitWidth="21.0" layoutX="34.0" layoutY="313.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-<!--                        <Image url="../../../../images/key.png" />-->
+                        <Image url="@../../../images/key.png" />
                     </image>
                 </ImageView>
-                <Button fx:id="submitLogin" layoutX="123.0" layoutY="377.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="154.0" style="-fx-background-color: #53c89b;" styleClass="button" stylesheets="../style/style.css" text="Login" textFill="WHITE">
+                <Button fx:id="submitLogin" layoutX="123.0" layoutY="377.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="154.0" style="-fx-background-color: #53c89b;" styleClass="button" stylesheets="@../style/style.css" text="Login" textFill="WHITE">
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>

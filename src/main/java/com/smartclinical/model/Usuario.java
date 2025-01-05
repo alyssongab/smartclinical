@@ -1,6 +1,6 @@
-package com.example.smartclinical.model;
+package com.smartclinical.model;
 
-import com.example.smartclinical.util.TipoUser;
+import com.smartclinical.util.TipoUser;
 
 public class Usuario {
     protected int userId;
