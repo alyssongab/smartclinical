@@ -27,36 +27,36 @@
                   <RowConstraints maxHeight="557.0" minHeight="10.0" prefHeight="530.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button fx:id="button_admin" mnemonicParsing="false" prefHeight="200.0" prefWidth="240.0" text="Admin" GridPane.rowIndex="1">
+                  <Button fx:id="button_admin" mnemonicParsing="false" prefHeight="200.0" prefWidth="220.0" text="Admin" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
                      <GridPane.margin>
-                        <Insets bottom="50.0" />
+                        <Insets bottom="80.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button fx:id="button_medico" layoutX="10.0" layoutY="135.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="240.0" text="Médicos" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                  <Button fx:id="button_medico" layoutX="10.0" layoutY="135.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="220.0" text="Médicos" GridPane.columnIndex="1" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
                      <GridPane.margin>
-                        <Insets bottom="50.0" />
+                        <Insets bottom="80.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button fx:id="button_recepcionista" layoutX="10.0" layoutY="135.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="240.0" text="Recepcionistas" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                  <Button fx:id="button_recepcionista" layoutX="10.0" layoutY="135.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="220.0" text="Recepcionistas" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
                      <GridPane.margin>
-                        <Insets bottom="50.0" />
+                        <Insets bottom="80.0" />
                      </GridPane.margin>
                   </Button>
-                  <Button fx:id="button_paciente" layoutX="650.0" layoutY="218.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="240.0" text="Pacientes" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                  <Button fx:id="button_paciente" layoutX="650.0" layoutY="218.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="220.0" text="Pacientes" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <font>
                         <Font size="18.0" />
                      </font>
                      <GridPane.margin>
-                        <Insets bottom="50.0" />
+                        <Insets bottom="80.0" right="8.0" />
                      </GridPane.margin>
                   </Button>
                   <Label text="Listagem" GridPane.halignment="LEFT">
@@ -82,7 +82,7 @@
             </AnchorPane>
          </left>
          <top>
-            <GridPane alignment="CENTER" prefHeight="170.0" prefWidth="1285.0" style="-fx-background-color: #53c89b;" BorderPane.alignment="CENTER">
+            <GridPane alignment="CENTER" prefHeight="170.0" prefWidth="1244.0" style="-fx-background-color: #53c89b;" BorderPane.alignment="CENTER">
                <columnConstraints>
                   <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />

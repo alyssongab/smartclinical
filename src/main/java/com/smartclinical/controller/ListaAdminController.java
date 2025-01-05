@@ -11,60 +11,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Optional;
 
-public class ListaUsuariosController {
+public class ListaAdminController {
 
     @FXML
     private Button botaoLogout;
-
-    @FXML
-    private Button button_admin;
-
-    @FXML
-    private Button button_medico;
-
-    @FXML
-    private Button button_recepcionista;
-
-    @FXML
-    private Button button_paciente;
-
-    public void initialize() {
-        button_admin.setOnAction(event -> {
-            Main m = new Main();
-            try {
-                m.abrirPainel("listaAdmin.fxml", "Cadastro de Usuarios");
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-
-        button_medico.setOnAction(event -> {
-            Main m = new Main();
-            try {
-                m.abrirPainel("listaMedico.fxml", "Cadastro de Usuarios");
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-
-        button_recepcionista.setOnAction(event -> {
-            Main m = new Main();
-            try {
-                m.abrirPainel("listaRecepcionista.fxml", "Cadastro de Usuarios");
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-
-        button_paciente.setOnAction(event -> {
-            Main m = new Main();
-            try {
-                m.abrirPainel("listaPaciente.fxml", "Cadastro de Usuarios");
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
-    }
 
     public void fazerLogout() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
