@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.smartclinical.controller.RelatoriosController">
    <children>
@@ -20,6 +21,16 @@
                </BorderPane.margin>
             </Label>
          </top>
+         <center>
+            <Button fx:id="botaoPainel" mnemonicParsing="false" prefHeight="50.0" prefWidth="122.0" style="-fx-background-color: #F62447;" text="Painel" textFill="WHITE" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="SansSerif Bold" size="20.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </center>
       </BorderPane>
    </children>
 </AnchorPane>

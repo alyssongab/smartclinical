@@ -17,7 +17,7 @@
             <GridPane alignment="CENTER" prefHeight="170.0" prefWidth="1280.0" style="-fx-background-color: #53c89b;" BorderPane.alignment="CENTER">
                <columnConstraints>
                   <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
                </columnConstraints>
                <rowConstraints>
@@ -30,6 +30,14 @@
                      </font>
                   </Label>
                   <Button fx:id="botaoLogout" mnemonicParsing="false" prefHeight="50.0" prefWidth="122.0" style="-fx-background-color: #F62447;" text="Logout" textFill="WHITE" GridPane.columnIndex="2">
+                     <font>
+                        <Font name="SansSerif Bold" size="20.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="botaoPainel" layoutX="1016.0" layoutY="70.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="122.0" style="-fx-background-color: #F62447;" text="Painel" textFill="WHITE" GridPane.columnIndex="1">
                      <font>
                         <Font name="SansSerif Bold" size="20.0" />
                      </font>

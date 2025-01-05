@@ -3,10 +3,7 @@ package com.example.smartclinical.controller;
 import com.example.smartclinical.app.Main;
 import com.example.smartclinical.util.ConexaoBD;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.Connection;
