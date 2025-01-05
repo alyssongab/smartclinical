@@ -38,7 +38,8 @@ public class PainelPrincipalController {
     // inicia o controller
     public void initialize() {
         TipoUser tipoUser = Sessao.getTipoUser();
-        System.out.println("Voce logou como: " + tipoUser);
+        System.out.println("Voce logou com o tipo: " + tipoUser);
+        System.out.println("Classe: " + Sessao.getUsuarioLogado());
 
         // desabilita botoes de acordo com o tipo de usuario
         desabilitarBotoes(tipoUser);

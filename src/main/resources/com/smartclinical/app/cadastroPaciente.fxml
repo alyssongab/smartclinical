@@ -78,7 +78,7 @@
                   <Insets left="-414.0" />
                </VBox.margin>
             </Label>
-            <TextField fx:id="pacienteInputCPf" prefHeight="30.0" prefWidth="450.0" promptText="CPF do paciente">
+            <TextField fx:id="pacienteInputCpf" prefHeight="30.0" prefWidth="450.0" promptText="CPF do paciente">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>

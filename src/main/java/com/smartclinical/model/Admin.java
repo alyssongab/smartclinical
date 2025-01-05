@@ -11,4 +11,8 @@ public class Admin extends Usuario{
     public Admin(int userId, String nome, String telefone, TipoUser tipoUsuario) {
         super(userId, nome, telefone, tipoUsuario);
     }
+
+    public String toString(){
+        return "ADMIN!!!!!!!!!!!";
+    }
 }

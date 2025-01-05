@@ -23,11 +23,11 @@ DROP TABLE IF EXISTS `medicos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `medicos` (
-  `id` int NOT NULL,
+  `id_medicos` int NOT NULL,
   `crm` varchar(20) DEFAULT NULL,
   `especialidade` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `medicos_ibfk_1` FOREIGN KEY (`id`) REFERENCES `usuario` (`id`)
+  PRIMARY KEY (`id_medicos`),
+  CONSTRAINT `medicos_ibfk_1` FOREIGN KEY (`id_medicos`) REFERENCES `usuario` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -53,7 +53,7 @@ CREATE TABLE `pacientes` (
   `cpf` varchar(16) DEFAULT NULL,
   `data_nasc` varchar(11) DEFAULT NULL,
   PRIMARY KEY (`id_paciente`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -62,7 +62,7 @@ CREATE TABLE `pacientes` (
 
 LOCK TABLES `pacientes` WRITE;
 /*!40000 ALTER TABLE `pacientes` DISABLE KEYS */;
-INSERT INTO `pacientes` VALUES (1,'Neymar','123.987.543-11','20/02/1992');
+INSERT INTO `pacientes` VALUES (1,'Neymar','123.987.543-11','20/02/1992'),(2,'Cris','098123','20/10/2002'),(3,'Ronaldo','123817','19/08/1980');
 /*!40000 ALTER TABLE `pacientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -74,10 +74,10 @@ DROP TABLE IF EXISTS `recepcionistas`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `recepcionistas` (
-  `id` int NOT NULL,
+  `id_recepcionista` int NOT NULL,
   `turno` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `recepcionistas_ibfk_1` FOREIGN KEY (`id`) REFERENCES `usuario` (`id`)
+  PRIMARY KEY (`id_recepcionista`),
+  CONSTRAINT `recepcionistas_ibfk_1` FOREIGN KEY (`id_recepcionista`) REFERENCES `usuario` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -87,6 +87,7 @@ CREATE TABLE `recepcionistas` (
 
 LOCK TABLES `recepcionistas` WRITE;
 /*!40000 ALTER TABLE `recepcionistas` DISABLE KEYS */;
+INSERT INTO `recepcionistas` VALUES (2,'tarde');
 /*!40000 ALTER TABLE `recepcionistas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -128,4 +129,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-01-05  0:49:35
+-- Dump completed on 2025-01-05  5:47:20

@@ -3,6 +3,8 @@ package com.smartclinical.controller;
 import com.smartclinical.app.Main;
 import com.smartclinical.model.Paciente;
 import com.smartclinical.model.Recepcionista;
+import com.smartclinical.model.Usuario;
+import com.smartclinical.util.Sessao;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -28,12 +30,6 @@ public class CadastroPacienteController {
 
     @FXML
     private Button submitCadastroPaciente;
-
-    private Recepcionista recepcionista;
-
-    public CadastroPacienteController() {
-
-    }
 
     /**
      * ****** LOGOUT APENAS ***************
@@ -80,7 +76,7 @@ public class CadastroPacienteController {
         }
     }
 
-    // cadastra o paciente no banco de dados
+    // metodo que faz o cadastro do paciente
     public void cadastrarPaciente(){
         String nome = pacienteInputNome.getText();
         String cpf = pacienteInputCpf.getText();
@@ -88,5 +84,21 @@ public class CadastroPacienteController {
 
         Paciente paciente = new Paciente(nome, cpf, dataNascimento);
 
+        // Obter o usuário logado da sessão
+        Usuario usuarioLogado = Sessao.getUsuarioLogado();
+
+        Recepcionista recep = (Recepcionista) usuarioLogado;
+
+        try{
+            recep.cadastrarPaciente(paciente);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Sucesso");
+            alert.setHeaderText("Sucesso");
+            alert.setContentText("Paciente cadastrado com sucesso!");
+            alert.showAndWait();
+        }
+        catch(Exception e){
+            System.out.println("Erro ao cadastrar paciente: " + e.getMessage());
+        }
     }
 }

@@ -49,6 +49,9 @@ public class Main extends Application {
             if (result.isPresent() && result.get() == ButtonType.OK) {
                 System.exit(0);  // Encerra a aplicação após o logout
             }
+            else{
+                event.consume();
+            }
         });
     }
 

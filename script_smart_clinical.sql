@@ -52,3 +52,18 @@ select * from pacientes;
 insert into usuario(nome, email, senha, telefone, tipoUser)
 values
 ("Messi", "lm10@gmail.com", "barca", "22 151109", "RECEPCIONISTA");
+
+describe usuario;
+
+alter table recepcionistas
+change id id_recepcionista int;
+
+alter table medicos
+change id id_medicos int;
+
+select last_insert_id();
+
+insert into recepcionistas
+values(last_insert_id(), "tarde");
+
+select * from usuario;
