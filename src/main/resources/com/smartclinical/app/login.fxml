@@ -13,7 +13,6 @@
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.smartclinical.controller.LoginController">
-<<<<<<< HEAD
    <left>
       <AnchorPane prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #53c89b;" BorderPane.alignment="CENTER" />
    </left>
@@ -32,7 +31,7 @@
                   <Image url="@../../../images/key.png" />
                </image>
             </ImageView>
-            <Button fx:id="submitLogin" layoutX="123.0" layoutY="377.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="154.0" style="-fx-background-color: #53c89b;" styleClass="button" stylesheets="@../styles/style.css" text="Login" textFill="WHITE">
+            <Button fx:id="submitLogin" layoutX="123.0" layoutY="377.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="154.0" style="-fx-background-color: #53c89b;" styleClass="button" stylesheets="@../style/style.css" text="Login" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -53,45 +52,4 @@
          </children>
       </AnchorPane>
    </right>
-=======
-    <left>
-        <AnchorPane prefHeight="600.0" prefWidth="400.0" style="-fx-background-color: #53c89b;" BorderPane.alignment="CENTER" />
-    </left>
-    <right>
-        <AnchorPane prefHeight="600.0" prefWidth="401.0" BorderPane.alignment="CENTER">
-            <children>
-                <TextField fx:id="inputEmail" layoutX="68.0" layoutY="240.0" prefHeight="35.0" prefWidth="300.0" promptText="Email" style="-fx-background-color: transparent; -fx-border-color: #53c89b; -fx-border-width: 0px 0px 2px 0px;" />
-                <PasswordField fx:id="inputSenha" layoutX="68.0" layoutY="306.0" prefHeight="35.0" prefWidth="300.0" promptText="Senha" style="-fx-background-color: transparent; -fx-border-color: #53c89b; -fx-border-width: 0px 0px 2px 0px;" />
-                <ImageView fitHeight="30.0" fitWidth="24.0" layoutX="32.0" layoutY="251.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-<!--                        <Image url="../../../../images/img.png" />-->
-                    </image>
-                </ImageView>
-                <ImageView fitHeight="25.0" fitWidth="21.0" layoutX="34.0" layoutY="313.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-<!--                        <Image url="../../../../images/key.png" />-->
-                    </image>
-                </ImageView>
-                <Button fx:id="submitLogin" layoutX="123.0" layoutY="377.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="154.0" style="-fx-background-color: #53c89b;" styleClass="button" stylesheets="../style/style.css" text="Login" textFill="WHITE">
-                    <cursor>
-                        <Cursor fx:constant="HAND" />
-                    </cursor>
-                    <font>
-                        <Font name="System Bold" size="18.0" />
-                    </font>
-                </Button>
-                <Hyperlink layoutX="113.0" layoutY="523.0" prefHeight="42.0" prefWidth="174.0" text="Esqueceu sua senha?" textFill="#53c89b">
-                    <font>
-                        <Font name="Montserrat Bold" size="14.0" />
-                    </font>
-                </Hyperlink>
-                <Label layoutX="99.0" layoutY="113.0" prefHeight="69.0" prefWidth="202.0" text="Fazer login">
-                    <font>
-                        <Font name="Montserrat Regular" size="36.0" />
-                    </font>
-                </Label>
-            </children>
-        </AnchorPane>
-    </right>
->>>>>>> matheus_admin
 </BorderPane>

@@ -1,9 +1,7 @@
 package com.smartclinical.app;
 
-<<<<<<< HEAD
 import com.smartclinical.controller.PainelPacientesController;
-=======
->>>>>>> matheus_admin
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -56,9 +54,7 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch();
     }
-<<<<<<< HEAD
-}
-=======
 
 }
->>>>>>> matheus_admin
+
+

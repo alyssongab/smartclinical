@@ -3,14 +3,12 @@ package com.smartclinical.controller;
 import com.smartclinical.app.Main;
 import com.smartclinical.util.ConexaoBD;
 import javafx.fxml.FXML;
-<<<<<<< HEAD
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-=======
 import javafx.scene.control.*;
->>>>>>> matheus_admin
+
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -27,11 +25,8 @@ public class LoginController {
     @FXML
     private Button submitLogin;
 
-<<<<<<< HEAD
+
     // metodo que inicia o controller
-=======
-    // método que inicia o controller
->>>>>>> matheus_admin
     public void initialize() {
         submitLogin.setOnAction(event -> {
             try {
@@ -42,11 +37,7 @@ public class LoginController {
         });
     }
 
-<<<<<<< HEAD
     // metodo para autenticar usuário
-=======
-    // método para autenticar usuário
->>>>>>> matheus_admin
     private void fazerLogin() throws IOException {
         String email = inputEmail.getText();
         String senha = inputSenha.getText();
@@ -94,8 +85,4 @@ public class LoginController {
         alert.showAndWait();
     }
 
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> matheus_admin

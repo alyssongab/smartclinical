@@ -35,7 +35,4 @@ public class TesteConexao {
         }
     }
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> matheus_admin

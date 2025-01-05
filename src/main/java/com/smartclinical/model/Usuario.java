@@ -69,7 +69,4 @@ public class Usuario {
         this.tipoUsuario = tipoUsuario;
     }
 }
-<<<<<<< HEAD
-=======
 
->>>>>>> matheus_admin

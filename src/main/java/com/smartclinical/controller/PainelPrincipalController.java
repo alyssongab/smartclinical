@@ -18,22 +18,13 @@ public class PainelPrincipalController {
     @FXML
     private Button botaoPainelPacientes;
 
-<<<<<<< HEAD
-    private Main main;
-=======
     @FXML
     private Button botaoPainelAdmin;
->>>>>>> matheus_admin
 
     // inicia o controller
     public void initialize() {
         botaoLogout.setOnAction(event -> fazerLogout());
 
-<<<<<<< HEAD
-        botaoPainelPacientes.setOnAction(event -> {
-            try {
-                abrirPainelPacientes();
-=======
         // lida com o botão "Pacientes"
         botaoPainelPacientes.setOnAction(event -> {
             try {
@@ -49,7 +40,6 @@ public class PainelPrincipalController {
             try {
                 Main m = new Main();
                 m.abrirPainel("admin.fxml", "Painel de Admin");
->>>>>>> matheus_admin
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -86,16 +76,6 @@ public class PainelPrincipalController {
         }
     }
     /*
-<<<<<<< HEAD
-    * ******** FIM DO LOGOUT ********
-    */
-
-    public void abrirPainelPacientes() throws IOException {
-        Main m = new Main();
-        m.abrirPainel("painelPacientes.fxml", "Painel de Pacientes");
-    }
-}
-=======
      * ******** FIM DO LOGOUT ********
      */
 
@@ -104,4 +84,3 @@ public class PainelPrincipalController {
 //        m.abrirPainel("painelPacientes.fxml");
 //    }
 }
->>>>>>> matheus_admin
