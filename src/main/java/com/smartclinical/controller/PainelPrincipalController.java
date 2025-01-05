@@ -1,6 +1,8 @@
 package com.smartclinical.controller;
 
 import com.smartclinical.app.Main;
+import com.smartclinical.util.Sessao;
+import com.smartclinical.util.TipoUser;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -23,6 +25,9 @@ public class PainelPrincipalController {
 
     // inicia o controller
     public void initialize() {
+        TipoUser tipoUser = Sessao.getTipoUser();
+        System.out.println("Voce logou como: " + tipoUser);
+
         botaoLogout.setOnAction(event -> fazerLogout());
 
         // lida com o botão "Pacientes"

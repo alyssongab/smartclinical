@@ -1,10 +1,13 @@
 package com.smartclinical.controller;
 
 import com.smartclinical.app.Main;
+import com.smartclinical.model.Paciente;
+import com.smartclinical.model.Recepcionista;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -13,6 +16,24 @@ import java.util.Optional;
 public class CadastroPacienteController {
     @FXML
     private Button botaoLogout;
+
+    @FXML
+    private TextField pacienteInputNome;
+
+    @FXML
+    private TextField pacienteInputCpf;
+
+    @FXML
+    private TextField pacienteInputDataNascimento;
+
+    @FXML
+    private Button submitCadastroPaciente;
+
+    private Recepcionista recepcionista;
+
+    public CadastroPacienteController() {
+
+    }
 
     /**
      * ****** LOGOUT APENAS ***************
@@ -57,5 +78,15 @@ public class CadastroPacienteController {
         catch(IOException e){
             throw new RuntimeException();
         }
+    }
+
+    // cadastra o paciente no banco de dados
+    public void cadastrarPaciente(){
+        String nome = pacienteInputNome.getText();
+        String cpf = pacienteInputCpf.getText();
+        String dataNascimento = pacienteInputDataNascimento.getText();
+
+        Paciente paciente = new Paciente(nome, cpf, dataNascimento);
+
     }
 }

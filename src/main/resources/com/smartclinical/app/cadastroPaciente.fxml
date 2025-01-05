@@ -98,7 +98,7 @@
             </TextField>
             <HBox prefHeight="47.0" prefWidth="249.0" spacing="28.0">
                <children>
-                  <Button fx:id="submitCadastroPaciente" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="Cadastrar">
+                  <Button fx:id="submitCadastroPaciente" mnemonicParsing="false" onAction="#cadastrarPaciente" prefHeight="40.0" prefWidth="110.0" text="Cadastrar">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
