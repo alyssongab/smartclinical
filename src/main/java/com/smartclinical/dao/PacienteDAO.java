@@ -9,6 +9,8 @@ import java.sql.SQLException;
 
 public class PacienteDAO {
 
+    public PacienteDAO(){}
+
     // cadastro de paciente
     public void cadastrarPaciente(Paciente paciente) {
         String cadastrar = "INSERT INTO pacientes(nome, cpf, data_nasc) VALUES(?,?,?)";

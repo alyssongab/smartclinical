@@ -1,6 +1,7 @@
 package com.smartclinical.controller;
 
 import com.smartclinical.app.Main;
+import com.smartclinical.dao.PacienteDAO;
 import com.smartclinical.model.Paciente;
 import com.smartclinical.model.Recepcionista;
 import javafx.fxml.FXML;
@@ -29,7 +30,7 @@ public class CadastroPacienteController {
     @FXML
     private Button submitCadastroPaciente;
 
-    private Recepcionista recepcionista;
+    PacienteDAO pacientedao = new PacienteDAO();
 
     public CadastroPacienteController() {
 
@@ -73,7 +74,7 @@ public class CadastroPacienteController {
     public void voltarParaPacientes(){
         try{
             Main main = new Main();
-            main.abrirPainel("painelPacientes.fxml", "Painel de pacientes");
+            main.abrirPainel("painelPrincipal.fxml", "Painel de pacientes");
         }
         catch(IOException e){
             throw new RuntimeException();
@@ -87,6 +88,7 @@ public class CadastroPacienteController {
         String dataNascimento = pacienteInputDataNascimento.getText();
 
         Paciente paciente = new Paciente(nome, cpf, dataNascimento);
-
+        pacientedao.cadastrarPaciente(paciente);
+        System.out.println("Cadastrado!");
     }
 }

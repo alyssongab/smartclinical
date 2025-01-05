@@ -1,59 +1,30 @@
 package com.smartclinical.controller;
 
 import com.smartclinical.app.Main;
-import com.smartclinical.dao.AdminDAO;
-import com.smartclinical.model.Admin;
-import com.smartclinical.model.Usuario;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
-public class ListaAdminController {
-
+public class CadastroRecepcionistaController {
     @FXML
     private Button botaoLogout;
 
     @FXML
-    private TableView<Admin> adminTable;
+    private ComboBox<String> recepcionistaComboBox;
 
-    @FXML
-    private TableColumn<Admin, Integer> adminId;
 
-    @FXML
-    private TableColumn<Admin, String> adminNome;
-
-    @FXML
-    private TableColumn<Admin, String> adminEmail;
-
-    @FXML
-    private TableColumn<Admin, String> adminTelefone;
-
-    @FXML
-    private TableColumn<Admin, String> adminCargo;
-
-    public void initialize(){
-        adminId.setCellValueFactory(new PropertyValueFactory<Admin, Integer>("Id"));
-        adminNome.setCellValueFactory(new PropertyValueFactory<Admin, String>("Nome"));
-        adminEmail.setCellValueFactory(new PropertyValueFactory<Admin, String>("Email"));
-        adminTelefone.setCellValueFactory(new PropertyValueFactory<Admin, String>("Telefone"));
-        adminCargo.setCellValueFactory(new PropertyValueFactory<Admin, String>("Cargo"));
-        setupTable();
+    public void initialize() {
+        recepcionistaComboBox.setItems(FXCollections.observableArrayList("Diurno", "Vespertino"));
     }
 
-    private void setupTable() {
-        AdminDAO adminDao = new AdminDAO();
-        List<Admin> admins = adminDao.listarAdmin();
-
-        adminTable.getItems().clear();
-        adminTable.getItems().addAll(admins);
-    }
 
     public void fazerLogout() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);

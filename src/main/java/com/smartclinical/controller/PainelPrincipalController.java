@@ -47,14 +47,14 @@ public class PainelPrincipalController {
         botaoLogout.setOnAction(event -> fazerLogout());
 
         // ação do botão "Pacientes"
-        botaoPainelPacientes.setOnAction(event -> {
-            try {
-                Main m = new Main();
-                m.abrirPainel("painelPacientes.fxml", "Painel de Pacientes");
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
+//        botaoPainelPacientes.setOnAction(event -> {
+//            try {
+//                Main m = new Main();
+//                m.abrirPainel("painelPacientes.fxml", "Painel de Pacientes");
+//            } catch (IOException e) {
+//                throw new RuntimeException(e);
+//            }
+//        });
 
         // ação do botão "Admin"
         botaoPainelAdmin.setOnAction(event -> {

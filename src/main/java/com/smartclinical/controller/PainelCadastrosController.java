@@ -3,63 +3,67 @@ package com.smartclinical.controller;
 import com.smartclinical.app.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Optional;
 
-public class AdminController {
+public class PainelCadastrosController {
 
     @FXML
     private Button botaoLogout;
 
     @FXML
-    private Button button_cadastrarUsuario;
+    private Button button_admin;
 
     @FXML
-    private Button button_listarUsuario;
+    private Button button_medico;
 
     @FXML
-    private Button button_relatorios;
+    private Button button_recepcionista;
+
+    @FXML
+    private Button button_paciente;
 
     public void initialize() {
-        button_cadastrarUsuario.setOnAction(event -> {
+        button_admin.setOnAction(event -> {
             Main m = new Main();
             try {
-                m.abrirPainel("painelCadastros.fxml", "Painel de cadastros");
+                m.abrirPainel("cadastroAdmin.fxml", "Cadastro de Usuarios");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         });
 
-        button_listarUsuario.setOnAction(event -> {
+        button_medico.setOnAction(event -> {
             Main m = new Main();
             try {
-                m.abrirPainel("listaUsuarios.fxml", "Lista de Usuarios");
+                m.abrirPainel("cadastroMedico.fxml", "Cadastro de Usuarios");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         });
 
-        button_relatorios.setOnAction(event -> {
+        button_recepcionista.setOnAction(event -> {
             Main m = new Main();
             try {
-                m.abrirPainel("relatorios.fxml", "Relatorios");
+                m.abrirPainel("cadastroRecepcionista.fxml", "Cadastro de Usuarios");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         });
-    }
 
-    public void voltarParaPainelPrincipal(ActionEvent actionEvent) {
-        try{
-            Main main = new Main();
-            main.abrirPainel("painelPrincipal.fxml", "Painel Principal");
-        }
-        catch(IOException e){
-            throw new RuntimeException();
-        }
+        button_paciente.setOnAction(event -> {
+            Main m = new Main();
+            try {
+                m.abrirPainel("cadastroPaciente.fxml", "Cadastro de Usuarios");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     public void fazerLogout() {
@@ -89,4 +93,13 @@ public class AdminController {
         }
     }
 
+    public void voltarParaPainelPrincipal(ActionEvent actionEvent) {
+        try{
+            Main main = new Main();
+            main.abrirPainel("painelPrincipal.fxml", "Painel Principal");
+        }
+        catch(IOException e){
+            throw new RuntimeException();
+        }
+    }
 }

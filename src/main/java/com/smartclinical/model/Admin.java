@@ -4,11 +4,13 @@ import com.smartclinical.util.TipoUser;
 
 public class Admin extends Usuario{
 
-    public Admin(String nome, String email, String senha, String telefone, TipoUser tipoUsuario) {
-        super(nome, email, senha, telefone, tipoUsuario);
+    //Construtor para inserção
+    public Admin(String nome, String email, String telefone, String senha, TipoUser tipoUsuario) {
+        super(nome, email, telefone, senha, tipoUsuario);
     }
 
-    public Admin(int userId, String nome, String telefone, TipoUser tipoUsuario) {
-        super(userId, nome, telefone, tipoUsuario);
+    //Construtor para listagem
+    public Admin(int id, String nome, String email, String telefone, TipoUser tipoUsuario) {
+            super(id, nome, email, telefone, tipoUsuario);
     }
 }

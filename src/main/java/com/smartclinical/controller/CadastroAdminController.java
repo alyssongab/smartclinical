@@ -3,56 +3,56 @@ package com.smartclinical.controller;
 import com.smartclinical.app.Main;
 import com.smartclinical.dao.AdminDAO;
 import com.smartclinical.model.Admin;
-import com.smartclinical.model.Usuario;
+import com.smartclinical.util.TipoUser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
-public class ListaAdminController {
-
+public class CadastroAdminController {
     @FXML
     private Button botaoLogout;
 
     @FXML
-    private TableView<Admin> adminTable;
+    private TextField adminInputNome;
 
     @FXML
-    private TableColumn<Admin, Integer> adminId;
+    private TextField adminInputEmail;
 
     @FXML
-    private TableColumn<Admin, String> adminNome;
+    private TextField adminInputSenha;
 
     @FXML
-    private TableColumn<Admin, String> adminEmail;
+    private TextField adminInputTelefone;
 
-    @FXML
-    private TableColumn<Admin, String> adminTelefone;
 
-    @FXML
-    private TableColumn<Admin, String> adminCargo;
+    AdminDAO adminDao = new AdminDAO();
 
-    public void initialize(){
-        adminId.setCellValueFactory(new PropertyValueFactory<Admin, Integer>("Id"));
-        adminNome.setCellValueFactory(new PropertyValueFactory<Admin, String>("Nome"));
-        adminEmail.setCellValueFactory(new PropertyValueFactory<Admin, String>("Email"));
-        adminTelefone.setCellValueFactory(new PropertyValueFactory<Admin, String>("Telefone"));
-        adminCargo.setCellValueFactory(new PropertyValueFactory<Admin, String>("Cargo"));
-        setupTable();
+
+    public void cadastrarAdmin(ActionEvent actionEvent) {
+        String nome =  adminInputNome.getText();
+        String email = adminInputEmail.getText();
+        String senha = adminInputSenha.getText();
+        String telefone = adminInputTelefone.getText();
+        TipoUser tipoUser = TipoUser.ADMIN;
+
+        Admin admin = new Admin(nome,email,senha,telefone,tipoUser);
+        adminDao.inserirAdmin(admin);
+        mostrarAlerta("Cadastro", "Cadastro realizado com sucesso!");
     }
 
-    private void setupTable() {
-        AdminDAO adminDao = new AdminDAO();
-        List<Admin> admins = adminDao.listarAdmin();
-
-        adminTable.getItems().clear();
-        adminTable.getItems().addAll(admins);
+    //Limpa os campos do cadastro
+    public void LimparCampos(ActionEvent actionEvent) {
+        adminInputNome.clear();
+        adminInputEmail.clear();
+        adminInputTelefone.clear();
+        adminInputSenha.clear();
     }
 
     public void fazerLogout() {
@@ -90,5 +90,13 @@ public class ListaAdminController {
         catch(IOException e){
             throw new RuntimeException();
         }
+    }
+
+    private void mostrarAlerta(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

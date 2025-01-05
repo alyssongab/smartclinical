@@ -19,8 +19,11 @@ public class Recepcionista extends Usuario {
         this.turno = turno;
     }
 
-    public void cadastrarPaciente(Paciente paciente) {
-        PacienteDAO pacienteDAO = new PacienteDAO();
-        pacienteDAO.cadastrarPaciente(paciente);
+    public String getTurno() {
+        return turno;
+    }
+
+    public void setTurno(String turno) {
+        this.turno = turno;
     }
 }

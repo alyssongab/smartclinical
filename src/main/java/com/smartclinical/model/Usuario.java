@@ -25,6 +25,9 @@ public class Usuario {
         this.tipoUsuario = tipoUsuario;
     }
 
+    public Usuario(int id, String nome, String email, String telefone, TipoUser tipoUsuario) {
+    }
+
     public int getId() {
         return userId;
     }

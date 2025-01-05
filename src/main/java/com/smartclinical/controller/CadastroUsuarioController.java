@@ -1,11 +1,14 @@
 package com.smartclinical.controller;
 
 import com.smartclinical.app.Main;
+import com.smartclinical.dao.UsuarioDAO;
+import com.smartclinical.model.Paciente;
+import com.smartclinical.model.Usuario;
+import com.smartclinical.util.TipoUser;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -15,6 +18,40 @@ public class CadastroUsuarioController {
 
     @FXML
     private Button botaoLogout;
+
+    @FXML
+    private TextField UsuarioInputNome;
+
+    @FXML
+    private TextField UsuarioInputEmail;
+
+    @FXML
+    private TextField UsuarioInputSenha;
+
+    @FXML
+    private TextField UsuarioInputTelefone;
+
+    UsuarioDAO usuarioDao = new UsuarioDAO();
+
+//    @FXML
+//    private ComboBox<String> UsuarioComboBox;
+//
+//
+//    public void initialize() {
+//        UsuarioComboBox.setItems(FXCollections.observableArrayList("ADMIN", "MEDICO", "RECEPCIONISTA"));
+//    }
+
+//    public void cadastrarUsuario(ActionEvent actionEvent) {
+//        String nome = UsuarioInputNome.getText();
+//        String email = UsuarioInputEmail.getText();
+//        String senha = UsuarioInputSenha.getText();
+//        String telefone = UsuarioInputTelefone.getText();
+//        TipoUser usuarioTipo = TipoUser.valueOf(UsuarioComboBox.getValue());
+//
+//        Usuario usuario = new Usuario(nome,email,senha,telefone,usuarioTipo);
+//        usuarioDao.inserirUsuario(usuario);
+//    }
+
 
     public void fazerLogout() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);

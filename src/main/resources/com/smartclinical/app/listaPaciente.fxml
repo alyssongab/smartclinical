@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="800.0" prefWidth="1278.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.smartclinical.controller.ListaPacienteController">
    <children>
       <BorderPane layoutX="20.0" layoutY="20.0" prefHeight="800.0" prefWidth="1280.0">
@@ -75,8 +74,10 @@
                   </Label>
                   <TableView prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                      <columns>
-                        <TableColumn prefWidth="75.0" text="C1" />
-                        <TableColumn prefWidth="75.0" text="C2" />
+                        <TableColumn prefWidth="75.0" text="Id" />
+                        <TableColumn prefWidth="75.0" text="Nome" />
+                        <TableColumn prefWidth="75.0" text="CPF" />
+                        <TableColumn prefWidth="173.0" text="Data de nascimento" />
                      </columns>
                   </TableView>
                </children>

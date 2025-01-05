@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.smartclinical.controller.ListaAdminController">
    <children>
       <BorderPane layoutX="10.0" layoutY="10.0" prefHeight="800.0" prefWidth="1280.0">
@@ -73,10 +72,13 @@
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <TableView prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                  <TableView fx:id="admin" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                     <columns>
-                      <TableColumn prefWidth="75.0" text="C1" />
-                      <TableColumn prefWidth="75.0" text="C2" />
+                        <TableColumn fx:id="adminId" prefWidth="75.0" text="Id" />
+                      <TableColumn fx:id="adminNome" prefWidth="75.0" text="Nome" />
+                      <TableColumn fx:id="adminEmail" prefWidth="75.0" text="Email" />
+                        <TableColumn fx:id="adminTelefone" prefWidth="75.0" text="Telefone" />
+                        <TableColumn fx:id="adminCargo" prefWidth="75.0" text="Cargo" />
                     </columns>
                   </TableView>
                </children>

@@ -1,26 +1,30 @@
 package com.smartclinical.controller;
 
 import com.smartclinical.app.Main;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Optional;
 
-public class PainelPacientesController {
+public class CadastroMedicoController {
     @FXML
     private Button botaoLogout;
 
     @FXML
-    private Button botaoCadastrarPaciente;
+    private ComboBox<String> medicoComboBox;
 
-    /**
-     * ****** LOGOUT APENAS ***************
-     */
+
+    public void initialize() {
+        medicoComboBox.setItems(FXCollections.observableArrayList("Clínico geral", "Pediatra", "Ortopedista"));
+    }
+
     public void fazerLogout() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Logout");
@@ -47,23 +51,7 @@ public class PainelPacientesController {
             e.printStackTrace();
         }
     }
-    /*
-     * ******** FIM DO LOGOUT ********
-     */
 
-
-    // abre o cadastro de pacientes
-    public void abrirCadastro(){
-        try{
-            Main m = new Main();
-            m.abrirPainel("cadastroPaciente.fxml", "Cadastro de paciente");
-        }
-        catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    // botao que volta para o painel principal
     public void voltarParaPainelPrincipal(ActionEvent actionEvent) {
         try{
             Main main = new Main();
