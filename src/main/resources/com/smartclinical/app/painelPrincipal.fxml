@@ -57,19 +57,19 @@
                     <font>
                         <Font size="18.0" />
                     </font></Button>
-                <Button layoutX="10.0" layoutY="90.0" mnemonicParsing="false" prefHeight="215.0" prefWidth="285.0" text="Avaliações" GridPane.rowIndex="1">
+                <Button fx:id="botaoPainelAvaliacoes" layoutX="10.0" layoutY="90.0" mnemonicParsing="false" prefHeight="215.0" prefWidth="285.0" text="Avaliações" GridPane.rowIndex="1">
                     <font>
                         <Font size="18.0" />
                     </font></Button>
-                <Button layoutX="10.0" layoutY="135.0" mnemonicParsing="false" prefHeight="215.0" prefWidth="280.0" text="Agenda Médica" GridPane.columnIndex="1">
+                <Button fx:id="botaoPainelAgendaMedica" layoutX="10.0" layoutY="135.0" mnemonicParsing="false" prefHeight="215.0" prefWidth="280.0" text="Agenda Médica" GridPane.columnIndex="1">
                     <font>
                         <Font size="18.0" />
                     </font></Button>
-                <Button layoutX="10.0" layoutY="135.0" mnemonicParsing="false" prefHeight="215.0" prefWidth="285.0" text="Prontuários " GridPane.columnIndex="1" GridPane.rowIndex="1">
+                <Button fx:id="botaoPainelProntuarios" layoutX="10.0" layoutY="135.0" mnemonicParsing="false" prefHeight="215.0" prefWidth="285.0" text="Prontuários " GridPane.columnIndex="1" GridPane.rowIndex="1">
                     <font>
                         <Font size="18.0" />
                     </font></Button>
-                <Button layoutX="10.0" layoutY="135.0" mnemonicParsing="false" prefHeight="215.0" prefWidth="285.0" text="Agendamento" GridPane.columnIndex="2">
+                <Button fx:id="botaoPainelAgendamento" layoutX="10.0" layoutY="135.0" mnemonicParsing="false" prefHeight="215.0" prefWidth="285.0" text="Agendamento" GridPane.columnIndex="2">
                     <font>
                         <Font size="18.0" />
                     </font></Button>
