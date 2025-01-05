@@ -33,15 +33,7 @@
                         <Insets left="30.0" />
                      </GridPane.margin>
                   </Label>
-                  <Button fx:id="botaoLogout" mnemonicParsing="false" prefHeight="50.0" prefWidth="122.0" style="-fx-background-color: #F62447;" text="Logout" textFill="WHITE" GridPane.columnIndex="2">
-                     <font>
-                        <Font name="SansSerif Bold" size="20.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Button fx:id="botaoPainel" layoutX="1096.0" layoutY="70.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="122.0" style="-fx-background-color: #F62447;" text="Painel" textFill="WHITE" GridPane.columnIndex="1">
+                  <Button fx:id="botaoLogout" mnemonicParsing="false" onAction="#fazerLogout" prefHeight="50.0" prefWidth="122.0" style="-fx-background-color: #F62447;" text="Logout" textFill="WHITE" GridPane.columnIndex="2">
                      <font>
                         <Font name="SansSerif Bold" size="20.0" />
                      </font>
@@ -90,6 +82,17 @@
                </children>
             </GridPane>
          </center>
+         <left>
+            <AnchorPane prefHeight="630.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="botaoVoltarParaPainelPrincipal" layoutX="39.0" layoutY="27.0" mnemonicParsing="false" onAction="#voltarParaPainelPrincipal" prefHeight="53.0" prefWidth="122.0" text="Voltar">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </left>
       </BorderPane>
    </children>
 </AnchorPane>
