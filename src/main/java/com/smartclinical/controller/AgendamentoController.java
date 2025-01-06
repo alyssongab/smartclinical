@@ -129,7 +129,7 @@ public class AgendamentoController {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Sucesso");
                 alert.setHeaderText("Agendada com sucesso");
-                alert.setContentText("Consulta agendada para: " + dataHora + ", Médico: " + medicoSelecionado + ", Paciente: " + pacienteSelecionado);
+                alert.setContentText("Consulta agendada para: \n" + dataHora + "\n Médico: " + medicoSelecionado + "\n Paciente: " + pacienteSelecionado);
                 alert.showAndWait();
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
