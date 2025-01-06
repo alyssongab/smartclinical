@@ -1,77 +1,81 @@
 package com.smartclinical.controller;
 
 import com.smartclinical.app.Main;
-import com.smartclinical.dao.MedicoDAO;
-import com.smartclinical.dao.RecepcionistaDAO;
-import com.smartclinical.model.Medico;
-import com.smartclinical.model.Recepcionista;
+import com.smartclinical.dao.AdminDAO;
+import com.smartclinical.model.Admin;
 import com.smartclinical.util.TipoUser;
-import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Optional;
 
-public class CadastroRecepcionistaController {
+public class EditaAdminController {
     @FXML
     private Button botaoLogout;
 
     @FXML
-    private ComboBox<String> recepcionistaComboBox02;
+    private Button editAdminButton;
 
     @FXML
-    private TextField UsuarioInputNome;
+    private TextField adminInputNome;
 
     @FXML
-    private TextField UsuarioInputEmail;
+    private TextField adminInputEmail;
 
     @FXML
-    private TextField UsuarioInputSenha;
+    private TextField adminInputSenha;
 
     @FXML
-    private TextField UsuarioInputTelefone;
+    private TextField adminInputTelefone;
 
 
+    private int idAdmin;
+    private AdminDAO adminDao = new AdminDAO(); // Supondo que você tenha uma classe AdminDAO para manipulação no banco
 
-    RecepcionistaDAO recepcionistaDAO = new RecepcionistaDAO();
-
-    public void initialize() {
-        recepcionistaComboBox02.setItems(FXCollections.observableArrayList("Diurno", "Vespertino"));
+    // Método chamado para passar o ID do Admin
+    public void editarAdmin(int id) {
+        this.idAdmin = id;  // Guarda o id no controlador
     }
 
-    public void cadastrarRecepcionista(ActionEvent actionEvent) {
-        String nome =  UsuarioInputNome.getText();
-        String email = UsuarioInputEmail.getText();
-        String senha = UsuarioInputSenha.getText();
-        String telefone = UsuarioInputTelefone.getText();
-        String turno = recepcionistaComboBox02.getValue();
-        TipoUser tipoUser = TipoUser.RECEPCIONISTA;
-        try{
-            Recepcionista recepcionista = new Recepcionista(nome,email,telefone,senha,turno, tipoUser);
-            recepcionistaDAO.inserirAdmin(recepcionista);
-            clear();
-            mostrarAlerta("Cadastro", "Cadastro realizado com sucesso!");
+    // Evento do botão de edição
+    public void initialize() {
+        editAdminButton.setOnAction(this::editarAdminAction);
+    }
+
+    // Método chamado quando o botão é clicado
+    private void editarAdminAction(ActionEvent event) {
+        String nome = adminInputNome.getText();
+        String senha = adminInputSenha.getText();
+        String telefone = adminInputTelefone.getText();
+
+        try {
+            // Criação do objeto Admin
+            Admin admin = new Admin(idAdmin, nome, telefone, senha, TipoUser.ADMIN);
+
+            // Atualizando no banco de dados
+            adminDao.editarAdmin(admin);
+
+            // Exibindo mensagem de sucesso
+            mostrarAlerta("Edição", "Edição realizada com sucesso!");
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
+            mostrarAlerta("Erro", "Erro ao realizar a edição. Tente novamente.");
         }
     }
 
-    public void clear(){
-        UsuarioInputNome.clear();
-        UsuarioInputEmail.clear();
-        UsuarioInputSenha.clear();
-        UsuarioInputTelefone.clear();
-    }
 
     //Limpa os campos do cadastro
     public void LimparCampos(ActionEvent actionEvent) {
-        UsuarioInputNome.clear();
-        UsuarioInputEmail.clear();
-        UsuarioInputSenha.clear();
-        UsuarioInputTelefone.clear();
+        adminInputNome.clear();
+        adminInputEmail.clear();
+        adminInputTelefone.clear();
+        adminInputSenha.clear();
     }
 
     public void fazerLogout() {
@@ -118,6 +122,5 @@ public class CadastroRecepcionistaController {
         alert.setContentText(message);
         alert.showAndWait();
     }
-
-
 }
+

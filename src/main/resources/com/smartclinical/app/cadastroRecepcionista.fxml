@@ -58,7 +58,7 @@
                 </AnchorPane>
             </left>
             <center>
-                <VBox fx:id="recepcionistaComboBox" alignment="CENTER" fillWidth="false" prefHeight="630.0" prefWidth="1073.0" BorderPane.alignment="CENTER">
+                <VBox alignment="CENTER" fillWidth="false" prefHeight="630.0" prefWidth="1073.0" BorderPane.alignment="CENTER">
                     <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cadastrar Recepcionista">
                             <VBox.margin>
@@ -89,7 +89,7 @@
                                 <Insets left="-414.0" />
                             </VBox.margin>
                         </Label>
-                        <TextField fx:id="UsuarioInputCPf" prefHeight="30.0" prefWidth="450.0" promptText="CPF do recepcionista">
+                        <TextField fx:id="UsuarioInputEmail" prefHeight="30.0" prefWidth="450.0" promptText="CPF do recepcionista">
                             <VBox.margin>
                                 <Insets bottom="10.0" />
                             </VBox.margin>
@@ -102,7 +102,7 @@
                                 <Insets left="-380.0" />
                             </VBox.margin>
                         </Label>
-                        <TextField fx:id="UsuarioInputDataNascimento" prefHeight="30.0" prefWidth="450.0" promptText="Digite a data de nascimento">
+                        <TextField fx:id="UsuarioInputTelefone" prefHeight="30.0" prefWidth="450.0" promptText="Digite a data de nascimento">
                             <VBox.margin>
                                 <Insets bottom="10.0" />
                             </VBox.margin>
@@ -115,7 +115,7 @@
                                 <Insets left="-400.0" />
                             </VBox.margin>
                         </Label>
-                        <TextField fx:id="UsuarioInputDataNascimento1" layoutX="325.0" layoutY="380.0" prefHeight="30.0" prefWidth="450.0" promptText="Senha para acesso" />
+                        <TextField fx:id="UsuarioInputSenha" layoutX="325.0" layoutY="380.0" prefHeight="30.0" prefWidth="450.0" promptText="Senha para acesso" />
                         <Label layoutX="523.0" layoutY="405.0" text="Turno">
                             <font>
                                 <Font size="20.0" />
@@ -124,19 +124,19 @@
                                 <Insets left="-230.0" />
                             </padding>
                         </Label>
-                        <ComboBox fx:id="recepcionistaComboBox" prefWidth="150.0" promptText="Diurno">
+                        <ComboBox fx:id="recepcionistaComboBox02" prefWidth="150.0" promptText="Diurno">
                             <VBox.margin>
                                 <Insets left="-305.0" />
                             </VBox.margin>
                         </ComboBox>
                         <HBox prefHeight="47.0" prefWidth="249.0" spacing="28.0">
                             <children>
-                                <Button fx:id="submitCadastroUsuario" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="Cadastrar">
+                                <Button fx:id="submitCadastroUsuario" mnemonicParsing="false" onAction="#cadastrarRecepcionista" prefHeight="40.0" prefWidth="110.0" text="Cadastrar">
                                     <HBox.margin>
                                         <Insets />
                                     </HBox.margin>
                                 </Button>
-                                <Button fx:id="botaoLimpaInputPaciente" cancelButton="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="Limpar" />
+                                <Button fx:id="botaoLimpaInputPaciente" cancelButton="true" mnemonicParsing="false" onAction="#LimparCampos" prefHeight="40.0" prefWidth="110.0" text="Limpar" />
                             </children>
                             <VBox.margin>
                                 <Insets top="50.0" />

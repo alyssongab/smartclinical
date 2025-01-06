@@ -1,6 +1,7 @@
 package com.smartclinical.dao;
 
-import com.smartclinical.model.Admin;
+import com.smartclinical.model.Medico;
+import com.smartclinical.model.Recepcionista;
 import com.smartclinical.model.Usuario;
 import com.smartclinical.util.ConexaoBD;
 import com.smartclinical.util.TipoUser;
@@ -12,10 +13,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdminDAO {
+public class RecepcionistaDAO {
     //Inserir usuário
-    public void inserirAdmin(Admin admin){
-        String inserir = "INSERT INTO admins (nome, email, senha, telefone, tipoUser) VALUES(?,?,?,?,?)";
+    public void inserirAdmin(Recepcionista admin){
+        String inserir = "INSERT INTO recepcionistas (nome, email, telefone,senha,turno, tipoUser) VALUES(?,?,?,?,?,?)";
         // try with resource para conectar com o banco
         try(Connection con = ConexaoBD.getConexao()) {
             assert con != null;
@@ -23,9 +24,10 @@ public class AdminDAO {
 
             stmt.setString(1, admin.getNome());
             stmt.setString(2, admin.getEmail());
-            stmt.setString(3, admin.getSenha());
-            stmt.setString(4, admin.getTelefone());
-            stmt.setString(5, admin.getTipoUsuario().name());
+            stmt.setString(3, admin.getTelefone());
+            stmt.setString(4, admin.getSenha());
+            stmt.setString(5, admin.getTurno());
+            stmt.setString(6, admin.getTipoUsuario().name());
 
             stmt.executeUpdate();
             System.out.println("SQL: INSERT INTO admins (nome, email, senha, telefone, tipoUser) VALUES (" + admin.getNome() + ", " + admin.getEmail() + ", " + admin.getSenha() + ", " + admin.getTelefone() + ", " + admin.getTipoUsuario().name() + ")");
@@ -37,9 +39,9 @@ public class AdminDAO {
     }
 
     // listar usuários
-    public List<Admin> listarAdmin() {
-        String listar = "SELECT id, nome, telefone, tipoUser FROM admins";
-        List<Admin> admins = new ArrayList<>();
+    public List<Recepcionista> listarAdmin() {
+        String listar = "SELECT id,nome, email, telefone,senha,turno, tipoUser FROM recepcionistas";
+        List<Recepcionista> admins = new ArrayList<>();
 
         try(Connection con = ConexaoBD.getConexao()){
             assert con != null;
@@ -51,12 +53,15 @@ public class AdminDAO {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String nome = rs.getString("nome");
+                String email = rs.getString("email");
                 String telefone = rs.getString("telefone");
+                String senha = rs.getString("senha");
+                String turno = rs.getString("turno");
                 String tipoUsuarioString = rs.getString("tipoUser");
                 // convertendo o tipo de usuario para enum
                 TipoUser tipoUsuario = TipoUser.valueOf(tipoUsuarioString);
 
-                Admin admin = new Admin(id, nome, telefone, tipoUsuario);
+                Recepcionista admin = new Recepcionista(id,nome, email, telefone,senha,turno, TipoUser.RECEPCIONISTA);
                 admins.add(admin);
             }
 
@@ -68,34 +73,34 @@ public class AdminDAO {
         return admins;
     }
 
-        // Remover usuário
-        public void removerUsuario(int id) throws SQLException {
-            String remover = "DELETE FROM admins WHERE id = ?";
-            try (Connection con = ConexaoBD.getConexao()) {
-                assert con != null;
-                PreparedStatement stmt = con.prepareStatement(remover);
+    // Remover usuário
+    public void removerUsuario(int id) throws SQLException {
+        String remover = "DELETE FROM recepcionistas WHERE id = ?";
+        try (Connection con = ConexaoBD.getConexao()) {
+            assert con != null;
+            PreparedStatement stmt = con.prepareStatement(remover);
 
-                stmt.setInt(1, id);  // Define o ID do usuário a ser removido
-                int linhasAfetadas = stmt.executeUpdate(); // executeUpdate retorna o número de linhas afetadas
+            stmt.setInt(1, id);  // Define o ID do usuário a ser removido
+            int linhasAfetadas = stmt.executeUpdate(); // executeUpdate retorna o número de linhas afetadas
 
-                System.out.println("SQL Executado: " + remover);
+            System.out.println("SQL Executado: " + remover);
 
-                if (linhasAfetadas > 0) {
-                    // Caso a exclusão tenha sido bem-sucedida
-                    System.out.println("Usuário com ID " + id + " removido com sucesso.");
-                } else {
-                    // Caso não haja usuário com o ID fornecido
-                    System.out.println("Nenhum usuário encontrado com o ID: " + id);
-                }
-            } catch (SQLException e) {
-                // Melhorando a mensagem de erro para incluir detalhes sobre o ID que causou o erro
-                System.err.println("Erro ao tentar remover o usuário com ID " + id + ": " + e.getMessage());
-                throw new SQLException("Erro ao remover usuário.", e);
+            if (linhasAfetadas > 0) {
+                // Caso a exclusão tenha sido bem-sucedida
+                System.out.println("Usuário com ID " + id + " removido com sucesso.");
+            } else {
+                // Caso não haja usuário com o ID fornecido
+                System.out.println("Nenhum usuário encontrado com o ID: " + id);
             }
+        } catch (SQLException e) {
+            // Melhorando a mensagem de erro para incluir detalhes sobre o ID que causou o erro
+            System.err.println("Erro ao tentar remover o usuário com ID " + id + ": " + e.getMessage());
+            throw new SQLException("Erro ao remover usuário.", e);
         }
+    }
 
     // Editar usuário
-    public void editarAdmin(Admin admin) {
+    public void editarAdmin(Medico admin) {
         String atualizar = "UPDATE admins SET nome = ?, senha = ?, telefone = ?, tipoUser = ? WHERE id = ?";
 
         try (Connection con = ConexaoBD.getConexao()) {
@@ -148,3 +153,4 @@ public class AdminDAO {
         }
     }
 }
+

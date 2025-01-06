@@ -6,11 +6,14 @@ import com.smartclinical.model.Admin;
 import com.smartclinical.model.Usuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -53,6 +56,60 @@ public class ListaAdminController {
         adminTable.getItems().addAll(admins);
     }
 
+    @FXML
+    private void rowClicked(){
+        Admin clickedAdmin = adminTable.getSelectionModel().getSelectedItem();
+        showDialog(clickedAdmin.getId());
+    }
+
+    private void showDialog(int id) {
+        Dialog<Void> dialog = new Dialog<>();
+        dialog.setTitle("Admin options");
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
+        dialog.getDialogPane().setContent(createNode(id, dialog));  // Passa o dialog para a função createNode
+        dialog.showAndWait();
+    }
+
+    private Node createNode(int idAdmin, Dialog<Void> dialog) {
+        GridPane gridPane = new GridPane();
+        AdminDAO adminDao = new AdminDAO();
+
+        // Botão "Editar"
+        Button editButton = new Button("Editar");
+        editButton.setOnAction(event -> {
+            Main m = new Main();
+            try {
+                m.abrirPainelEdit("editaAdmin.fxml", "Editar admin", idAdmin);
+                dialog.close();
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+
+        // Botão "Excluir"
+        Button deleteButton = new Button("Excluir");
+        deleteButton.setOnAction(event -> {
+
+            try {
+                // Remover o usuário
+                adminDao.removerUsuario(idAdmin);
+                dialog.close();
+                mostrarAlerta("Excluir admin", "Excluir concluído!");
+            } catch (SQLException e) {
+                // Tratar exceções, se necessário
+                System.err.println("Erro ao excluir o usuário: " + e.getMessage());
+                throw new RuntimeException(e);
+            }
+        });
+
+        // Adicionando os botões nas posições corretas do GridPane
+        gridPane.add(editButton, 0, 0); // Posição (0, 0) para Editar
+        gridPane.add(deleteButton, 0, 1); // Posição (0, 1) para Excluir
+
+        return gridPane;
+    }
+
     public void fazerLogout() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Logout");
@@ -88,5 +145,13 @@ public class ListaAdminController {
         catch(IOException e){
             throw new RuntimeException();
         }
+    }
+
+    private void mostrarAlerta(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

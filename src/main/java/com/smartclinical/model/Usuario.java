@@ -25,11 +25,29 @@ public class Usuario {
         this.tipoUsuario = tipoUsuario;
     }
 
-    public Usuario(int id, String nome, String email, String telefone, TipoUser tipoUsuario) {
+    public Usuario(int id, String nome, String email, String senha, String telefone, TipoUser tipoUsuario) {
+        this.userId = id;
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.telefone = telefone;
+        this.tipoUsuario = tipoUsuario;
+    }
+
+    public Usuario(int id, String nome, String telefone, String senha, TipoUser tipoUsuario) {
+        this.userId = id;
+        this.nome = nome;
+        this.senha = senha;
+        this.telefone = telefone;
+        this.tipoUsuario = tipoUsuario;
     }
 
     public int getId() {
         return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getNome() {

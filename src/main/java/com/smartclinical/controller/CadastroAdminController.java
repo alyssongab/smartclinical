@@ -44,10 +44,18 @@ public class CadastroAdminController {
         try{
             Admin admin = new Admin(nome,email,senha,telefone,tipoUser);
             adminDao.inserirAdmin(admin);
+            clear();
             mostrarAlerta("Cadastro", "Cadastro realizado com sucesso!");
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void clear(){
+        adminInputNome.clear();
+        adminInputEmail.clear();
+        adminInputTelefone.clear();
+        adminInputSenha.clear();
     }
 
     //Limpa os campos do cadastro

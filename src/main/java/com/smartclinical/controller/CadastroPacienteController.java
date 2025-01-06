@@ -4,6 +4,7 @@ import com.smartclinical.app.Main;
 import com.smartclinical.dao.PacienteDAO;
 import com.smartclinical.model.Paciente;
 import com.smartclinical.model.Recepcionista;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -89,6 +90,28 @@ public class CadastroPacienteController {
 
         Paciente paciente = new Paciente(nome, cpf, dataNascimento);
         pacientedao.cadastrarPaciente(paciente);
-        System.out.println("Cadastrado!");
+        clear();
+        mostrarAlerta("Cadastro","paciente cadastrado com sucesso!");
+
+    }
+
+    public void clear(){
+        pacienteInputNome.clear();
+        pacienteInputCpf.clear();
+        pacienteInputDataNascimento.clear();
+    }
+
+    public void LimparCampos(ActionEvent actionEvent) {
+        pacienteInputNome.clear();
+        pacienteInputCpf.clear();
+        pacienteInputDataNascimento.clear();
+    }
+
+    private void mostrarAlerta(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

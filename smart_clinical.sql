@@ -1,4 +1,7 @@
+show databases;
+
 use smart_clinical;
+show tables;
 
 create table admins(
                        id int auto_increment primary key,
@@ -41,15 +44,40 @@ create table pacientes(
 
 /*Remover  atributo unique da senha*/
 ALTER TABLE admins DROP INDEX senha;
+
+ALTER TABLE admins DROP INDEX senha;
+ALTER TABLE admins MODIFY COLUMN email VARCHAR(255) NULL;
 /*Modificar o Enum para mais opções*/
 ALTER TABLE admins ADD COLUMN tipoUser ENUM('ADMIN', 'MEDICO', 'RECEPCIONISTA') NOT NULL DEFAULT 'ADMIN';
 
 alter table medicos drop index senha;
-ALTER TABLE recepcionistas MODIFY COLUMN tipoUser ENUM('ADMIN', 'MEDICO', 'RECEPCIONISTA') NOT NULL DEFAULT 'MEDICO';
 
+
+ALTER TABLE recepcionistas MODIFY COLUMN tipoUser ENUM('ADMIN', 'MEDICO', 'RECEPCIONISTA') NOT NULL DEFAULT 'MEDICO';
 alter table recepcionistas drop index senha;
 ALTER TABLE recepcionistas MODIFY COLUMN tipoUser ENUM('ADMIN', 'MEDICO', 'RECEPCIONISTA') NOT NULL DEFAULT 'RECEPCIONISTA';
 
+ALTER TABLE pacientes MODIFY COLUMN email VARCHAR(255) NULL;
+ALTER TABLE pacientes MODIFY COLUMN telefone VARCHAR(255) NULL;
+
+
+describe admins;
+describe medicos;
+describe recepcionistas;
+describe pacientes;
+
+select * from admins;
 insert into admins(nome, email, telefone, senha, tipoUser)
 values
     ("Bob", "bob@gmail.com", "92998877", "admin123", "ADMIN");
+
+insert into usuario(nome, email, telefone, senha, tipoUser)
+values
+    ("Bob", "bob@gmail.com", "92998877", "admin123", "ADMIN");
+
+select * from medicos;
+select * from usuario;
+select * from recepcionistas;
+select * from pacientes;
+SELECT * FROM admins WHERE tipoUser IS NULL;
+SELECT nome, CRM FROM medicos;

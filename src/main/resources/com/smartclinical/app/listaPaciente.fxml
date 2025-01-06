@@ -72,12 +72,12 @@
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <TableView prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                  <TableView fx:id="pacienteTable" onMouseClicked="#rowClicked" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                      <columns>
-                        <TableColumn prefWidth="75.0" text="Id" />
-                        <TableColumn prefWidth="75.0" text="Nome" />
-                        <TableColumn prefWidth="75.0" text="CPF" />
-                        <TableColumn prefWidth="173.0" text="Data de nascimento" />
+                        <TableColumn fx:id="pacienteId" prefWidth="75.0" text="Id" />
+                        <TableColumn fx:id="pacienteNome" prefWidth="75.0" text="Nome" />
+                        <TableColumn fx:id="pacienteCpf" prefWidth="75.0" text="CPF" />
+                        <TableColumn fx:id="pacienteDataNascimento" prefWidth="173.0" text="Data de nascimento" />
                      </columns>
                   </TableView>
                </children>

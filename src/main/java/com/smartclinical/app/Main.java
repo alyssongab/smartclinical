@@ -1,5 +1,6 @@
 package com.smartclinical.app;
 
+import com.smartclinical.controller.EditaAdminController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -47,6 +48,26 @@ public class Main extends Application {
                 System.exit(0);  // Encerra a aplicação após o logout
             }
         });
+    }
+
+    public void abrirPainelEdit(String fxml, String titulo, int id) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(fxml));
+
+        // Carrega o painel FXML
+        Parent root = loader.load();
+
+        // Obtenha o controlador do FXML
+        EditaAdminController controller = loader.getController();
+
+        // Passa o ID para o controlador
+        controller.editarAdmin(id);
+
+        // Exibe o novo painel
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setTitle(titulo);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public static void main(String[] args) {

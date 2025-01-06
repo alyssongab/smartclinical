@@ -10,11 +10,14 @@ public class Admin extends Usuario{
     }
 
     //Construtor para listagem
-    public Admin(int id, String nome, String email, String telefone, TipoUser tipoUsuario) {
-            super(id, nome, email, telefone, tipoUsuario);
-    }
-
     public Admin(int id, String nome, String telefone, TipoUser tipoUsuario) {
         super(id, nome, telefone, tipoUsuario);
     }
+
+
+    //Construtor edição
+    public Admin(int id, String nome, String telefone, String senha, TipoUser tipoUsuario) {
+        super(id, nome, telefone,senha, tipoUsuario);
+    }
+
 }

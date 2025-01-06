@@ -9,13 +9,14 @@ public class Recepcionista extends Usuario {
     private String turno;
 
     // Construtores
-    public Recepcionista(String nome, String email, String senha, String telefone, TipoUser tipoUsuario, String turno) {
-        super(nome, email, senha, telefone, tipoUsuario);
+
+    public Recepcionista(int userId,String nome, String email, String senha, String telefone, String turno, TipoUser tipoUsuario) {
+        super(userId, nome, email,senha, telefone, tipoUsuario);
         this.turno = turno;
     }
 
-    public Recepcionista(int userId, String nome, String telefone, TipoUser tipoUsuario, String turno) {
-        super(userId, nome, telefone, tipoUsuario);
+    public Recepcionista(String nome, String email, String senha, String telefone, String turno, TipoUser tipoUsuario) {
+        super(nome, email, senha, telefone, tipoUsuario);
         this.turno = turno;
     }
 

@@ -1,13 +1,15 @@
 package com.smartclinical.controller;
 
 import com.smartclinical.app.Main;
+import com.smartclinical.dao.AdminDAO;
+import com.smartclinical.dao.MedicoDAO;
+import com.smartclinical.model.Admin;
+import com.smartclinical.model.Medico;
+import com.smartclinical.util.TipoUser;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -20,9 +22,62 @@ public class CadastroMedicoController {
     @FXML
     private ComboBox<String> medicoComboBox;
 
+    @FXML
+    private TextField UsuarioInputNome;
+
+    @FXML
+    private TextField UsuarioInputEmail;
+
+    @FXML
+    private TextField UsuarioInputSenha;
+
+    @FXML
+    private TextField UsuarioInputTelefone;
+
+    @FXML
+    private TextField UsuarioInputCRM;
+
+
+
+    MedicoDAO medicoDAO = new MedicoDAO();
 
     public void initialize() {
         medicoComboBox.setItems(FXCollections.observableArrayList("Clínico geral", "Pediatra", "Ortopedista"));
+    }
+
+    public void cadastrarMedico(ActionEvent actionEvent) {
+        String nome =  UsuarioInputNome.getText();
+        String email = UsuarioInputEmail.getText();
+        String senha = UsuarioInputSenha.getText();
+        String telefone = UsuarioInputTelefone.getText();
+        String CRM = UsuarioInputCRM.getText();
+        String especialidade = medicoComboBox.getValue();
+        TipoUser tipoUser = TipoUser.MEDICO;
+        try{
+            Medico medico = new Medico(nome,email,telefone,senha,CRM, especialidade, tipoUser);
+            medicoDAO.inserirMedico(medico);
+            clear();
+            mostrarAlerta("Cadastro", "Cadastro realizado com sucesso!");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void clear(){
+        UsuarioInputNome.clear();
+        UsuarioInputEmail.clear();
+        UsuarioInputSenha.clear();
+        UsuarioInputTelefone.clear();
+        UsuarioInputCRM.clear();
+    }
+
+    //Limpa os campos do cadastro
+    public void LimparCampos(ActionEvent actionEvent) {
+        UsuarioInputNome.clear();
+        UsuarioInputEmail.clear();
+        UsuarioInputSenha.clear();
+        UsuarioInputTelefone.clear();
+        UsuarioInputCRM.clear();
     }
 
     public void fazerLogout() {
@@ -60,5 +115,13 @@ public class CadastroMedicoController {
         catch(IOException e){
             throw new RuntimeException();
         }
+    }
+
+    private void mostrarAlerta(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

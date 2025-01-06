@@ -103,7 +103,7 @@
                         <Insets />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="botaoLimpaInputPaciente" cancelButton="true" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" text="Limpar" />
+                  <Button fx:id="botaoLimpaInputPaciente" cancelButton="true" mnemonicParsing="false" onAction="#LimparCampos" prefHeight="40.0" prefWidth="110.0" text="Limpar" />
                </children>
                <VBox.margin>
                   <Insets top="20.0" />

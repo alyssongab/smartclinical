@@ -72,13 +72,13 @@
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <TableView prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                  <TableView fx:id="recepcionistaTable" onMouseClicked="#rowClicked" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
                      <columns>
-                        <TableColumn prefWidth="75.0" text="Id" />
-                        <TableColumn prefWidth="75.0" text="Nome" />
-                        <TableColumn prefWidth="75.0" text="Email" />
-                        <TableColumn prefWidth="75.0" text="Telefone" />
-                        <TableColumn prefWidth="75.0" text="Turno" />
+                        <TableColumn fx:id="recepcionistaId" prefWidth="75.0" text="Id" />
+                        <TableColumn fx:id="recepcionistaNome" prefWidth="75.0" text="Nome" />
+                        <TableColumn fx:id="recepcionistaEmail" prefWidth="75.0" text="Email" />
+                        <TableColumn fx:id="recepcionistaTelefone" prefWidth="75.0" text="Telefone" />
+                        <TableColumn fx:id="recepcionistaTurno" prefWidth="75.0" text="Turno" />
                      </columns>
                   </TableView>
                </children>
