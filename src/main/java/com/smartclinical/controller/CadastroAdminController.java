@@ -41,10 +41,13 @@ public class CadastroAdminController {
         String senha = adminInputSenha.getText();
         String telefone = adminInputTelefone.getText();
         TipoUser tipoUser = TipoUser.ADMIN;
-
-        Admin admin = new Admin(nome,email,senha,telefone,tipoUser);
-        adminDao.inserirAdmin(admin);
-        mostrarAlerta("Cadastro", "Cadastro realizado com sucesso!");
+        try{
+            Admin admin = new Admin(nome,email,senha,telefone,tipoUser);
+            adminDao.inserirAdmin(admin);
+            mostrarAlerta("Cadastro", "Cadastro realizado com sucesso!");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     //Limpa os campos do cadastro

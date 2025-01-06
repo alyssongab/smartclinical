@@ -12,12 +12,12 @@ public class testeDaoAdmin {
     public static void main(String[] args) throws SQLException {
         AdminDAO adminDAO = new AdminDAO();
 
-        List<Admin> usuarios = adminDAO.listarAdmin();
-        for(Admin usuario : usuarios){
-            System.out.println("ID: " + usuario.getId());
-            System.out.println("Nome: " + usuario.getNome());
-            System.out.println("Telefone: " + usuario.getTelefone());
-            System.out.println("Cargo: " + usuario.getTipoUsuario().name());
+        List<Admin> admins = adminDAO.listarAdmin();
+        for(Admin admin : admins){
+            System.out.println("ID: " + admin.getId());
+            System.out.println("TESTE - Nome: " + admin.getNome());
+            System.out.println("Telefone: " + admin.getTelefone());
+            System.out.println("Cargo: " + admin.getTipoUsuario().name());
         }
     }
 }

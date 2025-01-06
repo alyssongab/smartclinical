@@ -10,6 +10,8 @@ module com.smartclinical.app {
     exports com.smartclinical.controller;
     opens com.smartclinical.controller to javafx.fxml;
 
+    opens com.smartclinical.model to javafx.base;
+
 }
 
 

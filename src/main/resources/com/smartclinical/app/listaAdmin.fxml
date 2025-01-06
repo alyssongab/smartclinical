@@ -61,7 +61,7 @@
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints maxHeight="309.0" minHeight="10.0" prefHeight="103.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="553.0" minHeight="10.0" prefHeight="527.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="553.0" minHeight="10.0" prefHeight="527.0" valignment="TOP" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <Label text="ADMINS">
@@ -72,13 +72,12 @@
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="admin" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                  <TableView fx:id="adminTable" maxHeight="500.0" maxWidth="991.0" prefHeight="500.0" prefWidth="991.0" GridPane.rowIndex="1">
                     <columns>
-                        <TableColumn fx:id="adminId" prefWidth="75.0" text="Id" />
-                      <TableColumn fx:id="adminNome" prefWidth="75.0" text="Nome" />
-                      <TableColumn fx:id="adminEmail" prefWidth="75.0" text="Email" />
-                        <TableColumn fx:id="adminTelefone" prefWidth="75.0" text="Telefone" />
-                        <TableColumn fx:id="adminCargo" prefWidth="75.0" text="Cargo" />
+                        <TableColumn fx:id="adminId" prefWidth="154.0" text="Id" />
+                      <TableColumn fx:id="adminNome" prefWidth="303.0" text="Nome" />
+                        <TableColumn fx:id="adminTelefone" prefWidth="312.0" text="Telefone" />
+                        <TableColumn fx:id="adminCargo" prefWidth="221.0" text="Cargo" />
                     </columns>
                   </TableView>
                </children>

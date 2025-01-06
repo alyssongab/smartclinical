@@ -39,18 +39,16 @@ public class ListaAdminController {
     private TableColumn<Admin, String> adminCargo;
 
     public void initialize(){
-        adminId.setCellValueFactory(new PropertyValueFactory<Admin, Integer>("Id"));
-        adminNome.setCellValueFactory(new PropertyValueFactory<Admin, String>("Nome"));
-        adminEmail.setCellValueFactory(new PropertyValueFactory<Admin, String>("Email"));
-        adminTelefone.setCellValueFactory(new PropertyValueFactory<Admin, String>("Telefone"));
-        adminCargo.setCellValueFactory(new PropertyValueFactory<Admin, String>("Cargo"));
+        adminId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        adminNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        adminTelefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));
+        adminCargo.setCellValueFactory(new PropertyValueFactory<>("tipoUsuario"));
         setupTable();
     }
 
     private void setupTable() {
         AdminDAO adminDao = new AdminDAO();
         List<Admin> admins = adminDao.listarAdmin();
-
         adminTable.getItems().clear();
         adminTable.getItems().addAll(admins);
     }

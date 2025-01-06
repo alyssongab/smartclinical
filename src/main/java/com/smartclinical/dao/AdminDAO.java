@@ -15,8 +15,7 @@ import java.util.List;
 public class AdminDAO {
     //Inserir usuário
     public void inserirAdmin(Admin admin){
-        String inserir = "INSERT INTO admins (nome, email, senha, telefone, tipoUser) VALUES(?,?,?,?.?)";
-
+        String inserir = "INSERT INTO admins (nome, email, senha, telefone, tipoUser) VALUES(?,?,?,?,?)";
         // try with resource para conectar com o banco
         try(Connection con = ConexaoBD.getConexao()) {
             assert con != null;
@@ -29,7 +28,7 @@ public class AdminDAO {
             stmt.setString(5, admin.getTipoUsuario().name());
 
             stmt.executeUpdate();
-            System.out.println("SQL: " + inserir);
+            System.out.println("SQL: INSERT INTO admins (nome, email, senha, telefone, tipoUser) VALUES (" + admin.getNome() + ", " + admin.getEmail() + ", " + admin.getSenha() + ", " + admin.getTelefone() + ", " + admin.getTipoUsuario().name() + ")");
 
         }
         catch (SQLException e) {
@@ -39,7 +38,7 @@ public class AdminDAO {
 
     // listar usuários
     public List<Admin> listarAdmin() {
-        String listar = "SELECT id, nome, email, telefone, tipoUser FROM admins";
+        String listar = "SELECT id, nome, telefone, tipoUser FROM admins";
         List<Admin> admins = new ArrayList<>();
 
         try(Connection con = ConexaoBD.getConexao()){
@@ -52,13 +51,12 @@ public class AdminDAO {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String nome = rs.getString("nome");
-                String email = rs.getString("email");
                 String telefone = rs.getString("telefone");
                 String tipoUsuarioString = rs.getString("tipoUser");
                 // convertendo o tipo de usuario para enum
                 TipoUser tipoUsuario = TipoUser.valueOf(tipoUsuarioString);
 
-                Admin admin = new Admin(id, nome, email, telefone, tipoUsuario);
+                Admin admin = new Admin(id, nome, telefone, tipoUsuario);
                 admins.add(admin);
             }
 
@@ -70,7 +68,7 @@ public class AdminDAO {
         return admins;
     }
 
-    // Remover usuário
+        // Remover usuário
     public void removerUsuario(int id) throws SQLException {
         String remover = "DELETE FROM usuario WHERE id = ?";
         try(Connection con = ConexaoBD.getConexao()){

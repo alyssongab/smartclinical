@@ -13,4 +13,8 @@ public class Admin extends Usuario{
     public Admin(int id, String nome, String email, String telefone, TipoUser tipoUsuario) {
             super(id, nome, email, telefone, tipoUsuario);
     }
+
+    public Admin(int id, String nome, String telefone, TipoUser tipoUsuario) {
+        super(id, nome, telefone, tipoUsuario);
+    }
 }
