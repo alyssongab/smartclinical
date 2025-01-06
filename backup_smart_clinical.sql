@@ -16,6 +16,37 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `consultas`
+--
+
+DROP TABLE IF EXISTS `consultas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `consultas` (
+  `id_consulta` int NOT NULL AUTO_INCREMENT,
+  `data_hora` varchar(45) NOT NULL,
+  `paciente_id` int NOT NULL,
+  `medico_id` int NOT NULL,
+  `observacao` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id_consulta`),
+  KEY `paciente_id` (`paciente_id`),
+  KEY `medico_id` (`medico_id`),
+  CONSTRAINT `consultas_ibfk_1` FOREIGN KEY (`paciente_id`) REFERENCES `pacientes` (`id_paciente`),
+  CONSTRAINT `consultas_ibfk_2` FOREIGN KEY (`medico_id`) REFERENCES `medicos` (`id_medico`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `consultas`
+--
+
+LOCK TABLES `consultas` WRITE;
+/*!40000 ALTER TABLE `consultas` DISABLE KEYS */;
+INSERT INTO `consultas` VALUES (6,'2025',1,3,NULL);
+/*!40000 ALTER TABLE `consultas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `medicos`
 --
 
@@ -23,11 +54,11 @@ DROP TABLE IF EXISTS `medicos`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `medicos` (
-  `id_medicos` int NOT NULL,
+  `id_medico` int NOT NULL,
   `crm` varchar(20) DEFAULT NULL,
   `especialidade` varchar(200) DEFAULT NULL,
-  PRIMARY KEY (`id_medicos`),
-  CONSTRAINT `medicos_ibfk_1` FOREIGN KEY (`id_medicos`) REFERENCES `usuario` (`id`)
+  PRIMARY KEY (`id_medico`),
+  CONSTRAINT `medicos_ibfk_1` FOREIGN KEY (`id_medico`) REFERENCES `usuario` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -37,6 +68,7 @@ CREATE TABLE `medicos` (
 
 LOCK TABLES `medicos` WRITE;
 /*!40000 ALTER TABLE `medicos` DISABLE KEYS */;
+INSERT INTO `medicos` VALUES (3,'203040','Ortopedista');
 /*!40000 ALTER TABLE `medicos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -107,7 +139,7 @@ CREATE TABLE `usuario` (
   `tipoUser` enum('ADMIN','MEDICO','RECEPCIONISTA') NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -116,7 +148,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'Bob','bob@gmail.com','admin123','92998877','ADMIN'),(2,'Messi','lm10@gmail.com','barca','22 151109','RECEPCIONISTA');
+INSERT INTO `usuario` VALUES (1,'Bob','bob@gmail.com','admin123','92998877','ADMIN'),(2,'Messi','lm10@gmail.com','barca','22 151109','RECEPCIONISTA'),(3,'Daniel','dan@gmail.com','dandan','9298016','MEDICO');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -129,4 +161,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-01-05  5:47:20
+-- Dump completed on 2025-01-06 12:38:05

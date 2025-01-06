@@ -12,6 +12,13 @@ public class Paciente {
         this.dataNascimento = dataNascimento;
     }
 
+    public Paciente(int id, String nome, String cpf, String dataNascimento) {
+        this.id = id;
+        this.nome = nome;
+        this.cpf = cpf;
+        this.dataNascimento = dataNascimento;
+    }
+
     public int getId() {
         return id;
     }
@@ -38,5 +45,9 @@ public class Paciente {
 
     public void setDataNascimento(String dataNascimento) {
         this.dataNascimento = dataNascimento;
+    }
+
+    public String toString() {
+        return this.nome;
     }
 }

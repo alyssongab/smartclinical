@@ -18,6 +18,15 @@ public class Usuario {
         this.tipoUsuario = tipoUsuario;
     }
 
+    public Usuario(int id, String nome, String email, String senha, String telefone, TipoUser tipoUsuario) {
+        this.userId = id;
+        this.nome = nome;
+        this.email = email;
+        this.senha = senha;
+        this.telefone = telefone;
+        this.tipoUsuario = tipoUsuario;
+    }
+
     public Usuario(int userId, String nome, String telefone, TipoUser tipoUsuario) {
         this.userId = userId;
         this.nome = nome;

@@ -66,6 +66,17 @@ public class PainelPrincipalController {
                 throw new RuntimeException(e);
             }
         });
+
+        // ação do botão "Agendamento"
+        botaoPainelAgendamento.setOnAction(event -> {
+            try{
+                Main m = new Main();
+                m.abrirPainel("painelAgendamento.fxml", "Agendamento");
+            }
+            catch(IOException e){
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     /**

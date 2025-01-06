@@ -11,7 +11,7 @@ create table usuario(
     tipoUser ENUM("ADMIN", "MEDICO", "RECEPCIONISTA") not null
 );
 
-create table admins(
+create table admins( -- Medicos ***************
 	id int primary key, -- referencia o id de usuario
     crm varchar(20),
     especialidade varchar(200),
@@ -59,7 +59,7 @@ alter table recepcionistas
 change id id_recepcionista int;
 
 alter table medicos
-change id id_medicos int;
+change id_medicos id_medico int;
 
 select last_insert_id();
 
@@ -67,3 +67,21 @@ insert into recepcionistas
 values(last_insert_id(), "tarde");
 
 select * from usuario;
+
+insert into usuario(nome, email, senha, telefone, tipoUser)
+values("Daniel", "dan@gmail.com", "dandan", "9298016", "MEDICO");
+
+insert into medicos
+values(last_insert_id(), "203040", "Ortopedista");
+
+create table consultas(
+	id_consulta int primary key auto_increment,
+    data_hora varchar(45) not null,
+    paciente_id int not null,
+    medico_id int not null,
+    observacao varchar(255),
+    foreign key (paciente_id) references pacientes(id_paciente),
+    foreign key (medico_id) references medicos(id_medico)
+);
+
+select * from consultas;

@@ -96,6 +96,10 @@ public class CadastroPacienteController {
             alert.setHeaderText("Sucesso");
             alert.setContentText("Paciente cadastrado com sucesso!");
             alert.showAndWait();
+
+            pacienteInputNome.clear();
+            pacienteInputCpf.clear();
+            pacienteInputDataNascimento.clear();
         }
         catch(Exception e){
             System.out.println("Erro ao cadastrar paciente: " + e.getMessage());
