@@ -108,7 +108,7 @@ public class CadastroPacienteController {
     }
 
     private void mostrarAlerta(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);

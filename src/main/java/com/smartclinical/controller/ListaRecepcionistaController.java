@@ -84,13 +84,7 @@ public class ListaRecepcionistaController {
         Button editButton = new Button("Editar");
         editButton.setStyle("-fx-max-height: 25px;-fx-min-width: 110px;-fx-background-color: #53c89b; -fx-text-fill: white;");
         editButton.setOnAction(event -> {
-            Main m = new Main();
-            try {
-                m.abrirPainelEdit("editaAdmin.fxml", "Editar admin", idAdmin);
-                dialog.close();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+
         });
 
         Button deleteButton = new Button("Excluir");
