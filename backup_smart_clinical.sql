@@ -16,6 +16,36 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `admins`
+--
+
+DROP TABLE IF EXISTS `admins`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `admins` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `telefone` varchar(20) NOT NULL,
+  `senha` varchar(40) NOT NULL,
+  `tipoUser` enum('ADMIN') NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`),
+  UNIQUE KEY `telefone` (`telefone`),
+  UNIQUE KEY `senha` (`senha`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `admins`
+--
+
+LOCK TABLES `admins` WRITE;
+/*!40000 ALTER TABLE `admins` DISABLE KEYS */;
+/*!40000 ALTER TABLE `admins` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `consultas`
 --
 
@@ -33,7 +63,7 @@ CREATE TABLE `consultas` (
   KEY `medico_id` (`medico_id`),
   CONSTRAINT `consultas_ibfk_1` FOREIGN KEY (`paciente_id`) REFERENCES `pacientes` (`id_paciente`),
   CONSTRAINT `consultas_ibfk_2` FOREIGN KEY (`medico_id`) REFERENCES `medicos` (`id_medico`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +72,7 @@ CREATE TABLE `consultas` (
 
 LOCK TABLES `consultas` WRITE;
 /*!40000 ALTER TABLE `consultas` DISABLE KEYS */;
-INSERT INTO `consultas` VALUES (6,'2025',1,3,NULL);
+INSERT INTO `consultas` VALUES (6,'2025',1,3,NULL),(7,'18/01/2025 10:00',2,3,NULL),(8,'09/02/2025 09:15',1,3,NULL),(9,'20/01/2025 09:00',3,3,NULL);
 /*!40000 ALTER TABLE `consultas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -81,10 +111,12 @@ DROP TABLE IF EXISTS `pacientes`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `pacientes` (
   `id_paciente` int NOT NULL AUTO_INCREMENT,
-  `nome` varchar(255) DEFAULT NULL,
-  `cpf` varchar(16) DEFAULT NULL,
+  `nome` varchar(255) NOT NULL,
+  `cpf` bigint NOT NULL,
   `data_nasc` varchar(11) DEFAULT NULL,
-  PRIMARY KEY (`id_paciente`)
+  PRIMARY KEY (`id_paciente`),
+  UNIQUE KEY `cpf` (`cpf`),
+  UNIQUE KEY `cpf_2` (`cpf`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -94,7 +126,7 @@ CREATE TABLE `pacientes` (
 
 LOCK TABLES `pacientes` WRITE;
 /*!40000 ALTER TABLE `pacientes` DISABLE KEYS */;
-INSERT INTO `pacientes` VALUES (1,'Neymar','123.987.543-11','20/02/1992'),(2,'Cris','098123','20/10/2002'),(3,'Ronaldo','123817','19/08/1980');
+INSERT INTO `pacientes` VALUES (1,'Neymar',12398754311,'20/02/1992'),(2,'Cris',98123,'20/10/2002'),(3,'Ronaldo',123817,'19/08/1980');
 /*!40000 ALTER TABLE `pacientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -161,4 +193,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-01-06 12:38:05
+-- Dump completed on 2025-01-07  5:05:47

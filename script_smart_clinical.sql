@@ -44,6 +44,10 @@ create table pacientes(
 ALTER TABLE pacientes
 MODIFY id_paciente INT AUTO_INCREMENT;
 
+ALTER TABLE pacientes
+MODIFY nome varchar(255) not null,
+MODIFY cpf varchar(16) not null unique;
+
 insert into pacientes(nome, cpf, data_nasc)
 values("Neymar", "123.987.543-11", "20/02/1992");
 
@@ -85,3 +89,19 @@ create table consultas(
 );
 
 select * from consultas;
+
+describe pacientes;
+
+UPDATE pacientes
+SET cpf = REPLACE(REPLACE(cpf, '.', ''), '-', '')
+WHERE id_paciente > 0;
+
+ALTER TABLE pacientes MODIFY COLUMN cpf BIGINT NOT NULL UNIQUE;
+
+select * from pacientes;
+
+SHOW INDEXES FROM pacientes;
+
+describe pacientes;
+
+
