@@ -75,7 +75,7 @@ public class CadastroPacienteController {
     public void voltarParaPacientes(){
         try{
             Main main = new Main();
-            main.abrirPainel("painelPrincipal.fxml", "Painel de pacientes");
+            main.abrirPainel("painelCadastros.fxml", "Painel Cadastros");
         }
         catch(IOException e){
             throw new RuntimeException();

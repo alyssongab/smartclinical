@@ -22,7 +22,7 @@
             </Label>
          </top>
          <center>
-            <Button fx:id="botaoPainel" mnemonicParsing="false" prefHeight="50.0" prefWidth="122.0" style="-fx-background-color: #F62447;" text="Painel" textFill="WHITE" BorderPane.alignment="CENTER">
+            <Button fx:id="botaoPainel" mnemonicParsing="false" onAction="#voltarParaPainelPrincipal" prefHeight="50.0" prefWidth="122.0" style="-fx-background-color: #F62447;" text="Painel" textFill="WHITE" BorderPane.alignment="CENTER">
                <font>
                   <Font name="SansSerif Bold" size="20.0" />
                </font>

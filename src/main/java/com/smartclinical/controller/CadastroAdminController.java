@@ -96,7 +96,7 @@ public class CadastroAdminController {
     public void voltarParaPainelPrincipal(ActionEvent actionEvent) {
         try{
             Main main = new Main();
-            main.abrirPainel("painelPrincipal.fxml", "Painel Principal");
+            main.abrirPainel("painelCadastros.fxml", "Painel Cadastros");
         }
         catch(IOException e){
             throw new RuntimeException();

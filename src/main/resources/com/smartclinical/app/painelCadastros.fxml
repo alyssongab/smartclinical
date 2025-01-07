@@ -32,7 +32,7 @@
                                 <Font size="18.0" />
                             </font>
                             <GridPane.margin>
-                                <Insets bottom="110.0" />
+                                <Insets bottom="140.0" />
                             </GridPane.margin>
                         </Button>
                         <Button fx:id="button_medico" layoutX="10.0" layoutY="135.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="220.0" text="Médicos" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -40,7 +40,7 @@
                                 <Font size="18.0" />
                             </font>
                             <GridPane.margin>
-                                <Insets bottom="110.0" />
+                                <Insets bottom="140.0" />
                             </GridPane.margin>
                         </Button>
                         <Button fx:id="button_recepcionista" layoutX="10.0" layoutY="135.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="220.0" text="Recepcionistas" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
@@ -48,7 +48,7 @@
                                 <Font size="18.0" />
                             </font>
                             <GridPane.margin>
-                                <Insets bottom="110.0" />
+                                <Insets bottom="140.0" />
                             </GridPane.margin>
                         </Button>
                         <Button fx:id="button_paciente" layoutX="650.0" layoutY="218.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="220.0" text="Pacientes" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
@@ -56,7 +56,7 @@
                                 <Font size="18.0" />
                             </font>
                             <GridPane.margin>
-                                <Insets bottom="80.0" right="8.0" />
+                                <Insets bottom="140.0" right="8.0" />
                             </GridPane.margin>
                         </Button>
                         <Label text="Cadastros" GridPane.halignment="CENTER">

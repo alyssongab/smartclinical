@@ -139,7 +139,7 @@ public class ListaPacienteController {
     public void voltarParaPainelPrincipal(ActionEvent actionEvent) {
         try{
             Main main = new Main();
-            main.abrirPainel("painelPrincipal.fxml", "Painel Principal");
+            main.abrirPainel("painelListaUsuarios.fxml", "Painel Listagem");
         }
         catch(IOException e){
             throw new RuntimeException();
