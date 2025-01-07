@@ -24,6 +24,6 @@ public class Recepcionista extends Usuario {
     }
 
     public String toString(){
-        return "Recepcionista!!!!!!";
+        return this.getNome();
     }
 }

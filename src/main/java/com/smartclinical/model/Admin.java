@@ -13,6 +13,6 @@ public class Admin extends Usuario{
     }
 
     public String toString(){
-        return "ADMIN!!!!!!!!!!!";
+        return this.getNome();
     }
 }

@@ -2,6 +2,7 @@ package com.smartclinical.controller;
 
 import com.smartclinical.app.Main;
 import com.smartclinical.model.Admin;
+import com.smartclinical.model.Medico;
 import com.smartclinical.model.Recepcionista;
 import com.smartclinical.model.Usuario;
 import com.smartclinical.util.ConexaoBD;
@@ -98,9 +99,9 @@ public class LoginController {
                     return recepcionista;
                 }
                 else if(tipoUsuario.equals(TipoUser.MEDICO)) {
-//                    Consultar a tabela medico para obter crm e especialidade
-//                    Medico medico = obterMedico(id, nome, email, senha, telefone);
-//                    return medico;
+                    // Consultar a tabela medico para obter crm e especialidade
+                    Medico medico = obterMedico(id, nome, email, senha, telefone);
+                    return medico;
                 }
                 else{
                     return new Admin(nome, email, senha, telefone, tipoUsuario);
@@ -134,23 +135,23 @@ public class LoginController {
         return null;
     }
 
-//    private Medico obterMedico(int idUsuario, String nome, String email, String senha, String telefone) {
-//        String sql = "SELECT crm, especialidade FROM medico WHERE id_usuario = ?";
-//        try (Connection conn = ConexaoBD.getConexao()) {
-//            PreparedStatement stmt = conn.prepareStatement(sql);
-//            stmt.setInt(1, idUsuario);
-//            ResultSet rs = stmt.executeQuery();
-//
-//            if (rs.next()) {
-//                String crm = rs.getString("crm");
-//                String especialidade = rs.getString("especialidade");
-//                return new Medico(nome, email, senha, telefone, TipoUser.MEDICO, crm, especialidade);
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        return null;
-//    }
+    private Medico obterMedico(int idUsuario, String nome, String email, String senha, String telefone) {
+        String sql = "SELECT crm, especialidade FROM medicos WHERE id_medico = ?";
+        try (Connection conn = ConexaoBD.getConexao()) {
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, idUsuario);
+            ResultSet rs = stmt.executeQuery(); 
+
+            if (rs.next()) {
+                String crm = rs.getString("crm");
+                String especialidade = rs.getString("especialidade");
+                return new Medico(nome, email, senha, telefone, TipoUser.MEDICO, crm, especialidade);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     // popup para caso de login inválido
     private void mostrarAlerta(String title, String message) {
