@@ -1,8 +1,8 @@
 package com.smartclinical.controller;
 
 import com.smartclinical.app.Main;
-import com.smartclinical.dao.ConsultaDAO;
-import com.smartclinical.model.Consulta;
+import com.smartclinical.dao.PacienteDAO;
+import com.smartclinical.model.Paciente;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -13,49 +13,49 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Optional;
 
-public class ListagemConsultasController {
+public class ListagemPacientesController {
 
     @FXML
     private Button botaoLogout;
 
     @FXML
-    private TableView<Consulta> tableViewConsultas;
+    private TableView<Paciente> tableViewPacientes;
 
     @FXML
-    private TableColumn<Consulta, Integer> colunaIdConsulta;
+    private TableColumn<Paciente, Integer> colunaIdPaciente;
 
     @FXML
-    private TableColumn<Consulta, String> colunaDataHora;
+    private TableColumn<Paciente, String> colunaNome;
 
     @FXML
-    private TableColumn<Consulta, String> colunaNomePaciente;
+    private TableColumn<Paciente, Long> colunaCpf;
 
     @FXML
-    private TableColumn<Consulta, String> colunaNomeMedico;
+    private TableColumn<Paciente, String> colunaDataNascimento;
 
-    private ObservableList<Consulta> listaConsultas;
+    private ObservableList<Paciente> listaPacientes;
 
     public void initialize() {
         // Inicializando a lista de consultas
-        listaConsultas = FXCollections.observableArrayList();
+        listaPacientes = FXCollections.observableArrayList();
 
         // Configurando as colunas da TableView
-        colunaIdConsulta.setCellValueFactory(new PropertyValueFactory<>("idConsulta"));
-        colunaDataHora.setCellValueFactory(new PropertyValueFactory<>("data_hora"));
-        colunaNomePaciente.setCellValueFactory(new PropertyValueFactory<>("nomePaciente"));
-        colunaNomeMedico.setCellValueFactory(new PropertyValueFactory<>("nomeMedico"));
+        colunaIdPaciente.setCellValueFactory(new PropertyValueFactory<>("id"));
+        colunaNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+        colunaCpf.setCellValueFactory(new PropertyValueFactory<>("cpf"));
+        colunaDataNascimento.setCellValueFactory(new PropertyValueFactory<>("dataNascimento"));
 
         // Carregar dados da consulta e popular a TableView
-        carregarDadosConsultas();
+        carregarDadosPaciente();
     }
 
-    private void carregarDadosConsultas() {
-        // Usando o DAO para listar as consultas
-        ConsultaDAO consultaDAO = new ConsultaDAO();
-        listaConsultas.setAll(consultaDAO.listarConsultas());
+    private void carregarDadosPaciente() {
+        // Usando o DAO para listar os pacientes
+        PacienteDAO pacienteDAO = new PacienteDAO();
+        listaPacientes.setAll(pacienteDAO.listarPacientes());
 
         // Atribuindo a lista à TableView
-        tableViewConsultas.setItems(listaConsultas);
+        tableViewPacientes.setItems(listaPacientes);
     }
 
     /**
@@ -95,7 +95,7 @@ public class ListagemConsultasController {
     public void voltarParaPacientes(){
         try{
             Main main = new Main();
-            main.abrirPainel("painelPrincipal.fxml", "Painel Principal");
+            main.abrirPainel("painelPacientes.fxml", "Painel de pacientes");
         }
         catch(IOException e){
             throw new RuntimeException();

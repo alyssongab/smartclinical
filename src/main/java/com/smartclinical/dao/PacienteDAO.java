@@ -21,7 +21,7 @@ public class PacienteDAO {
             PreparedStatement stmt = conn.prepareStatement(cadastrar);
 
             stmt.setString(1, paciente.getNome());
-            stmt.setString(2, paciente.getCpf());
+            stmt.setLong(2, paciente.getCpf());
             stmt.setString(3, paciente.getDataNascimento());
 
             stmt.executeUpdate();
@@ -46,7 +46,7 @@ public class PacienteDAO {
                 Paciente paciente = new Paciente(
                         rs.getInt("id_paciente"),
                         rs.getString("nome"),
-                        rs.getString("cpf"),
+                        rs.getLong("cpf"),
                         rs.getString("data_nasc")
                 );
                 pacientes.add(paciente);

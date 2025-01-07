@@ -63,6 +63,17 @@ public class PainelPacientesController {
         }
     }
 
+    // abre a listagem de pacientes
+    public void listarPacientes(){
+        try{
+            Main m = new Main();
+            m.abrirPainel("listaPacientes.fxml", "Lista de pacientes");
+        }
+        catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     // botao que volta para o painel principal
     public void voltarParaPainelPrincipal(ActionEvent actionEvent) {
         try{

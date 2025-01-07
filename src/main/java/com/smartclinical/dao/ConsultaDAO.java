@@ -116,7 +116,7 @@ public class ConsultaDAO {
                 return new Paciente(
                         rs.getInt(1),
                         rs.getString(2),
-                        rs.getString(3),
+                        rs.getLong(3),
                         rs.getString(4)
                 );
             }

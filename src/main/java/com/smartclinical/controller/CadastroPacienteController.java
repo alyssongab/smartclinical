@@ -79,7 +79,7 @@ public class CadastroPacienteController {
     // metodo que faz o cadastro do paciente
     public void cadastrarPaciente(){
         String nome = pacienteInputNome.getText();
-        String cpf = pacienteInputCpf.getText();
+        long cpf = Long.parseLong(pacienteInputCpf.getText());
         String dataNascimento = pacienteInputDataNascimento.getText();
 
         Paciente paciente = new Paciente(nome, cpf, dataNascimento);
