@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.smartclinical.controller.AdminController">
@@ -16,24 +17,21 @@
       <BorderPane layoutX="-1.0" layoutY="-1.0" prefHeight="800.0" prefWidth="1280.0">
          <top>
             <GridPane alignment="CENTER" prefHeight="170.0" prefWidth="1280.0" style="-fx-background-color: #53c89b;" BorderPane.alignment="CENTER">
-              <columnConstraints>
-                <ColumnConstraints halignment="CENTER" maxWidth="492.0" minWidth="10.0" prefWidth="429.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="584.0" minWidth="10.0" prefWidth="506.0" />
-                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
+               <columnConstraints>
+                  <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               </rowConstraints>
                <children>
-                  <Label prefHeight="44.0" prefWidth="524.0" text="Bem Vindo(a) admin!" textFill="#fffafa">
+                  <Label text="Smart Clinical" textFill="WHITE">
                      <font>
                         <Font name="SansSerif Bold" size="38.0" />
                      </font>
-                     <GridPane.margin>
-                        <Insets left="30.0" />
-                     </GridPane.margin>
                   </Label>
-                  <Button fx:id="botaoBackPainel" mnemonicParsing="false" prefHeight="50.0" prefWidth="122.0" style="-fx-background-color: #F62447;" text="Painel" textFill="WHITE" GridPane.columnIndex="2">
+                  <Button fx:id="botaoLogout" mnemonicParsing="false" onAction="#fazerLogout" prefHeight="50.0" prefWidth="122.0" style="-fx-background-color: #F62447;" text="Logout" textFill="WHITE" GridPane.columnIndex="2">
                      <font>
                         <Font name="SansSerif Bold" size="20.0" />
                      </font>
@@ -42,46 +40,49 @@
                      </cursor>
                   </Button>
                </children>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
             </GridPane>
          </top>
          <center>
-            <GridPane BorderPane.alignment="CENTER">
-              <columnConstraints>
-                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-              </rowConstraints>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="button_cadastrarUsuario" layoutX="10.0" layoutY="225.0" mnemonicParsing="false" prefHeight="215.0" prefWidth="280.0" text="Cadastrar Usuários">
+                  <Button fx:id="button_cadastrarUsuario" mnemonicParsing="false" prefHeight="154.0" prefWidth="280.0" text="Cadastrar Usuários">
                      <font>
                         <Font size="18.0" />
                      </font>
-                     <GridPane.margin>
-                        <Insets bottom="60.0" />
-                     </GridPane.margin>
                   </Button>
-                  <Button fx:id="button_listarUsuario" layoutX="10.0" layoutY="225.0" mnemonicParsing="false" prefHeight="215.0" prefWidth="280.0" text="Listar Usuários" GridPane.columnIndex="1">
+                  <Button fx:id="button_listarUsuario" mnemonicParsing="false" prefHeight="155.0" prefWidth="280.0" text="Gerenciar Usuários">
                      <font>
                         <Font size="18.0" />
                      </font>
-                     <GridPane.margin>
-                        <Insets bottom="60.0" />
-                     </GridPane.margin>
                   </Button>
-                  <Button fx:id="button_relatorios" layoutX="544.0" layoutY="225.0" mnemonicParsing="false" prefHeight="215.0" prefWidth="280.0" text="Relatórios" GridPane.columnIndex="2">
+                  <Button fx:id="button_relatorios" mnemonicParsing="false" prefHeight="155.0" prefWidth="280.0" text="Relatórios">
                      <font>
                         <Font size="18.0" />
                      </font>
-                     <GridPane.margin>
-                        <Insets bottom="60.0" />
-                     </GridPane.margin>
                   </Button>
                </children>
-            </GridPane>
+               <padding>
+                  <Insets bottom="30.0" top="30.0" />
+               </padding>
+            </VBox>
          </center>
+         <left>
+            <AnchorPane prefHeight="630.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="botaoVoltarParaPainelPrincipal" layoutX="39.0" layoutY="27.0" mnemonicParsing="false" onAction="#voltarParaPainelPrincipal" prefHeight="53.0" prefWidth="122.0" text="Voltar">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </left>
+         <right>
+            <AnchorPane prefHeight="630.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+         </right>
       </BorderPane>
    </children>
 </AnchorPane>
