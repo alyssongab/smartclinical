@@ -118,11 +118,10 @@ public class AgendamentoController {
             alert.setContentText("Por favor, preencha todos os campos.");
             alert.showAndWait();
         } else {
-            // Verifique se o paciente selecionado existe no banco
             Consulta consulta = new Consulta(dataHora, pacienteSelecionado, medicoSelecionado);
             ConsultaDAO consultaDAO = new ConsultaDAO();
 
-            // Passando o ID do paciente e médico corretamente
+            // verifica se há paciente e medico, depois cria a consulta
             boolean sucesso = consultaDAO.criarConsulta(consulta);
 
             if(sucesso) {

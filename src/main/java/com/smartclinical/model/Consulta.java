@@ -20,6 +20,13 @@ public class Consulta {
         this.medico = medico;
     }
 
+    public Consulta(int idConsulta, String data, Paciente paciente, Medico medico) {
+        this.idConsulta = idConsulta;
+        this.data_hora = data;
+        this.paciente = paciente;
+        this.medico = medico;
+    }
+
     public int getIdConsulta() {
         return idConsulta;
     }
@@ -60,9 +67,18 @@ public class Consulta {
         this.observacao = observacao;
     }
 
+    // Métodos para acessar as propriedades dos objetos Paciente e Medico
+    public String getNomePaciente() {
+        return paciente != null ? paciente.getNome() : "Paciente não encontrado";
+    }
+
+    public String getNomeMedico() {
+        return medico != null ? medico.getNome() : "Médico não encontrado";
+    }
+
     public String toString() {
-        return "Nome do paciente: " + paciente.getNome() + '\n'
+        return "Nome do paciente: " + getNomePaciente() + '\n'
                 + "Data: " + data_hora + '\n'
-                + "Medico: " + medico + '\n';
+                + "Medico: " + getNomeMedico() + '\n';
     }
 }

@@ -140,7 +140,7 @@ public class LoginController {
         try (Connection conn = ConexaoBD.getConexao()) {
             PreparedStatement stmt = conn.prepareStatement(sql);
             stmt.setInt(1, idUsuario);
-            ResultSet rs = stmt.executeQuery(); 
+            ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
                 String crm = rs.getString("crm");
