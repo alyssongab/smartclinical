@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Optional;
 
-public class AdminController {
+public class PainelAdminController {
 
     @FXML
     private Button botaoLogout;
@@ -36,7 +36,7 @@ public class AdminController {
         button_listarUsuario.setOnAction(event -> {
             Main m = new Main();
             try {
-                m.abrirPainel("listaUsuarios.fxml", "Lista de Usuarios");
+                m.abrirPainel("painelListaUsuarios.fxml", "Lista de Usuarios");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

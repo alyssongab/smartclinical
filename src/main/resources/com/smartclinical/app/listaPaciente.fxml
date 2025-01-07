@@ -15,9 +15,9 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1278.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.smartclinical.controller.ListaPacienteController">
    <children>
-      <BorderPane layoutX="20.0" layoutY="20.0" prefHeight="800.0" prefWidth="1280.0">
+      <BorderPane prefHeight="820.0" prefWidth="1300.0">
          <top>
-            <GridPane alignment="CENTER" prefHeight="170.0" prefWidth="1280.0" style="-fx-background-color: #53c89b;" BorderPane.alignment="CENTER">
+            <GridPane alignment="CENTER" prefHeight="148.0" prefWidth="1280.0" style="-fx-background-color: #53c89b;" BorderPane.alignment="CENTER">
                <columnConstraints>
                   <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
@@ -72,12 +72,12 @@
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="pacienteTable" onMouseClicked="#rowClicked" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                  <TableView fx:id="pacienteTable" maxHeight="500.0" maxWidth="990.0" onMouseClicked="#rowClicked" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" GridPane.valignment="TOP">
                      <columns>
                         <TableColumn fx:id="pacienteId" prefWidth="75.0" text="Id" />
-                        <TableColumn fx:id="pacienteNome" prefWidth="75.0" text="Nome" />
-                        <TableColumn fx:id="pacienteCpf" prefWidth="75.0" text="CPF" />
-                        <TableColumn fx:id="pacienteDataNascimento" prefWidth="173.0" text="Data de nascimento" />
+                        <TableColumn fx:id="pacienteNome" prefWidth="310.0" text="Nome" />
+                        <TableColumn fx:id="pacienteCpf" prefWidth="320.0" text="CPF" />
+                        <TableColumn fx:id="pacienteDataNascimento" prefWidth="284.0" text="Data de nascimento" />
                      </columns>
                   </TableView>
                </children>

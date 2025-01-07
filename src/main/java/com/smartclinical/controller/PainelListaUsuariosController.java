@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Optional;
 
-public class ListaUsuariosController {
+public class PainelListaUsuariosController {
 
     @FXML
     private Button botaoLogout;

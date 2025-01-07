@@ -12,7 +12,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.smartclinical.controller.PainelPrincipalController">
     <top>
-        <GridPane alignment="CENTER" prefHeight="170.0" prefWidth="1280.0" style="-fx-background-color: #53c89b;" BorderPane.alignment="CENTER">
+        <GridPane alignment="CENTER" prefHeight="148.0" prefWidth="1280.0" style="-fx-background-color: #53c89b;" BorderPane.alignment="CENTER">
             <columnConstraints>
                 <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />

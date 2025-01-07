@@ -13,7 +13,7 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.smartclinical.controller.PainelCadastrosController">
     <children>
-        <BorderPane layoutX="10.0" layoutY="10.0" prefHeight="800.0" prefWidth="1280.0">
+        <BorderPane prefHeight="810.0" prefWidth="1290.0">
             <center>
                 <GridPane BorderPane.alignment="CENTER">
                     <columnConstraints>
@@ -32,7 +32,7 @@
                                 <Font size="18.0" />
                             </font>
                             <GridPane.margin>
-                                <Insets bottom="80.0" />
+                                <Insets bottom="110.0" />
                             </GridPane.margin>
                         </Button>
                         <Button fx:id="button_medico" layoutX="10.0" layoutY="135.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="220.0" text="Médicos" GridPane.columnIndex="1" GridPane.rowIndex="1">
@@ -40,7 +40,7 @@
                                 <Font size="18.0" />
                             </font>
                             <GridPane.margin>
-                                <Insets bottom="80.0" />
+                                <Insets bottom="110.0" />
                             </GridPane.margin>
                         </Button>
                         <Button fx:id="button_recepcionista" layoutX="10.0" layoutY="135.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="220.0" text="Recepcionistas" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
@@ -48,7 +48,7 @@
                                 <Font size="18.0" />
                             </font>
                             <GridPane.margin>
-                                <Insets bottom="80.0" />
+                                <Insets bottom="110.0" />
                             </GridPane.margin>
                         </Button>
                         <Button fx:id="button_paciente" layoutX="650.0" layoutY="218.0" mnemonicParsing="false" prefHeight="200.0" prefWidth="220.0" text="Pacientes" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
@@ -59,12 +59,12 @@
                                 <Insets bottom="80.0" right="8.0" />
                             </GridPane.margin>
                         </Button>
-                        <Label text="Cadastros" GridPane.halignment="LEFT">
+                        <Label text="Cadastros" GridPane.halignment="CENTER">
                             <font>
                                 <Font name="SansSerif Bold" size="36.0" />
                             </font>
                             <GridPane.margin>
-                                <Insets left="15.0" />
+                                <Insets />
                             </GridPane.margin>
                         </Label>
                     </children>
@@ -82,7 +82,7 @@
                 </AnchorPane>
             </left>
             <top>
-                <GridPane alignment="CENTER" prefHeight="170.0" prefWidth="1244.0" style="-fx-background-color: #53c89b;" BorderPane.alignment="CENTER">
+                <GridPane alignment="CENTER" prefHeight="148.0" prefWidth="1244.0" style="-fx-background-color: #53c89b;" BorderPane.alignment="CENTER">
                     <columnConstraints>
                         <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
