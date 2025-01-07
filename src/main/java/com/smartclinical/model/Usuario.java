@@ -10,6 +10,8 @@ public class Usuario {
     protected String telefone;
     protected TipoUser tipoUsuario;
 
+    public Usuario() {}
+
     public Usuario(String nome, String email, String senha, String telefone, TipoUser tipoUsuario) {
         this.nome = nome;
         this.email = email;

@@ -4,6 +4,7 @@ import com.smartclinical.app.Main;
 import com.smartclinical.dao.AdminDAO;
 import com.smartclinical.model.Admin;
 import com.smartclinical.model.Usuario;
+import com.smartclinical.util.TipoUser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -84,7 +85,8 @@ public class ListaAdminController {
         Button editButton = new Button("Editar");
         editButton.setStyle("-fx-max-height: 25px;-fx-min-width: 110px;-fx-background-color: #53c89b; -fx-text-fill: white;");
         editButton.setOnAction(event -> {
-
+            dialog.close();
+            showDialogEdit(idAdmin);
         });
 
         Button deleteButton = new Button("Excluir");
@@ -106,6 +108,61 @@ public class ListaAdminController {
 
         return gridPane;
     }
+
+
+
+    /*----------Dialog pane Editar usuário--------------*/
+
+
+    private void showDialogEdit(int idAdmin) {
+        Dialog<Void> dialog = new Dialog<>();
+        dialog.setTitle("Edição");
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
+        dialog.getDialogPane().setContent(editNode(idAdmin, dialog));
+        dialog.showAndWait();
+    }
+
+    private Node editNode(int id, Dialog<Void> dialog) {
+        dialog.close();
+        GridPane gridPane = new GridPane();
+        AdminDAO adminDao = new AdminDAO();
+
+        Admin admin = adminDao.getAdmin(id);
+
+        gridPane.setHgap(10);
+        gridPane.setVgap(10);
+
+        Label label = new Label("Editar administrador:");
+        label.setStyle("-fx-font-weight: bold; -fx-font-size: 16px;");
+        gridPane.add(label, 0, 0, 2, 1);
+
+        TextField adminNome = new TextField();
+        adminNome.setText(admin.getNome());
+        adminNome.setStyle("-fx-min-width: 250px");
+
+        TextField adminTelefone = new TextField();
+        adminTelefone.setText(admin.getTelefone());
+        adminTelefone.setStyle("-fx-min-width: 250px");
+
+        Button submitButton = new Button("Editar");
+        submitButton.setStyle("-fx-max-height: 25px;-fx-min-width: 110px;-fx-background-color: #53c89b; -fx-text-fill: white;");
+
+        submitButton.setOnAction(event -> {
+            String editAdminNome = adminNome.getText();
+            String editAdminTelefone = adminTelefone.getText();
+            Admin adminEdit = new Admin(id, editAdminNome,editAdminTelefone, TipoUser.ADMIN);
+            adminDao.editarAdmin(adminEdit);
+            mostrarAlerta("Edição","Edição concluída!");
+
+        });
+        gridPane.add(adminNome, 0, 1);
+        gridPane.add(adminTelefone,0,2);
+        gridPane.add(submitButton, 0, 4);
+
+        return gridPane;
+    }
+
+
 
     public void fazerLogout() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);

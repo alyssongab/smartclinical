@@ -68,6 +68,44 @@ public class AdminDAO {
         return admins;
     }
 
+    public Admin getAdmin(int idAdmin) {
+        String selecionar = "SELECT id, nome, telefone, tipoUser FROM admins WHERE id = ?";
+        Admin admin = null;
+
+        try (Connection con = ConexaoBD.getConexao()) {
+            if (con == null) {
+                throw new SQLException("Conexão com o banco de dados não foi estabelecida.");
+            }
+
+            PreparedStatement stmt = con.prepareStatement(selecionar);
+            stmt.setInt(1, idAdmin);
+
+            ResultSet rs = stmt.executeQuery();
+
+            System.out.println("SQL: " + stmt); // Mostra a consulta com parâmetros
+
+            if (rs.next()) {
+                String nome = rs.getString("nome");
+                String telefone = rs.getString("telefone");
+                String tipoUsuarioString = rs.getString("tipoUser");
+
+                // Convertendo o tipo de usuário para enum
+                TipoUser tipoUsuario = TipoUser.valueOf(tipoUsuarioString);
+
+                admin = new Admin(); // Instancia Admin somente se houver resultado
+                admin.setUserId(idAdmin);
+                admin.setNome(nome);
+                admin.setTelefone(telefone);
+                admin.setTipoUsuario(tipoUsuario); // Usa o valor do banco de dados
+            } else {
+                System.out.println("Nenhum administrador encontrado com o ID: " + idAdmin);
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao selecionar usuário: " + e.getMessage());
+        }
+
+        return admin;
+    }
         // Remover usuário
         public void removerUsuario(int id) throws SQLException {
             String remover = "DELETE FROM admins WHERE id = ?";
@@ -96,7 +134,7 @@ public class AdminDAO {
 
     // Editar usuário
     public void editarAdmin(Admin admin) {
-        String atualizar = "UPDATE admins SET nome = ?, senha = ?, telefone = ?, tipoUser = ? WHERE id = ?";
+        String atualizar = "UPDATE admins SET nome = ?, telefone = ?, tipoUser = ? WHERE id = ?";
 
         try (Connection con = ConexaoBD.getConexao()) {
             // Verifica se a conexão foi bem-sucedida
@@ -109,16 +147,15 @@ public class AdminDAO {
             try (PreparedStatement stmt = con.prepareStatement(atualizar)) {
                 // Definir os parâmetros da consulta SQL
                 stmt.setString(1, admin.getNome());
-                stmt.setString(2, admin.getSenha());
-                stmt.setString(3, admin.getTelefone());
+                stmt.setString(2, admin.getTelefone());
 
                 // Verifica se o tipo de usuário é válido (não nulo)
                 if (admin.getTipoUsuario() == null) {
                     System.out.println("Erro: O tipo de usuário não foi definido.");
                     return; // Impede a execução da query se o tipo de usuário for nulo
                 }
-                stmt.setString(4, admin.getTipoUsuario().name()); // Converte Enum para String
-                stmt.setInt(5, admin.getId());
+                stmt.setString(3, admin.getTipoUsuario().name()); // Converte Enum para String
+                stmt.setInt(4, admin.getId());
 
                 // Executa a atualização e verifica o número de linhas afetadas
                 int rowsUpdated = stmt.executeUpdate();
