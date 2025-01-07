@@ -6,6 +6,7 @@ import com.smartclinical.model.Admin;
 import com.smartclinical.model.Usuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -72,40 +73,42 @@ public class ListaAdminController {
 
     private Node createNode(int idAdmin, Dialog<Void> dialog) {
         GridPane gridPane = new GridPane();
-        AdminDAO adminDao = new AdminDAO();
+        gridPane.setHgap(10);
+        gridPane.setVgap(30);
+        gridPane.setPadding(new Insets(10, 10, 10, 10));
 
-        // Botão "Editar"
+        Label label = new Label("Escolha uma ação para o administrador:");
+        label.setStyle("-fx-font-weight: bold; -fx-font-size: 16px;");
+        gridPane.add(label, 0, 0, 2, 1);
+
         Button editButton = new Button("Editar");
+        editButton.setStyle("-fx-max-height: 25px;-fx-min-width: 110px;-fx-background-color: #53c89b; -fx-text-fill: white;");
         editButton.setOnAction(event -> {
             Main m = new Main();
             try {
                 m.abrirPainelEdit("editaAdmin.fxml", "Editar admin", idAdmin);
                 dialog.close();
-
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         });
 
-        // Botão "Excluir"
         Button deleteButton = new Button("Excluir");
+        deleteButton.setStyle("-fx-max-height: 25px;-fx-min-width: 110px;-fx-background-color: #f44336; -fx-text-fill: white;");
         deleteButton.setOnAction(event -> {
-
+            AdminDAO adminDao = new AdminDAO();
             try {
-                // Remover o usuário
                 adminDao.removerUsuario(idAdmin);
                 dialog.close();
                 mostrarAlerta("Excluir admin", "Excluir concluído!");
             } catch (SQLException e) {
-                // Tratar exceções, se necessário
                 System.err.println("Erro ao excluir o usuário: " + e.getMessage());
                 throw new RuntimeException(e);
             }
         });
 
-        // Adicionando os botões nas posições corretas do GridPane
-        gridPane.add(editButton, 0, 0); // Posição (0, 0) para Editar
-        gridPane.add(deleteButton, 0, 1); // Posição (0, 1) para Excluir
+        gridPane.add(editButton, 0, 1);
+        gridPane.add(deleteButton, 1, 1);
 
         return gridPane;
     }
