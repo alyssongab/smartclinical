@@ -3,7 +3,6 @@ package com.smartclinical.controller;
 import com.smartclinical.app.Main;
 import com.smartclinical.dao.AdminDAO;
 import com.smartclinical.model.Admin;
-import com.smartclinical.model.Usuario;
 import com.smartclinical.util.TipoUser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -66,13 +65,13 @@ public class ListaAdminController {
 
     private void showDialog(int id) {
         Dialog<Void> dialog = new Dialog<>();
-        dialog.setTitle("Admin options");
+        dialog.setTitle("Admin Options");
         dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
-        dialog.getDialogPane().setContent(createNode(id, dialog));  // Passa o dialog para a função createNode
+        dialog.getDialogPane().setContent(createNode(id));
         dialog.showAndWait();
     }
 
-    private Node createNode(int idAdmin, Dialog<Void> dialog) {
+    private Node createNode(int idAdmin) {
         GridPane gridPane = new GridPane();
         gridPane.setHgap(10);
         gridPane.setVgap(30);
@@ -83,23 +82,21 @@ public class ListaAdminController {
         gridPane.add(label, 0, 0, 2, 1);
 
         Button editButton = new Button("Editar");
-        editButton.setStyle("-fx-max-height: 25px;-fx-min-width: 110px;-fx-background-color: #53c89b; -fx-text-fill: white;");
+        editButton.setStyle("-fx-max-height: 25px; -fx-min-width: 110px; -fx-background-color: #53c89b; -fx-text-fill: white;");
         editButton.setOnAction(event -> {
-            dialog.close();
-            showDialogEdit(idAdmin);
+            showDialogEdit(idAdmin);  // Abre o diálogo de edição
         });
 
         Button deleteButton = new Button("Excluir");
-        deleteButton.setStyle("-fx-max-height: 25px;-fx-min-width: 110px;-fx-background-color: #f44336; -fx-text-fill: white;");
+        deleteButton.setStyle("-fx-max-height: 25px; -fx-min-width: 110px; -fx-background-color: #f44336; -fx-text-fill: white;");
         deleteButton.setOnAction(event -> {
             AdminDAO adminDao = new AdminDAO();
             try {
                 adminDao.removerUsuario(idAdmin);
-                dialog.close();
+                ((Stage) gridPane.getScene().getWindow()).close();
                 mostrarAlerta("Excluir admin", "Excluir concluído!");
             } catch (SQLException e) {
                 System.err.println("Erro ao excluir o usuário: " + e.getMessage());
-                throw new RuntimeException(e);
             }
         });
 
@@ -116,49 +113,48 @@ public class ListaAdminController {
 
     private void showDialogEdit(int idAdmin) {
         Dialog<Void> dialog = new Dialog<>();
-        dialog.setTitle("Edição");
+        dialog.setTitle("Editar Administrador");
         dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
-        dialog.getDialogPane().setContent(editNode(idAdmin, dialog));
+        dialog.getDialogPane().setContent(createEditNode(idAdmin));
         dialog.showAndWait();
     }
 
-    private Node editNode(int id, Dialog<Void> dialog) {
-        dialog.close();
+    private Node createEditNode(int idAdmin) {
         GridPane gridPane = new GridPane();
-        AdminDAO adminDao = new AdminDAO();
-
-        Admin admin = adminDao.getAdmin(id);
-
         gridPane.setHgap(10);
         gridPane.setVgap(10);
+        gridPane.setPadding(new Insets(10));
 
-        Label label = new Label("Editar administrador:");
+        AdminDAO adminDao = new AdminDAO();
+        Admin admin = adminDao.getAdmin(idAdmin);
+
+        Label label = new Label("Escolha uma ação para o administrador:");
         label.setStyle("-fx-font-weight: bold; -fx-font-size: 16px;");
-        gridPane.add(label, 0, 0, 2, 1);
 
-        TextField adminNome = new TextField();
-        adminNome.setText(admin.getNome());
-        adminNome.setStyle("-fx-min-width: 250px");
+        Label labelNome = new Label("Nome:");
+        TextField adminNome = new TextField(admin.getNome());
+        adminNome.setStyle("-fx-min-width: 200px");
 
-        TextField adminTelefone = new TextField();
-        adminTelefone.setText(admin.getTelefone());
-        adminTelefone.setStyle("-fx-min-width: 250px");
+        Label labelTelefone = new Label("Telefone:");
+        TextField adminTelefone = new TextField(admin.getTelefone());
+        adminTelefone.setStyle("-fx-min-width: 200px");
 
-        Button submitButton = new Button("Editar");
-        submitButton.setStyle("-fx-max-height: 25px;-fx-min-width: 110px;-fx-background-color: #53c89b; -fx-text-fill: white;");
-
-        submitButton.setOnAction(event -> {
-            String editAdminNome = adminNome.getText();
-            String editAdminTelefone = adminTelefone.getText();
-            Admin adminEdit = new Admin(id, editAdminNome,editAdminTelefone, TipoUser.ADMIN);
-            adminDao.editarAdmin(adminEdit);
-            mostrarAlerta("Edição","Edição concluída!");
-
+        Button saveButton = new Button("Salvar");
+        saveButton.setStyle("-fx-max-height: 25px; -fx-min-width: 110px; -fx-background-color: #53c89b; -fx-text-fill: white;");
+        saveButton.setOnAction(event -> {
+            String nome = adminNome.getText();
+            String telefone = adminTelefone.getText();
+            adminDao.editarAdmin(new Admin(idAdmin, nome, telefone, TipoUser.ADMIN));
+            mostrarAlerta("Edição", "Admin editado com sucesso!");
+            ((Stage) gridPane.getScene().getWindow()).close();
         });
-        gridPane.add(adminNome, 0, 1);
-        gridPane.add(adminTelefone,0,2);
-        gridPane.add(submitButton, 0, 4);
-
+        
+        gridPane.add(label, 0, 0, 2, 1);
+        gridPane.add(labelNome, 0, 2);
+        gridPane.add(adminNome, 0, 3);
+        gridPane.add(labelTelefone, 0, 4);
+        gridPane.add(adminTelefone, 0, 5);
+        gridPane.add(saveButton, 0, 7);
         return gridPane;
     }
 
