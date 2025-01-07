@@ -104,7 +104,7 @@ public class CadastroRecepcionistaController {
     public void voltarParaPainelPrincipal(ActionEvent actionEvent) {
         try{
             Main main = new Main();
-            main.abrirPainel("painelPrincipal.fxml", "Painel Principal");
+            main.abrirPainel("painelCadastros.fxml", "Painel Cadastros");
         }
         catch(IOException e){
             throw new RuntimeException();
@@ -112,7 +112,7 @@ public class CadastroRecepcionistaController {
     }
 
     private void mostrarAlerta(String title, String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);

@@ -60,7 +60,7 @@ public class PainelPrincipalController {
         botaoPainelAdmin.setOnAction(event -> {
             try {
                 Main m = new Main();
-                m.abrirPainel("admin.fxml", "Painel de Admin");
+                m.abrirPainel("painelAdmin.fxml", "Painel de Admin");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }

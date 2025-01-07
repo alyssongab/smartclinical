@@ -9,7 +9,7 @@ public class RelatoriosController {
     public void voltarParaPainelPrincipal(ActionEvent actionEvent) {
         try{
             Main main = new Main();
-            main.abrirPainel("painelPrincipal.fxml", "Painel Principal");
+            main.abrirPainel("painelAdmin.fxml", "Painel Admin");
         }
         catch(IOException e){
             throw new RuntimeException();

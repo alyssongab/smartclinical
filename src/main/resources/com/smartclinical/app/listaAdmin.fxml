@@ -15,9 +15,9 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.smartclinical.controller.ListaAdminController">
    <children>
-      <BorderPane layoutX="10.0" layoutY="10.0" prefHeight="800.0" prefWidth="1280.0">
+      <BorderPane layoutX="-11.0" prefHeight="810.0" prefWidth="1301.0">
          <top>
-            <GridPane alignment="CENTER" prefHeight="170.0" prefWidth="1280.0" style="-fx-background-color: #53c89b;" BorderPane.alignment="CENTER">
+            <GridPane alignment="CENTER" maxHeight="148.0" maxWidth="1280.0" prefHeight="148.0" prefWidth="1280.0" style="-fx-background-color: #53c89b;" BorderPane.alignment="CENTER">
                <columnConstraints>
                   <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
@@ -74,11 +74,10 @@
                   </Label>
                   <TableView fx:id="adminTable" maxHeight="500.0" maxWidth="991.0" onMouseClicked="#rowClicked" prefHeight="500.0" prefWidth="991.0" GridPane.rowIndex="1">
                     <columns>
-                        <TableColumn fx:id="adminId" prefWidth="154.0" text="Id" />
-                      <TableColumn fx:id="adminNome" prefWidth="303.0" text="Nome" />
-                        <TableColumn fx:id="adminTelefone" prefWidth="153.0" text="Telefone" />
-                        <TableColumn fx:id="adminCargo" prefWidth="164.0" text="Cargo" />
-                        <TableColumn prefWidth="216.0" text="Editar" />
+                        <TableColumn fx:id="adminId" prefWidth="118.0" text="Id" />
+                      <TableColumn fx:id="adminNome" prefWidth="348.0" text="Nome" />
+                        <TableColumn fx:id="adminTelefone" prefWidth="312.0" text="Telefone" />
+                        <TableColumn fx:id="adminCargo" prefWidth="212.0" text="Cargo" />
                     </columns>
                   </TableView>
                </children>

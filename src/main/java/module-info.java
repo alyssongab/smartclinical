@@ -3,6 +3,7 @@ module com.smartclinical.app {
     requires javafx.fxml;
     requires java.sql;
     requires mysql.connector.j;
+    requires java.desktop;
 
     opens com.smartclinical.app to javafx.fxml;
     exports com.smartclinical.app;
