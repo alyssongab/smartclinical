@@ -23,6 +23,14 @@ public class Recepcionista extends Usuario {
         pacienteDAO.cadastrarPaciente(paciente);
     }
 
+    public String getTurno() {
+        return turno;
+    }
+
+    public void setTurno(String turno) {
+        this.turno = turno;
+    }
+
     public String toString(){
         return this.getNome();
     }

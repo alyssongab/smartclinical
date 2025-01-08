@@ -103,5 +103,4 @@ select * from pacientes;
 SHOW INDEXES FROM pacientes;
 
 describe pacientes;
-
-
+describe medicos;

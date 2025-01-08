@@ -1,21 +1,21 @@
 package com.smartclinical.dao;
 
+import com.smartclinical.model.Admin;
+import com.smartclinical.model.Medico;
+import com.smartclinical.model.Recepcionista;
 import com.smartclinical.model.Usuario;
 import com.smartclinical.util.ConexaoBD;
 import com.smartclinical.util.TipoUser;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UsuarioDAO {
 
-    //Inserir usuário
-    public void inserirUsuario(Usuario usuario){
-        String inserir = "INSERT INTO usuario (nome, email, senha, telefone, tipoUser) VALUES(?,?,?,?.?)";
+    //Inserir Admin
+    public void inserirAdmin(Usuario usuario) {
+        String inserir = "INSERT INTO usuario (nome, email, senha, telefone, tipoUser) VALUES(?,?,?,?,?)";
 
         // try with resource para conectar com o banco
         try(Connection con = ConexaoBD.getConexao()) {
@@ -33,7 +33,98 @@ public class UsuarioDAO {
 
         }
         catch (SQLException e) {
-            System.out.println("Erro ao inserir usuario: " + e.getMessage());
+            System.out.println("Erro ao inserir Admin: " + e.getMessage());
+        }
+    }
+
+    // Inserir medico
+    public void inserirMedico(Medico medico) {
+        String inserirUsuario = "INSERT INTO usuario (nome, email, senha, telefone, tipoUser) VALUES(?,?,?,?,?)";
+        String inserirMedico = "INSERT INTO medicos (id_medico, crm, especialidade) VALUES (?,?,?)";
+
+        try(Connection conn = ConexaoBD.getConexao()){
+            assert conn != null;
+            conn.setAutoCommit(false);
+
+            // primeiro insere na tabela usuario
+            try(PreparedStatement stmt = conn.prepareStatement(inserirUsuario, Statement.RETURN_GENERATED_KEYS)) {
+                stmt.setString(1, medico.getNome());
+                stmt.setString(2, medico.getEmail());
+                stmt.setString(3, medico.getSenha());
+                stmt.setString(4, medico.getTelefone());
+                stmt.setString(5, medico.getTipoUsuario().name());
+
+                stmt.executeUpdate();
+
+                // pega o ID gerado para o usuario acima
+                ResultSet rs = stmt.getGeneratedKeys();
+                if (rs.next()) {
+                    int usuarioId = rs.getInt(1);
+
+                    // insere na tabela medico
+                    try(PreparedStatement stmtMedico = conn.prepareStatement(inserirMedico)) {
+                        stmtMedico.setInt(1, usuarioId);
+                        stmtMedico.setString(2, medico.getCrm());
+                        stmtMedico.setString(3, medico.getEspecialidade());
+
+                        stmtMedico.executeUpdate();
+                        System.out.println("SQL " + inserirMedico);
+                    }
+                }
+                conn.commit(); // confirmar a transação
+            }
+            catch (SQLException e) {
+                conn.rollback();
+                throw e;
+            }
+        }
+        catch (SQLException e) {
+            System.out.println("Erro ao inserir medico: " + e.getMessage());
+        }
+    }
+
+    // inserir Recepcionista
+    public void inserirRecepcionista(Recepcionista recepcionista) {
+        String inserirUsuario = "INSERT INTO usuario (nome, email, senha, telefone, tipoUser) VALUES(?,?,?,?,?)";
+        String inserirRecepcionista = "INSERT INTO recepcionistas (turno) VALUES (?)";
+
+        try(Connection conn = ConexaoBD.getConexao()){
+            assert conn != null;
+            conn.setAutoCommit(false);
+
+            // primeiro insere na tabela usuario
+            try(PreparedStatement stmt = conn.prepareStatement(inserirUsuario, Statement.RETURN_GENERATED_KEYS)) {
+                stmt.setString(1, recepcionista.getNome());
+                stmt.setString(2, recepcionista.getEmail());
+                stmt.setString(3, recepcionista.getSenha());
+                stmt.setString(4, recepcionista.getTelefone());
+                stmt.setString(5, recepcionista.getTipoUsuario().name());
+
+                stmt.executeUpdate();
+
+                // pega o ID gerado para o usuario acima
+                ResultSet rs = stmt.getGeneratedKeys();
+                if (rs.next()) {
+                    int usuarioId = rs.getInt(1);
+
+                    // insere na tabela medico
+                    try(PreparedStatement stmtMedico = conn.prepareStatement(inserirRecepcionista)) {
+                        stmtMedico.setInt(1, usuarioId);
+                        stmtMedico.setString(2, recepcionista.getTurno());
+
+                        stmtMedico.executeUpdate();
+                        System.out.println("SQL " + inserirRecepcionista);
+                    }
+                }
+                conn.commit(); // confirmar a transação
+            }
+            catch (SQLException e) {
+                conn.rollback();
+                throw e;
+            }
+        }
+        catch (SQLException e) {
+            System.out.println("Erro ao inserir Recepcionista: " + e.getMessage());
         }
     }
 
