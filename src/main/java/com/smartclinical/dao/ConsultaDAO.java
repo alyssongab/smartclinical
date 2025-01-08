@@ -191,5 +191,29 @@ public class ConsultaDAO {
         }
     }
 
+    // Remover consultas associadas a um usuário
+    public void removerConsultasPorUsuario(int usuarioId) {
+        String removerConsultas = "DELETE FROM consultas WHERE medico_id = ?";
+
+        try (Connection con = ConexaoBD.getConexao()) {
+            assert con != null;
+            PreparedStatement stmt = con.prepareStatement(removerConsultas);
+
+            // Configurar o parâmetro do usuário
+            stmt.setInt(1, usuarioId);
+
+            // Executar a remoção
+            int linhasAfetadas = stmt.executeUpdate();
+            System.out.println("SQL: " + removerConsultas);
+
+            if (linhasAfetadas > 0) {
+                System.out.println("Consultas removidas com sucesso.");
+            } else {
+                System.out.println("Nenhuma consulta encontrada para o usuário com ID: " + usuarioId);
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao remover consultas do usuário: " + e.getMessage());
+        }
+    }
 
 }

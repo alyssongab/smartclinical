@@ -63,7 +63,7 @@ CREATE TABLE `consultas` (
   KEY `medico_id` (`medico_id`),
   CONSTRAINT `consultas_ibfk_1` FOREIGN KEY (`paciente_id`) REFERENCES `pacientes` (`id_paciente`),
   CONSTRAINT `consultas_ibfk_2` FOREIGN KEY (`medico_id`) REFERENCES `medicos` (`id_medico`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -72,7 +72,7 @@ CREATE TABLE `consultas` (
 
 LOCK TABLES `consultas` WRITE;
 /*!40000 ALTER TABLE `consultas` DISABLE KEYS */;
-INSERT INTO `consultas` VALUES (8,'09/02/2025 09:15',1,3,NULL),(9,'20/01/2025 09:00',3,3,NULL);
+INSERT INTO `consultas` VALUES (9,'20/01/2025 09:00',3,3,NULL),(10,'18/01/2025 08:00',1,5,NULL);
 /*!40000 ALTER TABLE `consultas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -88,7 +88,7 @@ CREATE TABLE `medicos` (
   `crm` varchar(20) DEFAULT NULL,
   `especialidade` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id_medico`),
-  CONSTRAINT `medicos_ibfk_1` FOREIGN KEY (`id_medico`) REFERENCES `usuario` (`id`)
+  CONSTRAINT `medicos_ibfk_1` FOREIGN KEY (`id_medico`) REFERENCES `usuario` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -117,7 +117,7 @@ CREATE TABLE `pacientes` (
   PRIMARY KEY (`id_paciente`),
   UNIQUE KEY `cpf` (`cpf`),
   UNIQUE KEY `cpf_2` (`cpf`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -126,7 +126,7 @@ CREATE TABLE `pacientes` (
 
 LOCK TABLES `pacientes` WRITE;
 /*!40000 ALTER TABLE `pacientes` DISABLE KEYS */;
-INSERT INTO `pacientes` VALUES (1,'Neymar',12398754311,'20/02/1992'),(3,'Ronaldo',123817,'19/08/1980');
+INSERT INTO `pacientes` VALUES (1,'Neymar',12398754311,'20/02/1992'),(3,'Ronaldo',123817,'19/08/1980'),(4,'Eren',20132022,'09/01/1999');
 /*!40000 ALTER TABLE `pacientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -141,7 +141,7 @@ CREATE TABLE `recepcionistas` (
   `id_recepcionista` int NOT NULL,
   `turno` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id_recepcionista`),
-  CONSTRAINT `recepcionistas_ibfk_1` FOREIGN KEY (`id_recepcionista`) REFERENCES `usuario` (`id`)
+  CONSTRAINT `recepcionistas_ibfk_1` FOREIGN KEY (`id_recepcionista`) REFERENCES `usuario` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -151,7 +151,7 @@ CREATE TABLE `recepcionistas` (
 
 LOCK TABLES `recepcionistas` WRITE;
 /*!40000 ALTER TABLE `recepcionistas` DISABLE KEYS */;
-INSERT INTO `recepcionistas` VALUES (2,'tarde'),(7,'');
+INSERT INTO `recepcionistas` VALUES (2,'tarde'),(9,'Noturno');
 /*!40000 ALTER TABLE `recepcionistas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,7 +171,7 @@ CREATE TABLE `usuario` (
   `tipoUser` enum('ADMIN','MEDICO','RECEPCIONISTA') NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -180,7 +180,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'Bob','bob@gmail.com','admin123','92998877','ADMIN'),(2,'Messi','lm10@gmail.com','barca','22 151109','RECEPCIONISTA'),(3,'Daniel','dan@gmail.com','dan123','9298016','MEDICO'),(4,'Admin','admin@super','goat','9312318','ADMIN'),(5,'Mario','mario@bros','luigi','172316','MEDICO'),(7,'Luigi','lg@gmail','4341','9876','RECEPCIONISTA');
+INSERT INTO `usuario` VALUES (1,'Bob','bob@gmail.com','admin123','92998877','ADMIN'),(2,'Messi','lm10@gmail.com','barca','22 151109','RECEPCIONISTA'),(3,'Daniel','dan@gmail.com','dan123','9298016','MEDICO'),(4,'Admin','admin@super','goat','9312318','ADMIN'),(5,'Mario','mario@bros','luigi','172316','MEDICO'),(9,'Ragnar','rgn@viking','lagertha','8002024','RECEPCIONISTA');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -193,4 +193,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-01-08  3:41:48
+-- Dump completed on 2025-01-08  4:50:52

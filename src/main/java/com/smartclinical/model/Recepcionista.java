@@ -1,5 +1,6 @@
 package com.smartclinical.model;
 
+import com.smartclinical.dao.ConsultaDAO;
 import com.smartclinical.dao.PacienteDAO;
 import com.smartclinical.util.TipoUser;
 

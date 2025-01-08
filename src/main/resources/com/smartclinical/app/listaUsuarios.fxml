@@ -70,6 +70,24 @@
       </AnchorPane>
    </left>
    <right>
-      <AnchorPane prefHeight="630.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="630.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="botaoEditar" layoutX="39.0" layoutY="36.0" mnemonicParsing="false" onAction="#editarUsuario" prefHeight="53.0" prefWidth="122.0" style="-fx-background-color: green;" text="Editar" textFill="WHITE">
+               <font>
+                  <Font name="Montserrat Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="botaoRemover" layoutX="39.0" layoutY="107.0" mnemonicParsing="false" onAction="#removerUsuario" prefHeight="53.0" prefWidth="122.0" style="-fx-background-color: red;" text="Remover" textFill="WHITE">
+               <font>
+                  <Font name="Montserrat Bold" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children></AnchorPane>
    </right>
 </BorderPane>

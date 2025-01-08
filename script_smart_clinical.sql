@@ -106,3 +106,21 @@ describe pacientes;
 describe medicos;
 select * from medicos;
 select * from recepcionistas;
+
+ALTER TABLE medicos
+DROP FOREIGN KEY medicos_ibfk_1;  -- Nome da chave estrangeira
+
+ALTER TABLE medicos
+ADD CONSTRAINT medicos_ibfk_1
+    FOREIGN KEY (id_medico) REFERENCES usuario(id)
+    ON DELETE CASCADE;
+    
+SHOW CREATE TABLE recepcionistas;
+
+ALTER TABLE recepcionistas
+DROP FOREIGN KEY recepcionistas_ibfk_1;
+
+ALTER TABLE recepcionistas
+ADD CONSTRAINT recepcionistas_ibfk_1  -- O mesmo nome da chave estrangeira original
+    FOREIGN KEY (id_recepcionista) REFERENCES usuario(id)
+    ON DELETE CASCADE;  -- Define exclusão em cascata

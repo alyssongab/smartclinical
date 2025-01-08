@@ -149,7 +149,7 @@ public class UsuarioDAO {
                 // convertendo o tipo de usuario para enum
                 TipoUser tipoUsuario = TipoUser.valueOf(tipoUsuarioString);
 
-                Usuario usuario = new Usuario(id, nome, telefone, tipoUsuario);
+                Usuario usuario = new Usuario(id, nome, email, telefone, tipoUsuario);
                 usuarios.add(usuario);
             }
 
@@ -186,8 +186,32 @@ public class UsuarioDAO {
 
     // Editar usuário
     public void editarUsuario(Usuario usuario) {
+        String atualizar = "UPDATE usuario SET nome = ?, email = ?, telefone = ? WHERE id = ?";
 
+        try (Connection conn = ConexaoBD.getConexao()) {
+            assert conn != null;
+            PreparedStatement stmt = conn.prepareStatement(atualizar);
+
+            // Configurar os parâmetros da instrução SQL
+            stmt.setString(1, usuario.getNome());
+            stmt.setString(2, usuario.getEmail());
+            stmt.setString(3, usuario.getTelefone());
+            stmt.setInt(4, usuario.getId());
+
+            // Executar a atualização
+            int linhasAfetadas = stmt.executeUpdate();
+            System.out.println("SQL: " + atualizar);
+
+            if (linhasAfetadas > 0) {
+                System.out.println("Usuário atualizado com sucesso.");
+            } else {
+                System.out.println("Nenhuma linha foi alterada. Verifique se o ID do usuário é válido.");
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao editar usuário: " + e.getMessage());
+        }
     }
+
 
     // busca por um email cadastrado
     public Usuario buscarUsuarioPorEmail(String email) {
