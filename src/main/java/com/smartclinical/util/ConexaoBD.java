@@ -12,7 +12,7 @@ public class ConexaoBD {
     // static para não precisa instanciar
     public static Connection getConexao() {
         Properties props = new Properties();
-        try(FileInputStream arquivo = new FileInputStream("C:\\Users\\mathe\\Desktop\\POO-IFAM\\Smart clinical\\smartclinical\\src\\main\\java\\com\\smartclinical\\util\\db.properties")){
+        try(FileInputStream arquivo = new FileInputStream("db.properties")){
             // resgata informações do SEU banco de dados, através do arquivo db.properties
             props.load(arquivo);
 
