@@ -31,7 +31,7 @@
                         <Font name="SansSerif Bold" size="38.0" />
                      </font>
                   </Label>
-                  <Button fx:id="botaoLogout" mnemonicParsing="false" onAction="#fazerLogout" prefHeight="50.0" prefWidth="122.0" style="-fx-background-color: #F62447;" text="Logout" textFill="WHITE" GridPane.columnIndex="2">
+                  <Button fx:id="botaoLogout" mnemonicParsing="false" onAction="#fazerLogout" prefHeight="50.0" prefWidth="122.0" style="-fx-background-color: #ffdb58;" text="Logout" textFill="#000000b3" GridPane.columnIndex="2">
                      <font>
                         <Font name="SansSerif Bold" size="20.0" />
                      </font>
@@ -48,17 +48,17 @@
          <center>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="30.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="button_cadastrarUsuario" mnemonicParsing="false" prefHeight="154.0" prefWidth="280.0" text="Cadastrar Usuários">
+                  <Button fx:id="button_cadastrarUsuario" mnemonicParsing="false" prefHeight="125.0" prefWidth="280.0" text="Cadastrar Usuários">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="button_listarUsuario" mnemonicParsing="false" prefHeight="155.0" prefWidth="280.0" text="Gerenciar Usuários">
+                  <Button fx:id="button_listarUsuario" mnemonicParsing="false" prefHeight="126.0" prefWidth="280.0" text="Gerenciar Usuários">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Button>
-                  <Button fx:id="button_relatorios" mnemonicParsing="false" prefHeight="155.0" prefWidth="280.0" text="Relatórios">
+                  <Button fx:id="button_relatorios" mnemonicParsing="false" prefHeight="125.0" prefWidth="280.0" text="Relatórios">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -67,6 +67,9 @@
                <padding>
                   <Insets bottom="30.0" top="30.0" />
                </padding>
+               <BorderPane.margin>
+                  <Insets bottom="20.0" />
+               </BorderPane.margin>
             </VBox>
          </center>
          <left>

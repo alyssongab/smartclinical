@@ -33,7 +33,7 @@
                         <Font name="SansSerif Bold" size="38.0" />
                      </font>
                   </Label>
-                  <Button fx:id="botaoLogout" mnemonicParsing="false" prefHeight="50.0" prefWidth="122.0" style="-fx-background-color: #F62447;" text="Logout" textFill="WHITE" GridPane.columnIndex="2">
+                  <Button fx:id="botaoLogout" mnemonicParsing="false" prefHeight="50.0" prefWidth="122.0" style="-fx-background-color: #ffdb58;" text="Logout" GridPane.columnIndex="2">
                      <font>
                         <Font name="SansSerif Bold" size="20.0" />
                      </font>

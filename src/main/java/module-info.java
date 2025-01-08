@@ -12,4 +12,7 @@ module com.smartclinical.app {
 
     exports com.smartclinical.model;
     opens com.smartclinical.model to javafx.base;
+
+    exports com.smartclinical.util;
+    opens com.smartclinical.util to javafx.base;
 }

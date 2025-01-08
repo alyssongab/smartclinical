@@ -86,7 +86,7 @@ public class UsuarioDAO {
     // inserir Recepcionista
     public void inserirRecepcionista(Recepcionista recepcionista) {
         String inserirUsuario = "INSERT INTO usuario (nome, email, senha, telefone, tipoUser) VALUES(?,?,?,?,?)";
-        String inserirRecepcionista = "INSERT INTO recepcionistas (turno) VALUES (?)";
+        String inserirRecepcionista = "INSERT INTO recepcionistas (id_recepcionista, turno) VALUES (?,?)";
 
         try(Connection conn = ConexaoBD.getConexao()){
             assert conn != null;
@@ -108,11 +108,11 @@ public class UsuarioDAO {
                     int usuarioId = rs.getInt(1);
 
                     // insere na tabela medico
-                    try(PreparedStatement stmtMedico = conn.prepareStatement(inserirRecepcionista)) {
-                        stmtMedico.setInt(1, usuarioId);
-                        stmtMedico.setString(2, recepcionista.getTurno());
+                    try(PreparedStatement stmtRecepcionista = conn.prepareStatement(inserirRecepcionista)) {
+                        stmtRecepcionista.setInt(1, usuarioId);
+                        stmtRecepcionista.setString(2, recepcionista.getTurno());
 
-                        stmtMedico.executeUpdate();
+                        stmtRecepcionista.executeUpdate();
                         System.out.println("SQL " + inserirRecepcionista);
                     }
                 }
@@ -130,7 +130,7 @@ public class UsuarioDAO {
 
     // listar usuários
     public List<Usuario> listarUsuario() {
-        String listar = "SELECT id, nome, telefone, tipoUser FROM usuario";
+        String listar = "SELECT id, nome, email, telefone, tipoUser FROM usuario";
         List<Usuario> usuarios = new ArrayList<>();
 
         try(Connection con = ConexaoBD.getConexao()){
@@ -143,6 +143,7 @@ public class UsuarioDAO {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String nome = rs.getString("nome");
+                String email = rs.getString("email");
                 String telefone = rs.getString("telefone");
                 String tipoUsuarioString = rs.getString("tipoUser");
                 // convertendo o tipo de usuario para enum
