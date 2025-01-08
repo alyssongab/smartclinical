@@ -72,7 +72,7 @@ CREATE TABLE `consultas` (
 
 LOCK TABLES `consultas` WRITE;
 /*!40000 ALTER TABLE `consultas` DISABLE KEYS */;
-INSERT INTO `consultas` VALUES (6,'2025',1,3,NULL),(7,'18/01/2025 10:00',2,3,NULL),(8,'09/02/2025 09:15',1,3,NULL),(9,'20/01/2025 09:00',3,3,NULL);
+INSERT INTO `consultas` VALUES (8,'09/02/2025 09:15',1,3,NULL),(9,'20/01/2025 09:00',3,3,NULL);
 /*!40000 ALTER TABLE `consultas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -98,7 +98,7 @@ CREATE TABLE `medicos` (
 
 LOCK TABLES `medicos` WRITE;
 /*!40000 ALTER TABLE `medicos` DISABLE KEYS */;
-INSERT INTO `medicos` VALUES (3,'203040','Ortopedista');
+INSERT INTO `medicos` VALUES (3,'203040','Ortopedista'),(5,'080910','Cardiologista');
 /*!40000 ALTER TABLE `medicos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -126,7 +126,7 @@ CREATE TABLE `pacientes` (
 
 LOCK TABLES `pacientes` WRITE;
 /*!40000 ALTER TABLE `pacientes` DISABLE KEYS */;
-INSERT INTO `pacientes` VALUES (1,'Neymar',12398754311,'20/02/1992'),(2,'Cris',98123,'20/10/2002'),(3,'Ronaldo',123817,'19/08/1980');
+INSERT INTO `pacientes` VALUES (1,'Neymar',12398754311,'20/02/1992'),(3,'Ronaldo',123817,'19/08/1980');
 /*!40000 ALTER TABLE `pacientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -151,7 +151,7 @@ CREATE TABLE `recepcionistas` (
 
 LOCK TABLES `recepcionistas` WRITE;
 /*!40000 ALTER TABLE `recepcionistas` DISABLE KEYS */;
-INSERT INTO `recepcionistas` VALUES (2,'tarde');
+INSERT INTO `recepcionistas` VALUES (2,'tarde'),(7,'');
 /*!40000 ALTER TABLE `recepcionistas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,7 +171,7 @@ CREATE TABLE `usuario` (
   `tipoUser` enum('ADMIN','MEDICO','RECEPCIONISTA') NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -180,7 +180,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'Bob','bob@gmail.com','admin123','92998877','ADMIN'),(2,'Messi','lm10@gmail.com','barca','22 151109','RECEPCIONISTA'),(3,'Daniel','dan@gmail.com','dandan','9298016','MEDICO');
+INSERT INTO `usuario` VALUES (1,'Bob','bob@gmail.com','admin123','92998877','ADMIN'),(2,'Messi','lm10@gmail.com','barca','22 151109','RECEPCIONISTA'),(3,'Daniel','dan@gmail.com','dandan','9298016','MEDICO'),(4,'Admin','admin@super','goat','9312318','ADMIN'),(5,'Mario','mario@bros','luigi','172316','MEDICO'),(7,'Luigi','lg@gmail','4341','9876','RECEPCIONISTA');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -193,4 +193,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-01-07  5:05:47
+-- Dump completed on 2025-01-08  1:03:08

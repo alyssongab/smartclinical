@@ -18,9 +18,6 @@ public class PainelAgendamentoController {
     @FXML
     private Button botaoAgendarConsulta;
 
-    @FXML
-    private Button botaoCancelarConsulta;
-
     /**
      * ****** LOGOUT APENAS ***************
      */
@@ -65,11 +62,10 @@ public class PainelAgendamentoController {
         }
     }
 
-    // vai para tela de cancelar consulta
-    public void comecarCancelamento(){
+    public void listarParaCancelar(){
         try{
             Main m = new Main();
-            m.abrirPainel("cancelamentoConsulta.fxml", "Cancelamento");
+            m.abrirPainel("cancelamentoConsulta.fxml", "Cancelar Consulta");
         }
         catch (IOException e) {
             throw new RuntimeException(e);

@@ -46,7 +46,7 @@
     <center>
         <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0" BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="botaoAgendarConsulta" mnemonicParsing="false" onAction="#comecarAgendamento" prefHeight="121.0" prefWidth="320.0" text="Agendar Consulta">
+                <Button fx:id="botaoAgendarConsulta" mnemonicParsing="false" onAction="#comecarAgendamento" prefHeight="144.0" prefWidth="383.0" text="Novo Agendamento">
                     <font>
                         <Font size="28.0" />
                     </font>
@@ -54,14 +54,14 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
-                <Button fx:id="botaoCancelarConsulta" mnemonicParsing="false" onAction="#comecarCancelamento" prefHeight="120.0" prefWidth="320.0" text="Cancelar Consulta">
-                    <font>
-                        <Font size="28.0" />
-                    </font>
-                    <cursor>
-                        <Cursor fx:constant="HAND" />
-                    </cursor>
-                </Button>
+            <Button fx:id="botaoCancelar" layoutX="259.0" layoutY="253.0" mnemonicParsing="false" onAction="#listarParaCancelar" prefHeight="144.0" prefWidth="383.0" text="Cancelar Consulta">
+               <font>
+                  <Font size="28.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
             </children>
         </VBox>
     </center>

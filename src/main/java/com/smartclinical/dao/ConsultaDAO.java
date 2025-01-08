@@ -168,4 +168,28 @@ public class ConsultaDAO {
         }
     }
 
+    public boolean removerConsultaPorId(int consultaId) {
+        String sql = "DELETE FROM consultas WHERE id_consulta = ?";
+
+        try (Connection con = ConexaoBD.getConexao();
+             PreparedStatement stmt = con.prepareStatement(sql)) {
+
+            stmt.setInt(1, consultaId); // Definir o ID da consulta a ser removida
+            int rowsAffected = stmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                System.out.println("Consulta removida com sucesso");
+                return true;
+            } else {
+                System.out.println("Consulta não encontrada");
+                return false;
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao remover consulta: " + e.getMessage());
+            return false;
+        }
+    }
+
+
 }

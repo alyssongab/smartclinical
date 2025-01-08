@@ -104,3 +104,5 @@ SHOW INDEXES FROM pacientes;
 
 describe pacientes;
 describe medicos;
+select * from medicos;
+select * from recepcionistas;
