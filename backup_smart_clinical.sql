@@ -180,7 +180,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'Bob','bob@gmail.com','admin123','92998877','ADMIN'),(2,'Messi','lm10@gmail.com','barca','22 151109','RECEPCIONISTA'),(3,'Daniel','dan@gmail.com','dandan','9298016','MEDICO'),(4,'Admin','admin@super','goat','9312318','ADMIN'),(5,'Mario','mario@bros','luigi','172316','MEDICO'),(7,'Luigi','lg@gmail','4341','9876','RECEPCIONISTA');
+INSERT INTO `usuario` VALUES (1,'Bob','bob@gmail.com','admin123','92998877','ADMIN'),(2,'Messi','lm10@gmail.com','barca','22 151109','RECEPCIONISTA'),(3,'Daniel','dan@gmail.com','dan123','9298016','MEDICO'),(4,'Admin','admin@super','goat','9312318','ADMIN'),(5,'Mario','mario@bros','luigi','172316','MEDICO'),(7,'Luigi','lg@gmail','4341','9876','RECEPCIONISTA');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -193,4 +193,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-01-08  1:03:08
+-- Dump completed on 2025-01-08  3:41:48

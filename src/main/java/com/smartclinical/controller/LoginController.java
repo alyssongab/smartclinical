@@ -32,6 +32,9 @@ public class LoginController {
     @FXML
     private Button submitLogin;
 
+    @FXML
+    private Hyperlink botaoRedefinirSenha;
+
 
     // metodo que inicia o controller
     public void initialize() {
@@ -160,6 +163,17 @@ public class LoginController {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    @FXML
+    private void redefinirSenha() {
+        try{
+            Main main = new Main();
+            main.abrirRedefinicaoSenha("recovery.fxml");
+        }
+        catch(IOException e){
+            System.out.println("Erro ao redefinir senha: " + e.getMessage());
+        }
     }
 
 }

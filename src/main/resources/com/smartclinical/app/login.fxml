@@ -39,7 +39,7 @@
                   <Font name="System Bold" size="18.0" />
                </font>
             </Button>
-            <Hyperlink layoutX="113.0" layoutY="523.0" prefHeight="42.0" prefWidth="174.0" text="Esqueceu sua senha?" textFill="#53c89b">
+            <Hyperlink fx:id="botaoEsqueceuSenha" layoutX="113.0" layoutY="523.0" onAction="#redefinirSenha" prefHeight="42.0" prefWidth="174.0" text="Esqueceu sua senha?" textFill="#53c89b">
                <font>
                   <Font name="Montserrat Bold" size="14.0" />
                </font>

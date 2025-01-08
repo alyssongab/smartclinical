@@ -26,6 +26,33 @@ public class Main extends Application {
         stage.show();
     }
 
+    public void abrirRedefinicaoSenha(String fxml) throws IOException {
+        Parent pane = FXMLLoader.load(getClass().getResource(fxml));
+        stg.getScene().setRoot(pane);
+        stg.setTitle("Nova senha");
+        stg.setWidth(800);
+        stg.setHeight(600);
+
+        stg.setResizable(false);
+
+        stg.setOnCloseRequest(event -> {
+            // simula um logout
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Alerta");
+            alert.setHeaderText("Sair do Sistema");
+            alert.setContentText("Deseja sair do sistema?");
+            Optional<ButtonType> result = alert.showAndWait();
+
+            if (result.isPresent() && result.get() == ButtonType.OK) {
+                System.exit(0);  // Encerra a aplicação após o logout
+            }
+            else{
+                event.consume();
+            }
+        });
+
+    }
+
     public void abrirPainel(String fxml, String title) throws IOException {
         Parent pane = FXMLLoader.load(getClass().getResource(fxml));
         stg.getScene().setRoot(pane);

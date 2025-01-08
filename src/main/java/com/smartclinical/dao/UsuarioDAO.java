@@ -189,4 +189,63 @@ public class UsuarioDAO {
 
     }
 
+    // busca por um email cadastrado
+    public Usuario buscarUsuarioPorEmail(String email) {
+        String buscar = "SELECT * FROM usuario WHERE email = ?";
+
+        try(Connection conn = ConexaoBD.getConexao()){
+            assert conn != null;
+            PreparedStatement instrucao = conn.prepareStatement(buscar);
+
+            instrucao.setString(1, email);
+            ResultSet rs = instrucao.executeQuery();
+            System.out.println("SQL: " + buscar);
+
+            if(rs.next()) {
+                Usuario usuario = new Usuario(
+                        rs.getInt("id"),
+                        rs.getString("nome"),
+                        rs.getString("email"),
+                        rs.getString("senha"),
+                        rs.getString("telefone"),
+                        TipoUser.valueOf(rs.getString("tipoUser"))
+                );
+
+                System.out.println("Email: " + usuario.getEmail());
+                return usuario;
+            }
+            else {
+                System.out.println("Nenhum email encontrado");
+                return null;
+            }
+        }
+        catch (SQLException e) {
+            System.out.println("Erro ao buscar email: " + e.getMessage());
+            return null;
+        }
+    }
+
+    // alterar senha
+    public void alterarSenha(String senha, int id) {
+        String alterar = "UPDATE usuario SET senha = ? WHERE id = ?";
+        try(Connection conn = ConexaoBD.getConexao()){
+            assert conn != null;
+            PreparedStatement instrucao = conn.prepareStatement(alterar);
+            instrucao.setString(1, senha);
+            instrucao.setInt(2, id);
+
+            int linhasAfetadas = instrucao.executeUpdate();
+            System.out.println("SQL -> nova senha = " + senha + ", ID = " + id);
+            if (linhasAfetadas > 0) {
+                System.out.println("Senha alterada com sucesso.");
+            }
+            else{
+                System.out.println("Nenhuma linha foi alterada.");
+            }
+        }
+        catch(SQLException e) {
+            System.out.println("Erro ao alterar senha: " + e.getMessage());
+        }
+    }
+
 }
