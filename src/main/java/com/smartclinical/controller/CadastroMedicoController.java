@@ -26,13 +26,10 @@ public class CadastroMedicoController {
     private TextField UsuarioInputNome;
 
     @FXML
-    private TextField UsuarioInputEmail;
+    private TextField UsuarioInputTelefone;
 
     @FXML
     private TextField UsuarioInputSenha;
-
-    @FXML
-    private TextField UsuarioInputTelefone;
 
     @FXML
     private TextField UsuarioInputCRM;
@@ -47,14 +44,13 @@ public class CadastroMedicoController {
 
     public void cadastrarMedico(ActionEvent actionEvent) {
         String nome =  UsuarioInputNome.getText();
-        String email = UsuarioInputEmail.getText();
-        String senha = UsuarioInputSenha.getText();
         String telefone = UsuarioInputTelefone.getText();
+        String senha = UsuarioInputSenha.getText();
         String CRM = UsuarioInputCRM.getText();
         String especialidade = medicoComboBox.getValue();
         TipoUser tipoUser = TipoUser.MEDICO;
         try{
-            Medico medico = new Medico(nome,email,telefone,senha,CRM, especialidade, tipoUser);
+            Medico medico = new Medico(nome,telefone,senha,CRM, especialidade, tipoUser);
             medicoDAO.inserirMedico(medico);
             clear();
             mostrarAlerta("Cadastro", "Cadastro realizado com sucesso!");
@@ -65,7 +61,6 @@ public class CadastroMedicoController {
 
     public void clear(){
         UsuarioInputNome.clear();
-        UsuarioInputEmail.clear();
         UsuarioInputSenha.clear();
         UsuarioInputTelefone.clear();
         UsuarioInputCRM.clear();
@@ -74,7 +69,6 @@ public class CadastroMedicoController {
     //Limpa os campos do cadastro
     public void LimparCampos(ActionEvent actionEvent) {
         UsuarioInputNome.clear();
-        UsuarioInputEmail.clear();
         UsuarioInputSenha.clear();
         UsuarioInputTelefone.clear();
         UsuarioInputCRM.clear();

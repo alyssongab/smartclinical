@@ -81,19 +81,6 @@
                                 <Insets bottom="10.0" />
                             </VBox.margin>
                         </TextField>
-                        <Label text="Email">
-                            <font>
-                                <Font size="20.0" />
-                            </font>
-                            <VBox.margin>
-                                <Insets left="-414.0" />
-                            </VBox.margin>
-                        </Label>
-                        <TextField fx:id="UsuarioInputEmail" prefHeight="30.0" prefWidth="450.0" promptText="CPF do recepcionista">
-                            <VBox.margin>
-                                <Insets bottom="10.0" />
-                            </VBox.margin>
-                        </TextField>
                         <Label text="Telefone">
                             <font>
                                 <Font size="20.0" />
@@ -115,7 +102,10 @@
                                 <Insets left="-400.0" />
                             </VBox.margin>
                         </Label>
-                        <TextField fx:id="UsuarioInputSenha" layoutX="325.0" layoutY="380.0" prefHeight="30.0" prefWidth="450.0" promptText="Senha para acesso" />
+                        <TextField fx:id="UsuarioInputSenha" layoutX="325.0" layoutY="380.0" prefHeight="30.0" prefWidth="450.0" promptText="Senha para acesso">
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin></TextField>
                         <Label layoutX="523.0" layoutY="405.0" text="Turno">
                             <font>
                                 <Font size="20.0" />

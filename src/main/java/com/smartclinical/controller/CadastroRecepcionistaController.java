@@ -26,14 +26,10 @@ public class CadastroRecepcionistaController {
     private TextField UsuarioInputNome;
 
     @FXML
-    private TextField UsuarioInputEmail;
+    private TextField UsuarioInputTelefone;
 
     @FXML
     private TextField UsuarioInputSenha;
-
-    @FXML
-    private TextField UsuarioInputTelefone;
-
 
 
     RecepcionistaDAO recepcionistaDAO = new RecepcionistaDAO();
@@ -44,14 +40,13 @@ public class CadastroRecepcionistaController {
 
     public void cadastrarRecepcionista(ActionEvent actionEvent) {
         String nome =  UsuarioInputNome.getText();
-        String email = UsuarioInputEmail.getText();
-        String senha = UsuarioInputSenha.getText();
         String telefone = UsuarioInputTelefone.getText();
+        String senha = UsuarioInputSenha.getText();
         String turno = recepcionistaComboBox02.getValue();
         TipoUser tipoUser = TipoUser.RECEPCIONISTA;
         try{
-            Recepcionista recepcionista = new Recepcionista(nome,email,telefone,senha,turno, tipoUser);
-            recepcionistaDAO.inserirAdmin(recepcionista);
+            Recepcionista recepcionista = new Recepcionista(nome,telefone,senha,turno, tipoUser);
+            recepcionistaDAO.inserirRecepcionista(recepcionista);
             clear();
             mostrarAlerta("Cadastro", "Cadastro realizado com sucesso!");
         } catch (Exception e) {
@@ -61,7 +56,6 @@ public class CadastroRecepcionistaController {
 
     public void clear(){
         UsuarioInputNome.clear();
-        UsuarioInputEmail.clear();
         UsuarioInputSenha.clear();
         UsuarioInputTelefone.clear();
     }
@@ -69,7 +63,6 @@ public class CadastroRecepcionistaController {
     //Limpa os campos do cadastro
     public void LimparCampos(ActionEvent actionEvent) {
         UsuarioInputNome.clear();
-        UsuarioInputEmail.clear();
         UsuarioInputSenha.clear();
         UsuarioInputTelefone.clear();
     }

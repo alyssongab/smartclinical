@@ -5,20 +5,24 @@ import com.smartclinical.util.TipoUser;
 public class Medico extends Usuario {
     private String CRM;
     private String especialidade;
-    public Medico(String nome, String email, String senha, String telefone, String CRM, String especialidade, TipoUser tipoUsuario) {
-        super(nome, email, senha, telefone, tipoUsuario);
+
+    public Medico(String nome, String telefone,String senha, String CRM, String especialidade, TipoUser tipoUsuario) {
+        super(nome, telefone, senha, tipoUsuario);
         this.CRM = CRM;
         this.especialidade = especialidade;
     }
 
-    public Medico(int userId, String nome, String telefone,String CRM, TipoUser tipoUsuario) {
-        super(userId, nome, telefone, tipoUsuario);
+
+    //listar
+    public Medico(int id, String nome, String telefone, String CRM, String especialidade, TipoUser tipoUser) {
+        super(id, nome,telefone,tipoUser);
         this.CRM = CRM;
+        this.especialidade = especialidade;
     }
 
-    public Medico(int id, String nome, String email,String senha,String telefone, String especialidade, String CRM, TipoUser tipoUser) {
-        super(id, nome, email,senha,telefone,tipoUser);
-        this.CRM = CRM;
+    public Medico(int idMedico, String nome, String telefone, String senha, String crm, String especialidade, TipoUser tipoUser) {
+        super(idMedico, nome,telefone,senha,tipoUser);
+        this.CRM = crm;
         this.especialidade = especialidade;
     }
 

@@ -34,9 +34,6 @@ public class ListaAdminController {
     private TableColumn<Admin, String> adminNome;
 
     @FXML
-    private TableColumn<Admin, String> adminEmail;
-
-    @FXML
     private TableColumn<Admin, String> adminTelefone;
 
     @FXML
@@ -110,7 +107,6 @@ public class ListaAdminController {
 
     /*----------Dialog pane Editar usuário--------------*/
 
-
     private void showDialogEdit(int idAdmin) {
         Dialog<Void> dialog = new Dialog<>();
         dialog.setTitle("Editar Administrador");
@@ -148,7 +144,7 @@ public class ListaAdminController {
             mostrarAlerta("Edição", "Admin editado com sucesso!");
             ((Stage) gridPane.getScene().getWindow()).close();
         });
-        
+
         gridPane.add(label, 0, 0, 2, 1);
         gridPane.add(labelNome, 0, 2);
         gridPane.add(adminNome, 0, 3);
@@ -157,6 +153,7 @@ public class ListaAdminController {
         gridPane.add(saveButton, 0, 7);
         return gridPane;
     }
+
 
 
 

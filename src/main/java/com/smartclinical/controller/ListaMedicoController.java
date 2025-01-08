@@ -5,6 +5,7 @@ import com.smartclinical.dao.AdminDAO;
 import com.smartclinical.dao.MedicoDAO;
 import com.smartclinical.model.Admin;
 import com.smartclinical.model.Medico;
+import com.smartclinical.util.TipoUser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
@@ -33,9 +34,6 @@ public class ListaMedicoController {
     private TableColumn<Medico, String> medicoNome;
 
     @FXML
-    private TableColumn<Medico, String> medicoEmail;
-
-    @FXML
     private TableColumn<Medico, String> medicoTelefone;
 
     @FXML
@@ -48,7 +46,6 @@ public class ListaMedicoController {
     public void initialize(){
         medicoId.setCellValueFactory(new PropertyValueFactory<>("id"));
         medicoNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
-        medicoEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         medicoTelefone.setCellValueFactory(new PropertyValueFactory<>("telefone"));
         medicoCRM.setCellValueFactory(new PropertyValueFactory<>("CRM"));
         medicoEspecialidade.setCellValueFactory(new PropertyValueFactory<>("especialidade"));
@@ -72,11 +69,11 @@ public class ListaMedicoController {
         Dialog<Void> dialog = new Dialog<>();
         dialog.setTitle("Admin options");
         dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
-        dialog.getDialogPane().setContent(createNode(id, dialog));  // Passa o dialog para a função createNode
+        dialog.getDialogPane().setContent(createNode(id));  // Passa o dialog para a função createNode
         dialog.showAndWait();
     }
 
-    private Node createNode(int idAdmin, Dialog<Void> dialog) {
+    private Node createNode(int idMedico) {
         GridPane gridPane = new GridPane();
         gridPane.setHgap(10);
         gridPane.setVgap(30);
@@ -89,16 +86,16 @@ public class ListaMedicoController {
         Button editButton = new Button("Editar");
         editButton.setStyle("-fx-max-height: 25px;-fx-min-width: 110px;-fx-background-color: #53c89b; -fx-text-fill: white;");
         editButton.setOnAction(event -> {
-
+            showDialogEdit(idMedico);
         });
 
         Button deleteButton = new Button("Excluir");
         deleteButton.setStyle("-fx-max-height: 25px;-fx-min-width: 110px;-fx-background-color: #f44336; -fx-text-fill: white;");
         deleteButton.setOnAction(event -> {
-            AdminDAO adminDao = new AdminDAO();
+            MedicoDAO medicoDAO = new MedicoDAO();
             try {
-                adminDao.removerUsuario(idAdmin);
-                dialog.close();
+                medicoDAO.removerMedico(idMedico);
+                ((Stage) gridPane.getScene().getWindow()).close();
                 mostrarAlerta("Excluir admin", "Excluir concluído!");
             } catch (SQLException e) {
                 System.err.println("Erro ao excluir o usuário: " + e.getMessage());
@@ -111,6 +108,79 @@ public class ListaMedicoController {
 
         return gridPane;
     }
+
+
+
+    /*----------Dialog pane Editar usuário--------------*/
+
+    private void showDialogEdit(int idMedico) {
+        Dialog<Void> dialog = new Dialog<>();
+        dialog.setTitle("Editar Administrador");
+        dialog.getDialogPane().getButtonTypes().add(ButtonType.CLOSE);
+        dialog.getDialogPane().setContent(createEditNode(idMedico));
+        dialog.showAndWait();
+    }
+
+    private Node createEditNode(int idMedico) {
+        GridPane gridPane = new GridPane();
+        gridPane.setHgap(10);
+        gridPane.setVgap(10);
+        gridPane.setPadding(new Insets(30));
+
+        MedicoDAO medicoDAO = new MedicoDAO();
+        Medico medico = medicoDAO.getMedico(idMedico);
+
+
+        Label label = new Label("Escolha uma ação para o administrador:");
+        label.setStyle("-fx-font-weight: bold; -fx-font-size: 16px;");
+
+        Label labelNome = new Label("Nome:");
+        TextField medicoNome = new TextField(medico.getNome());
+        medicoNome.setStyle("-fx-min-width: 200px");
+
+        Label labelTelefone = new Label("Telefone:");
+        TextField medicoTelefone = new TextField(medico.getTelefone());
+        medicoTelefone.setStyle("-fx-min-width: 200px");
+
+
+        Label labelCRM = new Label("CRM:");
+        TextField medicoCRM = new TextField(medico.getCRM());
+        medicoCRM.setStyle("-fx-min-width: 200px");
+
+        Label labelEspecialidade = new Label("Especialidade:");
+        TextField medicoEspecialidade = new TextField(medico.getEspecialidade());
+        medicoEspecialidade.setStyle("-fx-min-width: 200px");
+
+
+        Button saveButton = new Button("Salvar");
+        saveButton.setStyle("-fx-max-height: 25px; -fx-min-width: 110px; -fx-background-color: #53c89b; -fx-text-fill: white;");
+        saveButton.setOnAction(event -> {
+            String nome = medicoNome.getText();
+            String telefone = medicoTelefone.getText();
+            String CRM = medicoCRM.getText();
+            String especialidade = medicoEspecialidade.getText();
+
+            medicoDAO.editarMedico(new Medico(idMedico, nome,telefone,CRM,especialidade,TipoUser.MEDICO));
+            mostrarAlerta("Edição", "Admin editado com sucesso!");
+            ((Stage) gridPane.getScene().getWindow()).close();
+        });
+
+        gridPane.add(label, 0, 0, 2, 1);
+        gridPane.add(labelNome, 0, 2);
+        gridPane.add(medicoNome, 0, 3);
+        gridPane.add(labelTelefone, 0, 6);
+        gridPane.add(medicoTelefone, 0, 7);
+        gridPane.add(labelCRM, 0, 8);
+        gridPane.add(medicoCRM, 0, 9);
+        gridPane.add(labelEspecialidade, 0, 10);
+        gridPane.add(medicoEspecialidade, 0, 11);
+        gridPane.add(saveButton, 0, 13);
+        return gridPane;
+    }
+
+
+
+
 
     public void fazerLogout() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);

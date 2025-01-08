@@ -80,19 +80,6 @@
                                 <Insets bottom="10.0" />
                             </VBox.margin>
                         </TextField>
-                        <Label text="Email">
-                            <font>
-                                <Font size="20.0" />
-                            </font>
-                            <VBox.margin>
-                                <Insets left="-414.0" />
-                            </VBox.margin>
-                        </Label>
-                        <TextField fx:id="adminInputEmail" prefHeight="30.0" prefWidth="450.0" promptText="Email do admin">
-                            <VBox.margin>
-                                <Insets bottom="10.0" />
-                            </VBox.margin>
-                        </TextField>
                         <Label text="Senha">
                             <font>
                                 <Font size="20.0" />

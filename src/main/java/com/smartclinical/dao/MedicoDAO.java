@@ -1,5 +1,6 @@
 package com.smartclinical.dao;
 
+import com.smartclinical.model.Admin;
 import com.smartclinical.model.Medico;
 import com.smartclinical.model.Usuario;
 import com.smartclinical.util.ConexaoBD;
@@ -15,19 +16,18 @@ import java.util.List;
 public class MedicoDAO {
     //Inserir usuário
     public void inserirMedico(Medico medico){
-        String inserir = "INSERT INTO medicos (nome, email, telefone,senha, CRM, especialidade, tipoUser) VALUES(?,?,?,?,?,?,?)";
+        String inserir = "INSERT INTO medicos (nome, telefone,senha, CRM, especialidade, tipoUser) VALUES(?,?,?,?,?,?)";
         // try with resource para conectar com o banco
         try(Connection con = ConexaoBD.getConexao()) {
             assert con != null;
             PreparedStatement stmt = con.prepareStatement(inserir);
 
             stmt.setString(1, medico.getNome());
-            stmt.setString(2, medico.getEmail());
-            stmt.setString(3, medico.getTelefone());
-            stmt.setString(4, medico.getSenha());
-            stmt.setString(5, medico.getCRM());
-            stmt.setString(6, medico.getEspecialidade());
-            stmt.setString(7, medico.getTipoUsuario().name());
+            stmt.setString(2, medico.getTelefone());
+            stmt.setString(3, medico.getSenha());
+            stmt.setString(4, medico.getCRM());
+            stmt.setString(5, medico.getEspecialidade());
+            stmt.setString(6, medico.getTipoUsuario().name());
 
             stmt.executeUpdate();
 
@@ -40,7 +40,8 @@ public class MedicoDAO {
 
     // listar usuários
     public List<Medico> listarAdmin() {
-        String listar = "SELECT id,nome,email,telefone,senha,CRM,especialidade,tipoUser FROM medicos";
+        String listar = "SELECT id,nome,telefone,CRM,especialidade,tipoUser FROM medicos";
+        Medico medico = null;
         List<Medico> medicos = new ArrayList<>();
 
         try(Connection con = ConexaoBD.getConexao()){
@@ -53,17 +54,15 @@ public class MedicoDAO {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String nome = rs.getString("nome");
-                String email = rs.getString("email");
                 String telefone = rs.getString("telefone");
-                String senha = rs.getString("senha");;
                 String CRM = rs.getString("CRM");
                 String especialidade = rs.getString("especialidade");
                 String tipoUsuarioString = rs.getString("tipoUser");
-                // convertendo o tipo de usuario para enum
-                TipoUser tipoUser = TipoUser.valueOf(tipoUsuarioString);
 
-                Medico medico = new Medico(id, nome, email, telefone,senha,CRM,especialidade, tipoUser);
-                System.out.println("Nome: " + medico.getNome() + "CRM: " + medico.getCRM() + "especialidade: " + medico.getEspecialidade());
+
+
+                medico = new Medico(id,nome,telefone,CRM,especialidade,TipoUser.MEDICO);
+                System.out.println("Nome: " + medico.getNome() + "Email:" + "CRM: " + medico.getCRM() + "especialidade: " + medico.getEspecialidade());
                 medicos.add(medico);
             }
 
@@ -74,6 +73,44 @@ public class MedicoDAO {
 
         return medicos;
     }
+
+
+    public Medico getMedico(int idMedico) {
+        String selecionar = "SELECT id, nome, telefone,senha, CRM, especialidade, tipoUser FROM medicos WHERE id = ?";
+        Medico medico = null;
+
+        try (Connection con = ConexaoBD.getConexao()) {
+            if (con == null) {
+                throw new SQLException("Conexão com o banco de dados não foi estabelecida.");
+            }
+
+            PreparedStatement stmt = con.prepareStatement(selecionar);
+            stmt.setInt(1, idMedico);
+
+            ResultSet rs = stmt.executeQuery();
+
+            System.out.println("SQL: " + stmt); // Mostra a consulta com parâmetros
+
+            if (rs.next()) {
+                String nome = rs.getString("nome");
+                String telefone = rs.getString("telefone");
+                String senha = rs.getString("senha");
+                String CRM = rs.getString("CRM");
+                String especialidade = rs.getString("especialidade");
+                String tipoUsuarioString = rs.getString("tipoUser");
+
+                medico = new Medico(idMedico, nome, telefone,senha, CRM, especialidade, TipoUser.MEDICO);
+
+            } else {
+                System.out.println("Nenhum médico encontrado com o ID: " + idMedico);
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao selecionar médico: " + e.getMessage());
+        }
+
+        return medico;
+    }
+
 
     // Remover usuário
     public void removerMedico(int id) throws SQLException {
@@ -101,31 +138,30 @@ public class MedicoDAO {
         }
     }
 
-    // Editar usuário
-    public void editarAdmin(Medico medico) {
-        String atualizar = "UPDATE medicos SET nome = ?, senha = ?, telefone = ?, tipoUser = ? WHERE id = ?";
+    // Editar medico
+    public void editarMedico(Medico medico) {
+        String atualizar = "UPDATE medicos SET nome = ?, telefone = ?, CRM = ?, especialidade = ?, tipoUser = ? WHERE id = ?";
 
         try (Connection con = ConexaoBD.getConexao()) {
-            // Verifica se a conexão foi bem-sucedida
             if (con == null) {
                 System.out.println("Erro: Não foi possível obter a conexão com o banco de dados.");
                 return;
             }
 
-            // Prepara a instrução SQL
             try (PreparedStatement stmt = con.prepareStatement(atualizar)) {
                 // Definir os parâmetros da consulta SQL
                 stmt.setString(1, medico.getNome());
-                stmt.setString(2, medico.getSenha());
-                stmt.setString(3, medico.getTelefone());
-
-                // Verifica se o tipo de usuário é válido (não nulo)
+                stmt.setString(2, medico.getTelefone());
+                stmt.setString(3, medico.getCRM());
+                stmt.setString(4, medico.getEspecialidade());
+                stmt.setString(5, medico.getTipoUsuario().name());
                 if (medico.getTipoUsuario() == null) {
                     System.out.println("Erro: O tipo de usuário não foi definido.");
-                    return; // Impede a execução da query se o tipo de usuário for nulo
+                    return;
                 }
-                stmt.setString(4, medico.getTipoUsuario().name()); // Converte Enum para String
-                stmt.setInt(5, medico.getId());
+
+                stmt.setInt(6, medico.getId());
+
 
                 // Executa a atualização e verifica o número de linhas afetadas
                 int rowsUpdated = stmt.executeUpdate();
@@ -139,18 +175,10 @@ public class MedicoDAO {
                 // Captura erros específicos do SQL e imprime a mensagem de erro
                 System.out.println("Erro ao executar a consulta SQL.");
                 e.printStackTrace();  // Detalha o stack trace completo para debugging
-            } catch (Exception e) {
-                // Captura erros genéricos, caso ocorram
-                System.out.println("Erro inesperado durante a execução.");
-                e.printStackTrace();
             }
         } catch (SQLException e) {
             // Captura erros relacionados à conexão com o banco de dados
             System.out.println("Erro ao tentar obter conexão com o banco de dados.");
-            e.printStackTrace();
-        } catch (Exception e) {
-            // Captura outros tipos de exceções gerais que podem ocorrer
-            System.out.println("Erro inesperado.");
             e.printStackTrace();
         }
     }

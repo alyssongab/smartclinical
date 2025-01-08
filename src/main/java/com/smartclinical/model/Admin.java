@@ -6,8 +6,8 @@ public class Admin extends Usuario{
 
     public Admin() {}
     //Construtor para inserção
-    public Admin(String nome, String email, String telefone, String senha, TipoUser tipoUsuario) {
-        super(nome, email, telefone, senha, tipoUsuario);
+    public Admin(String nome, String telefone, String senha, TipoUser tipoUsuario) {
+        super(nome, telefone, senha, tipoUsuario);
     }
 
     //Construtor para listagem

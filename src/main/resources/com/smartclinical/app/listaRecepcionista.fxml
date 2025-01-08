@@ -75,10 +75,9 @@
                   <TableView fx:id="recepcionistaTable" maxHeight="500.0" maxWidth="990.0" onMouseClicked="#rowClicked" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" GridPane.valignment="TOP">
                      <columns>
                         <TableColumn fx:id="recepcionistaId" prefWidth="85.0" text="Id" />
-                        <TableColumn fx:id="recepcionistaNome" prefWidth="244.0" text="Nome" />
-                        <TableColumn fx:id="recepcionistaEmail" prefWidth="270.0" text="Email" />
-                        <TableColumn fx:id="recepcionistaTelefone" prefWidth="202.0" text="Telefone" />
-                        <TableColumn fx:id="recepcionistaTurno" prefWidth="188.0" text="Turno" />
+                        <TableColumn fx:id="recepcionistaNome" prefWidth="267.0" text="Nome" />
+                        <TableColumn fx:id="recepcionistaTelefone" prefWidth="359.0" text="Telefone" />
+                        <TableColumn fx:id="recepcionistaTurno" prefWidth="277.0" text="Turno" />
                      </columns>
                   </TableView>
                </children>

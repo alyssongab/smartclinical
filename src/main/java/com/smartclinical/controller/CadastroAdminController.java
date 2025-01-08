@@ -23,9 +23,6 @@ public class CadastroAdminController {
     private TextField adminInputNome;
 
     @FXML
-    private TextField adminInputEmail;
-
-    @FXML
     private TextField adminInputSenha;
 
     @FXML
@@ -37,12 +34,11 @@ public class CadastroAdminController {
 
     public void cadastrarAdmin(ActionEvent actionEvent) {
         String nome =  adminInputNome.getText();
-        String email = adminInputEmail.getText();
         String senha = adminInputSenha.getText();
         String telefone = adminInputTelefone.getText();
         TipoUser tipoUser = TipoUser.ADMIN;
         try{
-            Admin admin = new Admin(nome,email,senha,telefone,tipoUser);
+            Admin admin = new Admin(nome,telefone,senha,tipoUser);
             adminDao.inserirAdmin(admin);
             clear();
             mostrarAlerta("Cadastro", "Cadastro realizado com sucesso!");
@@ -53,7 +49,6 @@ public class CadastroAdminController {
 
     public void clear(){
         adminInputNome.clear();
-        adminInputEmail.clear();
         adminInputTelefone.clear();
         adminInputSenha.clear();
     }
@@ -61,7 +56,6 @@ public class CadastroAdminController {
     //Limpa os campos do cadastro
     public void LimparCampos(ActionEvent actionEvent) {
         adminInputNome.clear();
-        adminInputEmail.clear();
         adminInputTelefone.clear();
         adminInputSenha.clear();
     }
