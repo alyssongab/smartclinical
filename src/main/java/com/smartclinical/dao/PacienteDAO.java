@@ -59,4 +59,67 @@ public class PacienteDAO {
 
         return pacientes;
     }
+
+    // editar pacientes
+    public void alterarPaciente(Paciente paciente) {
+        // Comando SQL para atualizar os dados do paciente
+        String alterar = "UPDATE pacientes SET nome = ?, cpf = ?, data_nasc = ? WHERE id_paciente = ?";
+
+        try (Connection conn = ConexaoBD.getConexao()) {
+            assert conn != null;
+
+            // Prepara o statement com o comando SQL
+            PreparedStatement stmt = conn.prepareStatement(alterar);
+
+            // Seta os valores dos parâmetros
+            stmt.setString(1, paciente.getNome());
+            stmt.setLong(2, paciente.getCpf());
+            stmt.setString(3, paciente.getDataNascimento());
+            stmt.setInt(4, paciente.getId()); // Usando o ID do paciente para identificar qual registro atualizar
+
+            // Executa a atualização no banco de dados
+            int rowsAffected = stmt.executeUpdate();
+
+            // Se nenhuma linha foi afetada, pode indicar que o paciente não foi encontrado
+            if (rowsAffected > 0) {
+                System.out.println("Paciente atualizado com sucesso.");
+            } else {
+                System.out.println("Nenhum paciente encontrado com o ID fornecido.");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao alterar paciente: " + e.getMessage());
+        }
+    }
+
+    // deletar paciente
+    public void removerPaciente(int idPaciente) {
+        // Comando SQL para excluir o paciente com o ID fornecido
+        String remover = "DELETE FROM pacientes WHERE id_paciente = ?";
+
+        try (Connection conn = ConexaoBD.getConexao()) {
+            assert conn != null;
+
+            // Prepara o statement com o comando SQL
+            PreparedStatement stmt = conn.prepareStatement(remover);
+
+            // Seta o valor do parâmetro (ID do paciente)
+            stmt.setInt(1, idPaciente);
+
+            // Executa a remoção no banco de dados
+            int rowsAffected = stmt.executeUpdate();
+
+            // Se nenhuma linha foi afetada, pode indicar que o paciente não foi encontrado
+            if (rowsAffected > 0) {
+                System.out.println("Paciente removido com sucesso.");
+            } else {
+                System.out.println("Nenhum paciente encontrado com o ID fornecido.");
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao remover paciente: " + e.getMessage());
+        }
+    }
+
+
 }

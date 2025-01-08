@@ -151,4 +151,21 @@ public class ConsultaDAO {
             return null;
         }
     }
+
+    // remocao de consulta para remover paciente
+    public void removerConsultasPorPaciente(int pacienteId) {
+        String sql = "DELETE FROM consultas WHERE paciente_id = ?";
+
+        try (Connection con = ConexaoBD.getConexao();
+             PreparedStatement stmt = con.prepareStatement(sql)) {
+
+            stmt.setInt(1, pacienteId);
+            stmt.executeUpdate();
+            System.out.println("Consultas removidas com sucesso");
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao remover consultas do paciente: " + e.getMessage());
+        }
+    }
+
 }
