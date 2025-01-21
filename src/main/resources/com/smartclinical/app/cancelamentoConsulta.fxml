@@ -51,6 +51,7 @@
                 <TableColumn fx:id="colunaDataHora" prefWidth="75.0" text="Data e Hora" />
                 <TableColumn fx:id="colunaNomePaciente" prefWidth="75.0" text="Nome do Paciente" />
                 <TableColumn fx:id="colunaNomeMedico" prefWidth="75.0" text="Nome do Medico" />
+            <TableColumn fx:id="colunaValor" prefWidth="75.0" text="Valor" />
             </columns>
             <columnResizePolicy>
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -71,7 +72,7 @@
     <right>
         <AnchorPane prefHeight="630.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="botaoCancelar" onAction="#removerConsulta" layoutX="39.0" layoutY="28.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="122.0" text="Cancelar" />
+                <Button fx:id="botaoCancelar" layoutX="39.0" layoutY="28.0" mnemonicParsing="false" onAction="#removerConsulta" prefHeight="53.0" prefWidth="122.0" text="Cancelar" />
             </children></AnchorPane>
     </right>
 </BorderPane>

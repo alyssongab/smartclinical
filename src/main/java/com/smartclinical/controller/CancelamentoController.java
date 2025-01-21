@@ -36,6 +36,10 @@ public class CancelamentoController {
     @FXML
     private TableColumn<Consulta, String> colunaNomeMedico;
 
+    @FXML
+    private TableColumn<Consulta, Double> colunaValor;
+
+    @FXML
     private ObservableList<Consulta> listaConsultas;
 
     public void initialize() {
@@ -47,6 +51,7 @@ public class CancelamentoController {
         colunaDataHora.setCellValueFactory(new PropertyValueFactory<>("data_hora"));
         colunaNomePaciente.setCellValueFactory(new PropertyValueFactory<>("nomePaciente"));
         colunaNomeMedico.setCellValueFactory(new PropertyValueFactory<>("nomeMedico"));
+        colunaValor.setCellValueFactory(new PropertyValueFactory<>("valor"));
 
         // Carregar dados da consulta e popular a TableView
         carregarDadosConsultas();

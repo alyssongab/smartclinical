@@ -83,6 +83,12 @@
                     </font>
                 </Label>
             <TextField fx:id="inputDataHora" prefHeight="27.0" prefWidth="290.0" />
+            <Label text="Valor">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="inputValor" prefHeight="31.0" prefWidth="170.0" />
 
                 <!-- Botões -->
                 <HBox prefHeight="47.0" prefWidth="249.0" spacing="28.0">

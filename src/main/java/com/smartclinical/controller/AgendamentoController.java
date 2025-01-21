@@ -32,6 +32,9 @@ public class AgendamentoController {
     @FXML
     private TextField inputDataHora;
 
+    @FXML
+    private TextField inputValor;
+
     private MedicoDAO medicoDAO;
     private PacienteDAO pacienteDAO;
 
@@ -110,33 +113,34 @@ public class AgendamentoController {
         String dataHora = inputDataHora.getText();
         Medico medicoSelecionado = comboMedico.getSelectionModel().getSelectedItem();
         Paciente pacienteSelecionado = comboPaciente.getSelectionModel().getSelectedItem();
+        double valor = Double.parseDouble(inputValor.getText());
 
-        if (medicoSelecionado == null || pacienteSelecionado == null || dataHora.isEmpty()) {
+        if (medicoSelecionado == null || pacienteSelecionado == null || dataHora.isEmpty() || valor <= 0) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Erro");
             alert.setHeaderText("Dados Incompletos");
-            alert.setContentText("Por favor, preencha todos os campos.");
+            alert.setContentText("Verifique novamente as informações preenchidas.");
             alert.showAndWait();
         } else {
-            Consulta consulta = new Consulta(dataHora, pacienteSelecionado, medicoSelecionado);
+            Consulta consulta = new Consulta(dataHora, pacienteSelecionado, medicoSelecionado, valor);
             ConsultaDAO consultaDAO = new ConsultaDAO();
 
             // verifica se há paciente e medico, depois cria a consulta
             boolean sucesso = consultaDAO.criarConsulta(consulta);
 
+            Alert alert;
             if(sucesso) {
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Sucesso");
                 alert.setHeaderText("Agendada com sucesso");
-                alert.setContentText("Consulta agendada para: \n" + dataHora + "\n Médico: " + medicoSelecionado + "\n Paciente: " + pacienteSelecionado);
-                alert.showAndWait();
+                alert.setContentText("Consulta agendada para: \n" + dataHora + "\n Médico: " + medicoSelecionado + "\n Paciente: " + pacienteSelecionado + "\n Valor: R$ " + valor);
             } else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert = new Alert(Alert.AlertType.ERROR);
                 alert.setTitle("Erro");
                 alert.setHeaderText("");
                 alert.setContentText("Erro ao agendar!");
-                alert.showAndWait();
             }
+            alert.showAndWait();
         }
     }
 

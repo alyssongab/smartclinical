@@ -53,13 +53,14 @@ public class ConsultaDAO {
             }
 
             // Se ambos existem, realizar a inserção da consulta
-            String criacao = "INSERT INTO consultas(data_hora, paciente_id, medico_id) VALUES(?,?,?)";
+            String criacao = "INSERT INTO consultas(data_hora, paciente_id, medico_id, valor) VALUES(?,?,?,?)";
 
             try (Connection conn = ConexaoBD.getConexao()) {
                 PreparedStatement st = conn.prepareStatement(criacao);
                 st.setString(1, consulta.getData_hora());
                 st.setInt(2, consulta.getPaciente().getId());
                 st.setInt(3, consulta.getMedico().getId());
+                st.setDouble(4, consulta.getValor());
 
                 st.executeUpdate();
                 System.out.println("Consulta criada com sucesso");
@@ -85,14 +86,15 @@ public class ConsultaDAO {
                 String data_hora = rs.getString("data_hora");
                 int paciente_id = rs.getInt("paciente_id");
                 int medico_id = rs.getInt("medico_id");
+                double valor = rs.getDouble("valor");
 
-                // obter os objetos Paciente e Medico para criar a Consulta
+                // obter os objetos Paciente e Medico para "criar" a Consulta para listagem
                 // Recupera o paciente e medico completo com base no ID
                 Paciente paciente = getPacienteById(paciente_id);
                 Medico medico = getMedicoById(medico_id);
 
                 // Cria a consulta com os objetos
-                Consulta consulta = new Consulta(idConsulta, data_hora, paciente, medico);
+                Consulta consulta = new Consulta(idConsulta, data_hora, paciente, medico, valor);
                 consultas.add(consulta);
             }
         }

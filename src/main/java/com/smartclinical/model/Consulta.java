@@ -6,6 +6,7 @@ public class Consulta {
     private Paciente paciente;
     private Medico medico;
     private String observacao;
+    private double valor;
 
     public Consulta(String data, Paciente paciente, Medico medico, String observacao) {
         this.data_hora = data;
@@ -25,6 +26,21 @@ public class Consulta {
         this.data_hora = data;
         this.paciente = paciente;
         this.medico = medico;
+    }
+
+    public Consulta(String data, Paciente paciente, Medico medico, Double valor) {
+        this.data_hora = data;
+        this.paciente = paciente;
+        this.medico = medico;
+        this.valor = valor;
+    }
+
+    public Consulta(int idCsonulta, String data, Paciente paciente, Medico medico, Double valor) {
+        this.idConsulta = idCsonulta;
+        this.data_hora = data;
+        this.paciente = paciente;
+        this.medico = medico;
+        this.valor = valor;
     }
 
     public int getIdConsulta() {
@@ -65,6 +81,14 @@ public class Consulta {
 
     public void setObservacao(String observacao) {
         this.observacao = observacao;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+
+    public double getValor() {
+        return valor;
     }
 
     // Métodos para acessar as propriedades dos objetos Paciente e Medico
