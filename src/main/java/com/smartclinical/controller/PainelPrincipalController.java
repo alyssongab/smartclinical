@@ -99,6 +99,17 @@ public class PainelPrincipalController {
                 throw new RuntimeException(e);
             }
         });
+
+        botaoPainelAvaliacoes.setOnAction(event -> {
+            try{
+                Main m = new Main();
+                m.abrirPainel("listaAvaliacoes.fxml", "Avaliações");
+            }
+            catch(IOException e){
+                System.out.println("Erro ao carregar listagem de avaliações " + e.getMessage());
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     /**
