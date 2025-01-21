@@ -104,6 +104,36 @@ public class ConsultaDAO {
         return consultas;
     }
 
+    public List<Consulta> listarConsultasProntuario(int medicoId) {
+        List<Consulta> consultas = new ArrayList<>();
+        MedicoDAO medicoDAO = new MedicoDAO();
+        Medico medico = medicoDAO.getMedico(medicoId);
+
+        String query = "SELECT * FROM consultas WHERE medico_id = ?";
+
+        try (Connection conn = ConexaoBD.getConexao();
+             PreparedStatement st = conn.prepareStatement(query)) {
+
+            st.setInt(1, medico.getId());
+
+            try (ResultSet rs = st.executeQuery()) {
+                while (rs.next()) {
+                    int id_consulta = rs.getInt("id_consulta");
+                    String data_hora = rs.getString("data_hora");
+                    int paciente_id = rs.getInt("paciente_id");
+
+                    Paciente paciente = getPacienteById(paciente_id);
+                    Consulta consulta = new Consulta(id_consulta,data_hora, paciente, medico);
+                    consultas.add(consulta);
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao listar consultas: " + e.getMessage());
+        }
+
+        return consultas;
+    }
+
     // Criar paciente através do Id
     private Paciente getPacienteById(int pacienteId) throws SQLException {
         String queryPaciente = "SELECT * FROM pacientes WHERE id_paciente = ?";

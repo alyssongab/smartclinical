@@ -40,4 +40,33 @@ public class MedicoDAO {
 
         return medicos;
     }
+
+    public Medico getMedico(int id) {
+        Medico medico = null;
+        String sql = "SELECT u.id, u.nome, u.email, u.senha, u.telefone, u.tipoUser, m.crm, m.especialidade " +
+                "FROM usuario u JOIN medicos m ON u.id = m.id_medico WHERE u.id = ?";
+
+        try (Connection conn = ConexaoBD.getConexao();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, id);  // Define o parâmetro id
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    medico = new Medico(
+                            rs.getInt("id"),
+                            rs.getString("nome"),
+                            rs.getString("email"),
+                            rs.getString("senha"),
+                            rs.getString("telefone"),
+                            TipoUser.valueOf(rs.getString("tipoUser")),
+                            rs.getString("crm"),
+                            rs.getString("especialidade")
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao buscar médico: " + e.getMessage());
+        }
+
+        return medico;
+    }
 }

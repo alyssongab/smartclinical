@@ -63,6 +63,8 @@ public class Consulta {
         return paciente;
     }
 
+    public int getPacienteId() { return paciente.getId(); }
+
     public void setPaciente(Paciente paciente) {
         this.paciente = paciente;
     }

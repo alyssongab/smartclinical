@@ -88,6 +88,17 @@ public class PainelPrincipalController {
                 throw new RuntimeException(e);
             }
         });
+
+        botaoPainelProntuarios.setOnAction(event -> {
+            try{
+                Main m = new Main();
+                m.abrirPainel("painelProntuario.fxml", "Consultas");
+            }
+            catch(IOException e){
+                System.out.println("Erro ao carregar listagem de consultas " + e.getMessage());
+                throw new RuntimeException(e);
+            }
+        });
     }
 
     /**

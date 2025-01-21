@@ -4,16 +4,15 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.smartclinical.controller.ListagemConsultasController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.smartclinical.controller.PainelProntuarioController">
     <top>
         <GridPane alignment="CENTER" prefHeight="170.0" prefWidth="1280.0" style="-fx-background-color: #53c89b;" BorderPane.alignment="CENTER">
             <columnConstraints>
@@ -44,23 +43,32 @@
             </BorderPane.margin>
         </GridPane>
     </top>
-   <center>
-      <TableView fx:id="tableViewConsultas" onMouseClicked="#rowClicked" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-        <columns>
-          <TableColumn fx:id="colunaIdConsulta" prefWidth="75.0" text="ID da Consulta" />
-          <TableColumn fx:id="colunaDataHora" prefWidth="75.0" text="Data e Hora" />
-            <TableColumn fx:id="colunaNomePaciente" prefWidth="75.0" text="Nome do Paciente" />
-            <TableColumn fx:id="colunaNomeMedico" prefWidth="75.0" text="Nome do Medico" />
-        </columns>
-         <columnResizePolicy>
-            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-         </columnResizePolicy>
-      </TableView>
-   </center>
+    <center>
+        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="15.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button fx:id="botaoCadastrarProntuario" mnemonicParsing="false" onAction="#abrirCadastro" prefHeight="160.0" prefWidth="350.0" text="Elaborar Prontuário">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+                <Button mnemonicParsing="false" onAction="#consultarProntuario" prefHeight="160.0" prefWidth="350.0" text="Consultar Prontuário">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </Button>
+            </children>
+        </VBox>
+    </center>
     <left>
         <AnchorPane prefHeight="630.0" prefWidth="200.0" BorderPane.alignment="CENTER">
             <children>
-                <Button fx:id="botaoVoltarParaPainelPacientes" layoutX="39.0" layoutY="27.0" mnemonicParsing="false" onAction="#voltarParaPacientes" prefHeight="53.0" prefWidth="122.0" text="Voltar">
+                <Button fx:id="botaoVoltarParaPainelPrincipal" layoutX="39.0" layoutY="27.0" mnemonicParsing="false" onAction="#voltarParaPainelPrincipal" prefHeight="53.0" prefWidth="122.0" text="Voltar">
                     <font>
                         <Font size="18.0" />
                     </font>

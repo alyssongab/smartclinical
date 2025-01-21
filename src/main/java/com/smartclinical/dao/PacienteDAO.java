@@ -60,6 +60,40 @@ public class PacienteDAO {
         return pacientes;
     }
 
+
+    public Paciente getPaciente(int idPaciente) {
+        String selecionar = "SELECT id_paciente, nome, cpf, data_nasc FROM pacientes WHERE id_paciente = ?";
+        Paciente paciente = null;
+
+        try (Connection con = ConexaoBD.getConexao()) {
+            if (con == null) {
+                throw new SQLException("Conexão com o banco de dados não foi estabelecida.");
+            }
+
+            PreparedStatement stmt = con.prepareStatement(selecionar);
+            stmt.setInt(1, idPaciente);
+
+            ResultSet rs = stmt.executeQuery();
+
+            System.out.println("SQL: " + stmt); // Mostra a consulta com parâmetros
+
+            if (rs.next()) {
+                String nome = rs.getString("nome");
+                String cpf = rs.getString("cpf");
+                String dataNascimento = rs.getString("data_nasc");
+
+                paciente = new Paciente(idPaciente,nome,Long.parseLong(cpf),dataNascimento); // Instancia paciente somente se houver resultado
+
+            } else {
+                System.out.println("Nenhum paciente encontrado com o ID: " + idPaciente);
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao selecionar paciente: " + e.getMessage());
+        }
+
+        return paciente;
+    }
+
     // editar pacientes
     public void alterarPaciente(Paciente paciente) {
         // Comando SQL para atualizar os dados do paciente
