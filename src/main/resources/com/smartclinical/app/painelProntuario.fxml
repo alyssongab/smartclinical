@@ -54,7 +54,7 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </Button>
-                <Button mnemonicParsing="false" onAction="#consultarProntuario" prefHeight="160.0" prefWidth="350.0" text="Consultar Prontuário">
+                <Button mnemonicParsing="false" onAction="#consultarProntuario" prefHeight="160.0" prefWidth="350.0" text="Consultar Prontuários">
                     <font>
                         <Font size="24.0" />
                     </font>

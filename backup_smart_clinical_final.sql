@@ -54,14 +54,11 @@ DROP TABLE IF EXISTS `avaliacoes`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `avaliacoes` (
   `id_avaliacao` int NOT NULL AUTO_INCREMENT,
-  `consulta_id` int NOT NULL,
-  `nota` int DEFAULT NULL,
-  `comentarios` text,
-  PRIMARY KEY (`id_avaliacao`),
-  KEY `consulta_id` (`consulta_id`),
-  CONSTRAINT `avaliacoes_ibfk_1` FOREIGN KEY (`consulta_id`) REFERENCES `consultas` (`id_consulta`),
-  CONSTRAINT `avaliacoes_chk_1` CHECK (((`nota` >= 0) and (`nota` <= 5)))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `nota_atendimento` varchar(10) NOT NULL,
+  `nota_consulta` varchar(10) NOT NULL,
+  `descricao` text NOT NULL,
+  PRIMARY KEY (`id_avaliacao`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,6 +67,7 @@ CREATE TABLE `avaliacoes` (
 
 LOCK TABLES `avaliacoes` WRITE;
 /*!40000 ALTER TABLE `avaliacoes` DISABLE KEYS */;
+INSERT INTO `avaliacoes` VALUES (1,'5','5','Médico muito atencioso!'),(2,'5','5','Ótimo profissional');
 /*!40000 ALTER TABLE `avaliacoes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -92,7 +90,7 @@ CREATE TABLE `consultas` (
   KEY `medico_id` (`medico_id`),
   CONSTRAINT `consultas_ibfk_1` FOREIGN KEY (`paciente_id`) REFERENCES `pacientes` (`id_paciente`),
   CONSTRAINT `consultas_ibfk_2` FOREIGN KEY (`medico_id`) REFERENCES `medicos` (`id_medico`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -101,7 +99,7 @@ CREATE TABLE `consultas` (
 
 LOCK TABLES `consultas` WRITE;
 /*!40000 ALTER TABLE `consultas` DISABLE KEYS */;
-INSERT INTO `consultas` VALUES (9,'20/01/2025 09:00',3,3,NULL,0.00),(10,'18/01/2025 08:00',1,5,NULL,0.00),(11,'23/02/2025 08:30',4,3,NULL,150.00),(12,'10/03/2025 10:00',3,3,NULL,200.00);
+INSERT INTO `consultas` VALUES (10,'18/01/2025 08:00',1,5,NULL,0.00),(11,'23/02/2025 08:30',4,3,NULL,150.00),(12,'10/03/2025 10:00',3,3,NULL,200.00),(14,'23/05/2025 10:00',4,3,NULL,100.00);
 /*!40000 ALTER TABLE `consultas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -173,7 +171,7 @@ CREATE TABLE `prontuarios` (
   PRIMARY KEY (`id_prontuario`),
   KEY `consulta_id` (`consulta_id`),
   CONSTRAINT `prontuarios_ibfk_1` FOREIGN KEY (`consulta_id`) REFERENCES `consultas` (`id_consulta`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -182,6 +180,7 @@ CREATE TABLE `prontuarios` (
 
 LOCK TABLES `prontuarios` WRITE;
 /*!40000 ALTER TABLE `prontuarios` DISABLE KEYS */;
+INSERT INTO `prontuarios` VALUES (2,11,'Problema de junta'),(4,14,'Dengue');
 /*!40000 ALTER TABLE `prontuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -248,4 +247,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-01-20 21:17:24
+-- Dump completed on 2025-01-21 20:42:04

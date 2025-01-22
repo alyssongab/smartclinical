@@ -114,7 +114,7 @@ public class ListagemProntuarioController {
     public void voltarParaPainelPrincipal(ActionEvent actionEvent) {
         try{
             Main main = new Main();
-            main.abrirPainel("painelAgendamento.fxml", "Agendamento");
+            main.abrirPainel("painelProntuario.fxml", "Prontuario");
         }
         catch(IOException e){
             throw new RuntimeException();

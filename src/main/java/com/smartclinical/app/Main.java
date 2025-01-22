@@ -3,6 +3,7 @@ package com.smartclinical.app;
 import com.smartclinical.controller.PainelPacientesController;
 
 import com.smartclinical.util.TipoUser;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
