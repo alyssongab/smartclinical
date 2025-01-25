@@ -13,7 +13,7 @@ Sistema de gestão de usuários e consultas para clínicas
 ### Instalação
 #### 1. Clonar o projeto do git.
 #### 2. Criar um banco de dados com o nome desejado
-#### 3. Criar na pasta da raíz do projeto um arquivo "db.properties" com os seguintes comandos:
+#### 3. Criar na pasta da raíz do projeto um arquivo chamado "db.properties" com os seguintes comandos:
 ```bash
     # Configuração do banco de dados
     db.url=jdbc:URL_DO_SEU_BANCO
@@ -25,4 +25,4 @@ Sistema de gestão de usuários e consultas para clínicas
     # Procure pelo arquivo: 
     backup_smart_clinical_final.sql
  ```
-#### 5. Rodar o projeto
+#### 5. Testar a conexão e rodar o projeto
