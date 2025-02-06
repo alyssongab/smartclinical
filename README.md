@@ -1,5 +1,5 @@
 # Smart Clinical - Sua clínica mais inteligente
-Sistema de gestão de usuários e consultas para clínicas
+Smart Clinical é um sistema de gestão de usuários, consultas e avaliações para clínicas
 
 ## Desenvolvido por:
 - Alysson Gabriel
@@ -26,3 +26,34 @@ Sistema de gestão de usuários e consultas para clínicas
     backup_smart_clinical_final.sql
  ```
 #### 5. Testar a conexão e rodar o projeto
+
+## Funcionalidades
+
+- Autentica e faz logout
+- Recupera senha
+- Controle de Roles (Admin, Médico, Recepcionista)
+- Gerenciamento de usuários, consultas e pacientes
+- Prontuários médicos
+- Sistema de avaliações e feedbacks
+- Gera relatório simples
+
+## Screenshots
+### 1. Autenticação
+![login](screenshots/login.png)
+![erro](screenshots/errologin.png)
+
+### 2. Recuperação de senha
+![recuperasenha](screenshots/recuperasenha.png)
+![novasenha](screenshots/novasenha.png)
+
+### 3. Painel Principal
+![painel](screenshots/painel.png)
+
+### 4. Gerenciamento de usuários
+![manage](screenshots/gerenciamento.png)
+
+### 5. Controle de Roles (Limita permissões)
+![roles](screenshots/roles.png)
+
+### 6. Sistema de Avaliações
+![avaliacoes](screenshots/avaliacoes.png)
